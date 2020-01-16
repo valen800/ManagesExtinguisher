@@ -10,8 +10,6 @@ data class Flask(
     @PrimaryKey(autoGenerate = true)
     var flaskId: Long = 0L,
 
-    @Embedded var floor: Floor?,
-
     @ColumnInfo(name = "n_flask")
     var nFlask: String = "",
 

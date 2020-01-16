@@ -4,13 +4,15 @@ import androidx.room.*
 import java.util.*
 import java.time.LocalDateTime
 
-@Entity(tableName = "Extinguisher")
+@Entity(tableName = "Floor")
 data class Floor(
 
     @PrimaryKey(autoGenerate = true)
     var floorId: Long = 0L,
 
-    @Embedded var building: Building?,
+    @Embedded var extinguisher: Extinguisher?,
+
+    @Embedded var flask: Flask?,
 
     @ColumnInfo(name = "name_floor")
     var nameFloor: String = "",

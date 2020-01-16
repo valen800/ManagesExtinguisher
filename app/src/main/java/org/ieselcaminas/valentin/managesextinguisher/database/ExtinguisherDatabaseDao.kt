@@ -17,6 +17,6 @@ interface ExtinguisherDatabaseDao {
     @Query("DELETE FROM Extinguisher")
     fun clear()
 
-    @Query ("SELECT * FROM Extinguisher")
+    @Query ("SELECT * FROM Extinguisher ORDER BY extinguisherId DESC")
     fun getAllExtinguisher(): LiveData<List<Extinguisher>>
 }

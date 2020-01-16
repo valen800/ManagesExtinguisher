@@ -10,8 +10,6 @@ data class Extinguisher(
     @PrimaryKey(autoGenerate = true)
     var extinguisherId: Long = 0L,
 
-    @Embedded var floor: Floor?,
-
     @ColumnInfo(name = "n_extinguisher")
     var nExtinguisher: String = "",
 
