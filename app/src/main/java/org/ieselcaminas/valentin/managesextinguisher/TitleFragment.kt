@@ -20,7 +20,6 @@ class TitleFragment : Fragment() {
         val binding: FragmentTitleBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_title, container, false
         )
-        binding.
 
         /*binding.buttonToFragmentLogin.setOnClickListener() {
             Navigation.findNavController(it).navigate(R.id.action_titleFragment_to_loginFragment)

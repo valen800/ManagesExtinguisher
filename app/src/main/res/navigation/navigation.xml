@@ -5,5 +5,9 @@
     <fragment
         android:id="@+id/titleFragment"
         android:name="org.ieselcaminas.valentin.managesextinguisher.TitleFragment"
-        android:label="TitleFragment" />
+        android:label="@string/manageEx" />
+    <fragment
+        android:id="@+id/aboutFragment2"
+        android:name="org.ieselcaminas.valentin.managesextinguisher.AboutFragment"
+        android:label="@string/about" />
 </navigation>
