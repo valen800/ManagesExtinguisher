@@ -5,13 +5,5 @@
     <fragment
         android:id="@+id/titleFragment"
         android:name="org.ieselcaminas.valentin.managesextinguisher.TitleFragment"
-        android:label="TitleFragment" >
-        <action
-            android:id="@+id/action_titleFragment_to_loginFragment"
-            app:destination="@+id/loginFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="org.ieselcaminas.valentin.managesextinguisher.LoginFragment"
-        android:label="LoginFragment" />
+        android:label="TitleFragment" />
 </navigation>

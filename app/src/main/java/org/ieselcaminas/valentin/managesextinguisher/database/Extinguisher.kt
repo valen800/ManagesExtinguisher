@@ -13,10 +13,10 @@ data class Extinguisher(
     @Embedded var floor: Floor?,
 
     @ColumnInfo(name = "n_extinguisher")
-    var nExtinguisher: Long = 0L,
+    var nExtinguisher: String = "",
 
-    @ColumnInfo(name = "n_small_bottle")
-    var nSmallBottle: Long = 0L,
+    @ColumnInfo(name = "n_flask")
+    var nSmallBottle: String = "",
 
     @ColumnInfo(name = "situation")
     var situation: String = "",
