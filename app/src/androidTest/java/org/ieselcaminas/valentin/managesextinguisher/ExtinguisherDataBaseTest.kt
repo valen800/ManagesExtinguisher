@@ -3,8 +3,7 @@ package org.ieselcaminas.valentin.managesextinguisher
 import androidx.room.Room
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
-import org.ieselcaminas.valentin.managesextinguisher.database.ExtinguisherDatabase
-import org.ieselcaminas.valentin.managesextinguisher.database.ExtinguisherDatabaseDao
+import org.ieselcaminas.valentin.managesextinguisher.database.*
 import org.junit.Assert.assertEquals
 import org.junit.After
 import org.junit.Before
@@ -45,9 +44,7 @@ class SleepDatabaseTest {
     @Test
     @Throws(Exception::class)
     fun insertAndGetNight() {
-        //val night = SleepNight()
-        //sleepDao.insert(night)
-        //val tonight = sleepDao.getTonight()
-        //assertEquals(tonight?.sleepQuality, -1)
+        //val building = Building()
+
     }
 }

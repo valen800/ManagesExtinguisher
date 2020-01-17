@@ -4,11 +4,13 @@ import androidx.room.*
 import java.util.*
 import java.time.LocalDateTime
 
-@Entity(tableName = "Flask")
+@Entity(tableName = "Flask_table")
 data class Flask(
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     var flaskId: Long = 0L,
+
+    var flaskFloorId: Long,
 
     @ColumnInfo(name = "n_flask")
     var nFlask: String = "",

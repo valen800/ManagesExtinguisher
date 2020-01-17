@@ -4,11 +4,13 @@ import androidx.room.*
 import java.util.*
 import java.time.LocalDateTime
 
-@Entity(tableName = "Extinguisher")
+@Entity(tableName = "Extinguisher_table")
 data class Extinguisher(
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     var extinguisherId: Long = 0L,
+
+    var extinguisherFloorId: Long,
 
     @ColumnInfo(name = "n_extinguisher")
     var nExtinguisher: String = "",

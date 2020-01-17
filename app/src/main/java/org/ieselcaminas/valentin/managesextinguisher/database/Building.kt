@@ -4,13 +4,11 @@ import androidx.room.*
 import java.util.*
 import java.time.LocalDateTime
 
-@Entity(tableName = "Building")
+@Entity(tableName = "Building_table")
 data class Building(
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     var buildingId: Long = 0L,
-
-    @Embedded var floor: Floor?,
 
     @ColumnInfo(name = "name_buildings")
     var nameBuildings: String = "",
