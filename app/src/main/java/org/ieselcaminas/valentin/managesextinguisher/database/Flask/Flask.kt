@@ -7,7 +7,7 @@ import java.time.LocalDateTime
 @Entity(tableName = "Flask_table")
 data class Flask(
 
-    @PrimaryKey @ColumnInfo(name = "flask_Id") var flaskId: Long = 0L,
+    @PrimaryKey(autoGenerate = true) var flaskId: Long = 0L,
     var flaskFloorId: Long,
 
     @ColumnInfo(name = "n_flask") var nFlask: String = "",

@@ -20,8 +20,4 @@ interface BuildingDao {
 
     @Query("SELECT * FROM Building_table WHERE building_Id = :nBuilding")
     fun getBuilding(nBuilding: Long): LiveData<Building>
-
-    @Transaction
-    @Query("SELECT * FROM building_table WHERE building_Id IN (SELECT DISTINCT(floor_Id) FROM Floor_table)")
-    fun getFloorsFromBuilding(): LiveData<List<BuildingWithFloors>>
 }

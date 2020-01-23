@@ -7,7 +7,7 @@ import java.time.LocalDateTime
 @Entity(tableName = "Extinguisher_table")
 data class Extinguisher(
 
-    @PrimaryKey @ColumnInfo(name = "extinguisher_Id") var extinguisherId: Long = 0L,
+    @PrimaryKey(autoGenerate = true) var extinguisherId: Long = 0L,
     var extinguisherFloorId: Long,
 
     @ColumnInfo(name = "n_extinguisher") var nExtinguisher: String = "",

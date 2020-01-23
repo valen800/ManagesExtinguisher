@@ -7,7 +7,7 @@ import java.time.LocalDateTime
 @Entity(tableName = "Floor_table")
 data class Floor(
 
-    @PrimaryKey @ColumnInfo(name = "floor_Id") var floorId: Long = 0L,
+    @PrimaryKey(autoGenerate = true) var floorId: Long = 0L,
     var buildingFloorID: Long,
 
     @ColumnInfo(name = "name_floor") var nameFloor: String = "",

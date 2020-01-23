@@ -1,6 +1,5 @@
 package org.ieselcaminas.valentin.managesextinguisher.Title
 
-
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -11,7 +10,7 @@ import org.ieselcaminas.valentin.managesextinguisher.R
 import org.ieselcaminas.valentin.managesextinguisher.databinding.FragmentTitleBinding
 
 
-class TitleFragment : Fragment() {
+class TitleFragmentViewModelFactory : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -19,24 +18,6 @@ class TitleFragment : Fragment() {
         val binding: FragmentTitleBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_title, container, false)
 
-        /*binding.buttonToFragmentLogin.setOnClickListener() {
-            Navigation.findNavController(it).navigate(R.id.action_titleFragment_to_loginFragment)
-        }*/
-
-        setHasOptionsMenu(true)
         return binding.root
     }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.overflow_menu, menu)
-
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return NavigationUI.onNavDestinationSelected(item, view!!.findNavController())
-                || super.onOptionsItemSelected(item)
-    }
-
-
 }

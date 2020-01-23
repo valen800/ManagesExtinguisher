@@ -3,6 +3,7 @@ package org.ieselcaminas.valentin.managesextinguisher.database.Floor
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import org.ieselcaminas.valentin.managesextinguisher.database.Building.Building
+import org.ieselcaminas.valentin.managesextinguisher.database.Relations.BuildingWithFloors
 import org.ieselcaminas.valentin.managesextinguisher.database.Relations.FloorWithExtinguisher
 import org.ieselcaminas.valentin.managesextinguisher.database.Relations.FloorWithFlask
 
@@ -24,10 +25,6 @@ interface FloorDao {
     fun getFloor(nFloor: Long): LiveData<Floor>
 
     @Transaction
-    @Query("SELECT * FROM Floor_table WHERE floor_Id IN (SELECT DISTINCT(extinguisher_Id) FROM Extinguisher_table)")
-    fun getExtinguishersFromFloor(): LiveData<List<FloorWithExtinguisher>>
-
-    @Transaction
-    @Query("SELECT * FROM Floor_table WHERE floor_Id IN (SELECT DISTINCT(flask_Id) FROM Flask_table)")
-    fun getFlaskFromFloor(): LiveData<List<FloorWithFlask>>
+    @Query("SELECT * FROM building_table WHERE building_Id IN (SELECT DISTINCT(floor_Id) FROM Floor_table)")
+    fun getFloorsFromBuilding(): LiveData<List<BuildingWithFloors>>
 }

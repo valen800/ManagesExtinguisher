@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 import org.ieselcaminas.valentin.managesextinguisher.database.Extinguisher.Extinguisher
 import org.ieselcaminas.valentin.managesextinguisher.database.Flask.Flask
+import org.ieselcaminas.valentin.managesextinguisher.database.Relations.FloorWithFlask
 
 @Dao
 interface FlaskDao {
@@ -21,4 +22,8 @@ interface FlaskDao {
 
     @Query("SELECT * FROM Extinguisher_table WHERE extinguisher_Id = :nExtinguisher")
     fun getFlask(nExtinguisher: String): LiveData<Extinguisher>
+
+    @Transaction
+    @Query("SELECT * FROM Floor_table WHERE floorId IN (SELECT DISTINCT(flask_Id) FROM Flask_table)")
+    fun getFlaskFromFloor(): LiveData<List<FloorWithFlask>>
 }

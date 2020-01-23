@@ -21,14 +21,14 @@ import java.io.IOException
 class SleepDatabaseTest {
 
     private lateinit var extDadp: ExtinguisherDao
-    private lateinit var db: ExtinguisherDatabase
+    private lateinit var db: ManagesExtinguisherDatabase
 
     @Before
     fun createDb() {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         // Using an in-memory database because the information stored here disappears when the
         // process is killed.
-        db = Room.inMemoryDatabaseBuilder(context, ExtinguisherDatabase::class.java)
+        db = Room.inMemoryDatabaseBuilder(context, ManagesExtinguisherDatabase::class.java)
             // Allowing main thread queries, just for testing.
             .allowMainThreadQueries()
             .build()
