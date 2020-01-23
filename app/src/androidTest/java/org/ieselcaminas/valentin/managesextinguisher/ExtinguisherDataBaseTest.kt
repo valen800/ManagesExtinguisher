@@ -4,7 +4,7 @@ import androidx.room.Room
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
 import org.ieselcaminas.valentin.managesextinguisher.database.*
-import org.junit.Assert.assertEquals
+import org.ieselcaminas.valentin.managesextinguisher.database.Extinguisher.ExtinguisherDao
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -20,7 +20,7 @@ import java.io.IOException
 @RunWith(AndroidJUnit4::class)
 class SleepDatabaseTest {
 
-    private lateinit var extDadp: ExtinguisherDatabaseDao
+    private lateinit var extDadp: ExtinguisherDao
     private lateinit var db: ExtinguisherDatabase
 
     @Before
@@ -32,7 +32,7 @@ class SleepDatabaseTest {
             // Allowing main thread queries, just for testing.
             .allowMainThreadQueries()
             .build()
-        extDadp = db.ExtinguisherDatabaseDao
+        extDadp = db.ExtinguisherDao
     }
 
     @After

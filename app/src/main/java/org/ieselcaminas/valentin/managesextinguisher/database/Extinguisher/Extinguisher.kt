@@ -1,4 +1,4 @@
-package org.ieselcaminas.valentin.managesextinguisher.database
+package org.ieselcaminas.valentin.managesextinguisher.database.Extinguisher
 
 import androidx.room.*
 import java.util.*
@@ -7,7 +7,7 @@ import java.time.LocalDateTime
 @Entity(tableName = "Extinguisher_table")
 data class Extinguisher(
 
-    @PrimaryKey var extinguisherId: Long = 0L,
+    @PrimaryKey @ColumnInfo(name = "extinguisher_Id") var extinguisherId: Long = 0L,
     var extinguisherFloorId: Long,
 
     @ColumnInfo(name = "n_extinguisher") var nExtinguisher: String = "",
