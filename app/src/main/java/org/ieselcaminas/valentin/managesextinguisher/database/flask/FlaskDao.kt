@@ -1,10 +1,9 @@
-package org.ieselcaminas.valentin.managesextinguisher.database.Flask
+package org.ieselcaminas.valentin.managesextinguisher.database.flask
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import org.ieselcaminas.valentin.managesextinguisher.database.Extinguisher.Extinguisher
-import org.ieselcaminas.valentin.managesextinguisher.database.Flask.Flask
-import org.ieselcaminas.valentin.managesextinguisher.database.Relations.FloorWithFlask
+import org.ieselcaminas.valentin.managesextinguisher.database.extinguisher.Extinguisher
+import org.ieselcaminas.valentin.managesextinguisher.database.relations.FloorWithFlask
 
 @Dao
 interface FlaskDao {

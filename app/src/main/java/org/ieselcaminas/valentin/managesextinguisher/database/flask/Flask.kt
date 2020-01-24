@@ -1,8 +1,6 @@
-package org.ieselcaminas.valentin.managesextinguisher.database.Flask
+package org.ieselcaminas.valentin.managesextinguisher.database.flask
 
 import androidx.room.*
-import java.util.*
-import java.time.LocalDateTime
 
 @Entity(tableName = "Flask_table")
 data class Flask(

@@ -2,7 +2,6 @@ package org.ieselcaminas.valentin.managesextinguisher.database.Building
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import org.ieselcaminas.valentin.managesextinguisher.database.Relations.BuildingWithFloors
 
 @Dao
 interface BuildingDao {

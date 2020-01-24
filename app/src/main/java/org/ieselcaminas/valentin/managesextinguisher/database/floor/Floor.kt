@@ -1,8 +1,6 @@
-package org.ieselcaminas.valentin.managesextinguisher.database.Floor
+package org.ieselcaminas.valentin.managesextinguisher.database.floor
 
 import androidx.room.*
-import java.util.*
-import java.time.LocalDateTime
 
 @Entity(tableName = "Floor_table")
 data class Floor(

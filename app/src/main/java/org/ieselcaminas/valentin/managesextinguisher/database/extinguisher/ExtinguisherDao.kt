@@ -1,9 +1,8 @@
-package org.ieselcaminas.valentin.managesextinguisher.database.Extinguisher
+package org.ieselcaminas.valentin.managesextinguisher.database.extinguisher
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import org.ieselcaminas.valentin.managesextinguisher.database.Extinguisher.Extinguisher
-import org.ieselcaminas.valentin.managesextinguisher.database.Relations.FloorWithExtinguisher
+import org.ieselcaminas.valentin.managesextinguisher.database.relations.FloorWithExtinguisher
 
 @Dao
 interface ExtinguisherDao {

@@ -1,10 +1,11 @@
-package org.ieselcaminas.valentin.managesextinguisher.Title
+package org.ieselcaminas.valentin.managesextinguisher.title
 
 
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import org.ieselcaminas.valentin.managesextinguisher.R
@@ -19,9 +20,9 @@ class TitleFragment : Fragment() {
         val binding: FragmentTitleBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_title, container, false)
 
-        /*binding.buttonToFragmentLogin.setOnClickListener() {
-            Navigation.findNavController(it).navigate(R.id.action_titleFragment_to_loginFragment)
-        }*/
+        binding.buttonEdificios.setOnClickListener() {
+            Navigation.findNavController(it).navigate(R.id.action_titleFragment_to_buildingFragment)
+        }
 
         setHasOptionsMenu(true)
         return binding.root

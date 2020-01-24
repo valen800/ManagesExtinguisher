@@ -1,15 +1,14 @@
-package org.ieselcaminas.valentin.managesextinguisher.Buildings
+package org.ieselcaminas.valentin.managesextinguisher.buildings
 
 import android.app.Application
-import android.app.job.JobInfo
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.*
 import org.ieselcaminas.valentin.managesextinguisher.database.Building.Building
 import org.ieselcaminas.valentin.managesextinguisher.database.Building.BuildingDao
-import org.ieselcaminas.valentin.managesextinguisher.database.Floor.Floor
-import org.ieselcaminas.valentin.managesextinguisher.database.Floor.FloorDao
-import org.ieselcaminas.valentin.managesextinguisher.database.Relations.BuildingWithFloors
+import org.ieselcaminas.valentin.managesextinguisher.database.floor.Floor
+import org.ieselcaminas.valentin.managesextinguisher.database.floor.FloorDao
 
 
 class BuildingFragmentViewModel(
@@ -23,21 +22,43 @@ class BuildingFragmentViewModel(
 
     private var buildingsList = databaseBuilding.getAllBuilding()
 
-    init {
+    private var _navigateToBuildingCreator = MutableLiveData<Building>()
+    var navigateToBuildingCreator: LiveData<Building> = _navigateToBuildingCreator
 
+    fun doneNavigating() {
+        _navigateToBuildingCreator.value = null
     }
 
-    private fun initialize() {
+    init {
+        initializeBuildings()
+    }
+
+    private fun initializeBuildings() {
+        uiScope.launch {
+            buildingsList = getBuildingsFromDataBase()
+        }
+    }
+
+    private suspend fun getBuildingsFromDataBase(): LiveData<List<Building>> {
+        return withContext(Dispatchers.IO) {
+            var buildings = databaseBuilding.getAllBuilding()
+            buildings
+        }
+    }
+
+    fun onStartTracking() {
+        uiScope.launch {
+            var building1: Building = Building(0, "Edificio1", 0)
+            insertBuilding(building1)
+
+        }
+    }
+
+    fun onStopTracking() {
         uiScope.launch {
 
         }
     }
-
-    /*private suspend fun getBuildingsFromDataBase(): Building? {
-        return withContext(Dispatchers.IO) {
-
-        }
-    }*/
 
     private suspend fun clearBuilding() {
         withContext(Dispatchers.IO) {
@@ -75,20 +96,12 @@ class BuildingFragmentViewModel(
         }
     }
 
-    private suspend fun getBuildingWithFloors(): LiveData<List<BuildingWithFloors>> {
+    /*private suspend fun getBuildingWithFloors(): LiveData<List<BuildingWithFloors>> {
         return withContext(Dispatchers.IO) {
             var buildingWithFloors = databaseFloor.getFloorsFromBuilding()
             buildingWithFloors
         }
-    }
-
-    fun onStartTracking() {
-        uiScope.launch {
-            var building1: Building = Building(0, "Edificio1", 0)
-            insertBuilding(building1)
-
-        }
-    }
+    }*/
 
     fun onClear() {
         uiScope.launch {

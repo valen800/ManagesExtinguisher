@@ -1,8 +1,6 @@
-package org.ieselcaminas.valentin.managesextinguisher.database.Extinguisher
+package org.ieselcaminas.valentin.managesextinguisher.database.extinguisher
 
 import androidx.room.*
-import java.util.*
-import java.time.LocalDateTime
 
 @Entity(tableName = "Extinguisher_table")
 data class Extinguisher(

@@ -4,10 +4,18 @@
     app:startDestination="@id/titleFragment">
     <fragment
         android:id="@+id/titleFragment"
-        android:name="org.ieselcaminas.valentin.managesextinguisher.Title.TitleFragment"
-        android:label="@string/manageEx" />
+        android:name="org.ieselcaminas.valentin.managesextinguisher.title.TitleFragment"
+        android:label="@string/manageEx" >
+        <action
+            android:id="@+id/action_titleFragment_to_buildingFragment"
+            app:destination="@+id/buildingFragment" />
+    </fragment>
     <fragment
         android:id="@+id/aboutFragment2"
-        android:name="org.ieselcaminas.valentin.managesextinguisher.About.AboutFragment"
+        android:name="org.ieselcaminas.valentin.managesextinguisher.about.AboutFragment"
         android:label="@string/about" />
+    <fragment
+        android:id="@+id/buildingFragment"
+        android:name="org.ieselcaminas.valentin.managesextinguisher.buildings.BuildingFragment"
+        android:label="BuildingFragment" />
 </navigation>

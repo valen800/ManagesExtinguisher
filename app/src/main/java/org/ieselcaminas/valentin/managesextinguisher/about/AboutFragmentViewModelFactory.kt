@@ -1,4 +1,4 @@
-package org.ieselcaminas.valentin.managesextinguisher.About
+package org.ieselcaminas.valentin.managesextinguisher.about
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,7 +12,7 @@ import org.ieselcaminas.valentin.managesextinguisher.databinding.FragmentTitleBi
 /**
  * A simple [Fragment] subclass.
  */
-class AboutFragmentViewModel : Fragment() {
+class AboutFragmentViewModelFactory : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

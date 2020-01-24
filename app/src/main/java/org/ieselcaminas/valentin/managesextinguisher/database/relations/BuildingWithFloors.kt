@@ -1,9 +1,9 @@
-package org.ieselcaminas.valentin.managesextinguisher.database.Relations
+package org.ieselcaminas.valentin.managesextinguisher.database.relations
 
 import androidx.room.Embedded
 import androidx.room.Relation
 import org.ieselcaminas.valentin.managesextinguisher.database.Building.Building
-import org.ieselcaminas.valentin.managesextinguisher.database.Floor.Floor
+import org.ieselcaminas.valentin.managesextinguisher.database.floor.Floor
 
 data class BuildingWithFloors(
     @Embedded val building: Building,
