@@ -2,7 +2,7 @@ package org.ieselcaminas.valentin.managesextinguisher.database.extinguisher
 
 import androidx.room.*
 
-@Entity(tableName = "Extinguisher_table")
+@Entity(tableName = "Extinguisher")
 data class Extinguisher(
 
     @PrimaryKey(autoGenerate = true) var extinguisherId: Long = 0L,

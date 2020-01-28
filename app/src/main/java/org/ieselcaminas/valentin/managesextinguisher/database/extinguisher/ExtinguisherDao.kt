@@ -12,16 +12,16 @@ interface ExtinguisherDao {
 
     @Delete fun delete(ext: Extinguisher)
 
-    @Query ("SELECT * FROM Extinguisher_table ORDER BY extinguisher_Id DESC")
+    @Query ("SELECT * FROM Extinguisher ORDER BY extinguisherId DESC")
     fun getAllExtinguisher(): LiveData<List<Extinguisher>>
 
-    @Query("DELETE FROM Extinguisher_table")
+    @Query("DELETE FROM Extinguisher")
     fun clearExtinguisher()
 
-    @Query("SELECT * FROM Extinguisher_table WHERE extinguisher_Id = :nExtinguisher")
+    @Query("SELECT * FROM Extinguisher WHERE extinguisherId = :nExtinguisher")
     fun getExintinguisher(nExtinguisher: String): LiveData<Extinguisher>
 
-    @Transaction
-    @Query("SELECT * FROM Floor_table WHERE floor_Id IN (SELECT DISTINCT(extinguisher_Id) FROM Extinguisher_table)")
-    fun getExtinguishersFromFloor(): LiveData<List<FloorWithExtinguisher>>
+    /*@Transaction
+    @Query("SELECT * FROM Floor WHERE floorId IN (SELECT DISTINCT(extinguisherId) FROM Extinguisher)")
+    fun getExtinguishersFromFloor(): LiveData<List<FloorWithExtinguisher>>*/
 }

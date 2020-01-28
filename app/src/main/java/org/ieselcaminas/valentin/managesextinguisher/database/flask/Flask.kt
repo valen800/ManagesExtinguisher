@@ -2,7 +2,7 @@ package org.ieselcaminas.valentin.managesextinguisher.database.flask
 
 import androidx.room.*
 
-@Entity(tableName = "Flask_table")
+@Entity(tableName = "Flask")
 data class Flask(
 
     @PrimaryKey(autoGenerate = true) var flaskId: Long = 0L,

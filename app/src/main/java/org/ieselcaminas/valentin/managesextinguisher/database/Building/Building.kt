@@ -4,7 +4,7 @@ import androidx.room.*
 import java.util.*
 import java.time.LocalDateTime
 
-@Entity(tableName = "Building_table")
+@Entity(tableName = "Building")
 data class Building(
 
     @PrimaryKey(autoGenerate = true) var buildingId: Long = 0L,

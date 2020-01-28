@@ -7,22 +7,24 @@ import org.ieselcaminas.valentin.managesextinguisher.database.relations.Building
 
 @Dao
 interface FloorDao {
-    @Insert fun insertFloor(floor: Floor)
+@Insert fun insertFloor(floor: Floor)
 
     @Update fun updateFloor(floor: Floor)
 
     @Delete fun deleteFloor(floor: Floor)
 
-    @Query ("SELECT * FROM Floor_table ORDER BY floor_Id DESC")
+
+    @Query ("SELECT * FROM Floor ORDER BY floorId DESC")
     fun getAllFloors(): LiveData<List<Building>>
 
-    @Query("DELETE FROM Floor_table")
+    @Query("DELETE FROM Floor")
     fun clearFloor()
 
-    @Query("SELECT * FROM Floor_table WHERE floor_Id = :nFloor")
+    @Query("SELECT * FROM Floor WHERE floorId = :nFloor")
     fun getFloor(nFloor: Long): LiveData<Floor>
 
     @Transaction
-    @Query("SELECT * FROM building_table WHERE building_Id IN (SELECT DISTINCT(floor_Id) FROM Floor_table)")
+    @Query("SELECT * FROM Building WHERE buildingId IN (SELECT DISTINCT(floorId) FROM Floor)")
     fun getFloorsFromBuilding(): LiveData<List<BuildingWithFloors>>
+
 }

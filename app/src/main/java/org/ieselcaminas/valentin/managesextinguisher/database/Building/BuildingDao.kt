@@ -11,12 +11,12 @@ interface BuildingDao {
 
     @Delete fun deleteBuilding(Build: Building)
 
-    @Query ("SELECT * FROM Building_table ORDER BY building_Id DESC")
+    @Query ("SELECT * FROM Building ORDER BY buildingId DESC")
     fun getAllBuilding(): LiveData<List<Building>>
 
-    @Query("DELETE FROM Building_table")
+    @Query("DELETE FROM Building")
     fun clearBuilding()
 
-    @Query("SELECT * FROM Building_table WHERE building_Id = :nBuilding")
+    @Query("SELECT * FROM Building WHERE buildingId = :nBuilding")
     fun getBuilding(nBuilding: Long): LiveData<Building>
 }

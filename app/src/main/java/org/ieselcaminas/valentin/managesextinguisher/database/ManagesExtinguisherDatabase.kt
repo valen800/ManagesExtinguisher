@@ -10,7 +10,7 @@ import org.ieselcaminas.valentin.managesextinguisher.database.extinguisher.Extin
 import org.ieselcaminas.valentin.managesextinguisher.database.flask.FlaskDao
 import org.ieselcaminas.valentin.managesextinguisher.database.floor.FloorDao
 
-@Database(entities = [Extinguisher::class], version = 1, exportSchema = false)
+@Database(entities = [Extinguisher::class], version = 3, exportSchema = false)
 abstract class ManagesExtinguisherDatabase : RoomDatabase() {
 
     abstract val extinguisherDao: ExtinguisherDao
@@ -20,8 +20,7 @@ abstract class ManagesExtinguisherDatabase : RoomDatabase() {
 
     companion object {
 
-        @Volatile
-        private var INSTANCE: ManagesExtinguisherDatabase? = null
+        @Volatile private var INSTANCE: ManagesExtinguisherDatabase? = null
 
         fun getInstance(context: Context) : ManagesExtinguisherDatabase {
             synchronized(this) {
@@ -32,9 +31,8 @@ abstract class ManagesExtinguisherDatabase : RoomDatabase() {
                         context.applicationContext,
                         ManagesExtinguisherDatabase::class.java,
                         "extinguisher_history_database"
-                    )
-                        .fallbackToDestructiveMigration()
-                        .build()
+                    ).fallbackToDestructiveMigration().build()
+
                     INSTANCE = instance
                 }
 

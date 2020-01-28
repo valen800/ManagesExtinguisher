@@ -2,7 +2,7 @@ package org.ieselcaminas.valentin.managesextinguisher.database.floor
 
 import androidx.room.*
 
-@Entity(tableName = "Floor_table")
+@Entity(tableName = "Floor")
 data class Floor(
 
     @PrimaryKey(autoGenerate = true) var floorId: Long = 0L,

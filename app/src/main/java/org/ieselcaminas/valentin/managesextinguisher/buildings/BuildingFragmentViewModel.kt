@@ -48,8 +48,8 @@ class BuildingFragmentViewModel(
 
     fun onStartTracking() {
         uiScope.launch {
-            var building1: Building = Building(0, "Edificio1", 0)
-            insertBuilding(building1)
+            //var building1: Building = Building(0, "Edificio1", 0)
+            //insertBuilding(building1)
 
         }
     }
