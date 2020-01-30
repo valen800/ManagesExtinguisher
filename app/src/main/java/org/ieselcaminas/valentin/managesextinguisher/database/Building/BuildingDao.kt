@@ -1,6 +1,7 @@
 package org.ieselcaminas.valentin.managesextinguisher.database.Building
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 
 @Dao
@@ -12,11 +13,11 @@ interface BuildingDao {
     @Delete fun deleteBuilding(Build: Building)
 
     @Query ("SELECT * FROM Building ORDER BY buildingId DESC")
-    fun getAllBuilding(): LiveData<List<Building>>
+    fun getAllBuilding(): List<Building>
 
     @Query("DELETE FROM Building")
     fun clearBuilding()
 
     @Query("SELECT * FROM Building WHERE buildingId = :nBuilding")
-    fun getBuilding(nBuilding: Long): LiveData<Building>
+    fun getBuilding(nBuilding: Long): Building
 }

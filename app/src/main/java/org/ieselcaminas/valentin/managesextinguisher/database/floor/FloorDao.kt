@@ -1,6 +1,7 @@
 package org.ieselcaminas.valentin.managesextinguisher.database.floor
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 import org.ieselcaminas.valentin.managesextinguisher.database.Building.Building
 import org.ieselcaminas.valentin.managesextinguisher.database.relations.BuildingWithFloors
@@ -15,16 +16,16 @@ interface FloorDao {
 
 
     @Query ("SELECT * FROM Floor ORDER BY floorId DESC")
-    fun getAllFloors(): LiveData<List<Floor>>
+    fun getAllFloors(): List<Floor>
 
     @Query("DELETE FROM Floor")
     fun clearFloor()
 
     @Query("SELECT * FROM Floor WHERE floorId = :nFloor")
-    fun getFloor(nFloor: Long): LiveData<Floor>
+    fun getFloor(nFloor: Long): Floor
 
     @Transaction
     @Query("SELECT * FROM Building WHERE buildingId IN (SELECT DISTINCT(floorId) FROM Floor)")
-    fun getFloorsFromBuilding(): LiveData<List<BuildingWithFloors>>
+    fun getFloorsFromBuilding(): List<BuildingWithFloors>
 
 }

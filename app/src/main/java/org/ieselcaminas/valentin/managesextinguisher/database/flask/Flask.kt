@@ -5,15 +5,15 @@ import androidx.room.*
 @Entity(tableName = "Flask")
 data class Flask(
 
-    @PrimaryKey(autoGenerate = true) var flaskId: Long = 0L,
+    @PrimaryKey var flaskId: Long,
     var flaskFloorId: Long,
 
-    @ColumnInfo(name = "n_flask") var nFlask: String = "",
-    @ColumnInfo(name = "manufacturer") var manufacturer: String = "",
-    @ColumnInfo(name = "fabrication_date") var fabricationDate: Long = 0L,
-    @ColumnInfo(name = "empty_weight") var emptyWeight: Int = 0,
-    @ColumnInfo(name = "total_weight") var totalWeight: Int = 0,
-    @ColumnInfo(name = "situation") var situation: Int = 0,
-    @ColumnInfo(name = "date_last_revision") var dateLastRevision: Long = 0L,
-    @ColumnInfo(name = "date_next_revision") var dateNextRevision: Long = 0L
+    @ColumnInfo(name = "n_flask") var nFlask: String,
+    @ColumnInfo(name = "manufacturer") var manufacturer: String,
+    @ColumnInfo(name = "fabrication_date") var fabricationDate: Long,
+    @ColumnInfo(name = "empty_weight") var emptyWeight: Int,
+    @ColumnInfo(name = "total_weight") var totalWeight: Int,
+    @ColumnInfo(name = "situation") var situation: Int,
+    @ColumnInfo(name = "date_last_revision") var dateLastRevision: Long,
+    @ColumnInfo(name = "date_next_revision") var dateNextRevision: Long
 )

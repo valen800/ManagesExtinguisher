@@ -1,6 +1,7 @@
 package org.ieselcaminas.valentin.managesextinguisher.database.flask
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 import org.ieselcaminas.valentin.managesextinguisher.database.extinguisher.Extinguisher
 import org.ieselcaminas.valentin.managesextinguisher.database.relations.FloorWithFlask
@@ -14,15 +15,15 @@ interface FlaskDao {
     @Delete fun deleteFlask(flask: Flask)
 
     @Query ("SELECT * FROM Flask ORDER BY flaskId DESC")
-    fun getAllFlask(): LiveData<List<Flask>>
+    fun getAllFlask(): List<Flask>
 
     @Query("DELETE FROM Flask")
     fun clearFlask()
 
     @Query("SELECT * FROM Flask WHERE flaskId = :nFlask")
-    fun getFlask(nFlask: String): LiveData<Flask>
+    fun getFlask(nFlask: String): Flask
 
     @Transaction
     @Query("SELECT * FROM Floor WHERE floorId IN (SELECT DISTINCT(flaskId) FROM Flask)")
-    fun getFlaskFromFloor(): LiveData<List<FloorWithFlask>>
+    fun getFlaskFromFloor(): List<FloorWithFlask>
 }

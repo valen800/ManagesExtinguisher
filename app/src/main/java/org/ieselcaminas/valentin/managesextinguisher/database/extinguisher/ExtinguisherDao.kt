@@ -1,6 +1,7 @@
 package org.ieselcaminas.valentin.managesextinguisher.database.extinguisher
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 import org.ieselcaminas.valentin.managesextinguisher.database.relations.FloorWithExtinguisher
 
@@ -13,15 +14,15 @@ interface ExtinguisherDao {
     @Delete fun delete(ext: Extinguisher)
 
     @Query ("SELECT * FROM Extinguisher ORDER BY extinguisherId DESC")
-    fun getAllExtinguisher(): LiveData<List<Extinguisher>>
+    fun getAllExtinguisher(): List<Extinguisher>
 
     @Query("DELETE FROM Extinguisher")
     fun clearExtinguisher()
 
     @Query("SELECT * FROM Extinguisher WHERE extinguisherId = :nExtinguisher")
-    fun getExintinguisher(nExtinguisher: String): LiveData<Extinguisher>
+    fun getExintinguisher(nExtinguisher: String): Extinguisher
 
-    /*@Transaction
+    @Transaction
     @Query("SELECT * FROM Floor WHERE floorId IN (SELECT DISTINCT(extinguisherId) FROM Extinguisher)")
-    fun getExtinguishersFromFloor(): LiveData<List<FloorWithExtinguisher>>*/
+    fun getExtinguishersFromFloor(): List<FloorWithExtinguisher>
 }

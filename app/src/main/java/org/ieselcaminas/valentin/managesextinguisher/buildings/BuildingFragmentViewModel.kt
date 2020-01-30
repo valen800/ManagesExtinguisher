@@ -1,6 +1,7 @@
 package org.ieselcaminas.valentin.managesextinguisher.buildings
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -20,7 +21,7 @@ class BuildingFragmentViewModel(
 
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    private var buildingsList = databaseBuilding.getAllBuilding()
+    lateinit var buildingsList: List<Building>
 
     private var _navigateToBuildingCreator = MutableLiveData<Building>()
     var navigateToBuildingCreator: LiveData<Building> = _navigateToBuildingCreator
@@ -39,7 +40,7 @@ class BuildingFragmentViewModel(
         }
     }
 
-    private suspend fun getBuildingsFromDataBase(): LiveData<List<Building>> {
+    private suspend fun getBuildingsFromDataBase(): List<Building> {
         return withContext(Dispatchers.IO) {
             var buildings = databaseBuilding.getAllBuilding()
             buildings
@@ -48,9 +49,21 @@ class BuildingFragmentViewModel(
 
     fun onStartTracking() {
         uiScope.launch {
-            //var building1: Building = Building(0, "Edificio1", 0)
-            //insertBuilding(building1)
+            var building = Building()
+            building.nameBuildings = "Edificio1"
+            building.buildingId = 11
+            building.amountFloor = 2
 
+            insertBuilding(building)
+
+            /*var buildingList = getBuildingsFromDataBase()
+            for (i in 0 until buildingList.size) {
+                if (buildingList.get(i).nameBuildings == null) {
+                    Log.i("edificios", buildingList.get(i).nameBuildings)
+                } else {
+                    Log.i("edificios", "null")
+                }
+            }*/
         }
     }
 
