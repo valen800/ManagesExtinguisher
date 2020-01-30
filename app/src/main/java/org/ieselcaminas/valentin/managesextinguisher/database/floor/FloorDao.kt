@@ -15,7 +15,7 @@ interface FloorDao {
 
 
     @Query ("SELECT * FROM Floor ORDER BY floorId DESC")
-    fun getAllFloors(): LiveData<List<Building>>
+    fun getAllFloors(): LiveData<List<Floor>>
 
     @Query("DELETE FROM Floor")
     fun clearFloor()

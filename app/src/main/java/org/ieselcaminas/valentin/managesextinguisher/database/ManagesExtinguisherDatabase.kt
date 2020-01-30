@@ -4,13 +4,16 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import org.ieselcaminas.valentin.managesextinguisher.database.Building.Building
 import org.ieselcaminas.valentin.managesextinguisher.database.Building.BuildingDao
 import org.ieselcaminas.valentin.managesextinguisher.database.extinguisher.Extinguisher
 import org.ieselcaminas.valentin.managesextinguisher.database.extinguisher.ExtinguisherDao
+import org.ieselcaminas.valentin.managesextinguisher.database.flask.Flask
 import org.ieselcaminas.valentin.managesextinguisher.database.flask.FlaskDao
+import org.ieselcaminas.valentin.managesextinguisher.database.floor.Floor
 import org.ieselcaminas.valentin.managesextinguisher.database.floor.FloorDao
 
-@Database(entities = [Extinguisher::class], version = 3, exportSchema = false)
+@Database(entities = [Extinguisher::class, Flask::class, Building::class, Floor::class], version = 3, exportSchema = false)
 abstract class ManagesExtinguisherDatabase : RoomDatabase() {
 
     abstract val extinguisherDao: ExtinguisherDao
