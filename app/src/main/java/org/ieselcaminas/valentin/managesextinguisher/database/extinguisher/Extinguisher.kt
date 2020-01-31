@@ -5,7 +5,8 @@ import androidx.room.*
 @Entity(tableName = "Extinguisher")
 data class Extinguisher(
 
-    @PrimaryKey var extinguisherId: Long,
+    @PrimaryKey (autoGenerate = true)
+    var extinguisherId: Long,
     var extinguisherFloorId: Long,
 
     @ColumnInfo(name = "n_extinguisher") var nExtinguisher: String,

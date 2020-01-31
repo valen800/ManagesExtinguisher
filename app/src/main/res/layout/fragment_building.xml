@@ -8,16 +8,18 @@
             type="org.ieselcaminas.valentin.managesextinguisher.buildings.BuildingFragmentViewModel" />
     </data>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".buildings.BuildingFragment">
+        android:gravity="center" >
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/fragmentEdificios" />
-
-    </FrameLayout>
+        <Button
+            android:id="@+id/button_buildingCreator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/building_Creator_button" />
+    </LinearLayout>
 </layout>

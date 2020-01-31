@@ -23,11 +23,16 @@ class BuildingFragmentViewModel(
 
     lateinit var buildingsList: List<Building>
 
-    private var _navigateToBuildingCreator = MutableLiveData<Building>()
-    var navigateToBuildingCreator: LiveData<Building> = _navigateToBuildingCreator
+    private var _navigateToBuildingCreator = MutableLiveData<Boolean>()
+    val navigateToBuildingCreator: LiveData<Boolean>
+        get() = _navigateToBuildingCreator
+
+    fun startNavigatingToBuildingCreator() {
+        _navigateToBuildingCreator.value = true
+    }
 
     fun doneNavigating() {
-        _navigateToBuildingCreator.value = null
+        _navigateToBuildingCreator.value = false
     }
 
     init {
@@ -47,23 +52,13 @@ class BuildingFragmentViewModel(
         }
     }
 
-    fun onStartTracking() {
+    fun onStartTracking(buildingName: String, amountFloors: Int) {
         uiScope.launch {
             var building = Building()
-            building.nameBuildings = "Edificio1"
-            building.buildingId = 11
-            building.amountFloor = 2
+            building.nameBuildings = buildingName
+            building.amountFloor = amountFloors
 
             insertBuilding(building)
-
-            /*var buildingList = getBuildingsFromDataBase()
-            for (i in 0 until buildingList.size) {
-                if (buildingList.get(i).nameBuildings == null) {
-                    Log.i("edificios", buildingList.get(i).nameBuildings)
-                } else {
-                    Log.i("edificios", "null")
-                }
-            }*/
         }
     }
 

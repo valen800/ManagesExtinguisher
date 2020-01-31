@@ -24,35 +24,32 @@ class BuildingFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding: FragmentBuildingBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_building, container, false)
-        val application = requireNotNull(this.activity).application
 
+        val application = requireNotNull(this.activity).application
         val databaseBuilding: BuildingDao = ManagesExtinguisherDatabase.getInstance(application).buildingDao
         val databaseFloor: FloorDao = ManagesExtinguisherDatabase.getInstance(application).floorDao
-
         val viewModelFactory = BuildingFragmentViewModelFactory(databaseBuilding, databaseFloor, application)
-
-        val buildingViewModel = ViewModelProviders.of(
-            this, viewModelFactory
-        ).get(BuildingFragmentViewModel::class.java)
-
+        val buildingViewModel = ViewModelProviders.of(this, viewModelFactory).get(BuildingFragmentViewModel::class.java)
         binding.buildingViewModel = buildingViewModel
-
         binding.setLifecycleOwner(this)
 
-        buildingViewModel.navigateToBuildingCreator.observe(this, Observer { building ->
-            building?.let {
-                //this.findNavController().navigate()
-                //buildingViewModel.doneNavigating()
+        binding.buttonBuildingCreator.setOnClickListener() {
+            buildingViewModel.startNavigatingToBuildingCreator()
+        }
+
+        buildingViewModel.navigateToBuildingCreator.observe(this, Observer {
+            if (it == true) {
+                this.findNavController().navigate(R.id.action_buildingFragment_to_buildingCreatorFragment)
+                buildingViewModel.doneNavigating()
             }
         })
 
-        buildingViewModel.onStartTracking()
+        //buildingViewModel.onStartTracking()
         return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         buildingViewModel = ViewModelProviders.of(this).get(BuildingFragmentViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 }

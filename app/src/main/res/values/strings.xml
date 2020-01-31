@@ -7,4 +7,6 @@
     <string name="manageEx">Manages Extinguisher</string>
     <string name="edificios">Edificios</string>
     <string name="fragmentEdificios">FragmentEdificios</string>
+    <string name="building_Creator_button">Building Creator</string>
+    <string name="submit">submit</string>
 </resources>

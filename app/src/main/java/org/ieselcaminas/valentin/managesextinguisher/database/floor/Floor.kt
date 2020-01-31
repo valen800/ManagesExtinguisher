@@ -5,7 +5,8 @@ import androidx.room.*
 @Entity(tableName = "Floor")
 data class Floor(
 
-    @PrimaryKey var floorId: Long,
+    @PrimaryKey (autoGenerate = true)
+    var floorId: Long,
     var buildingFloorID: Long,
 
     @ColumnInfo(name = "name_floor") var nameFloor: String,

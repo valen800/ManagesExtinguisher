@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
     app:startDestination="@id/titleFragment">
     <fragment
         android:id="@+id/titleFragment"
@@ -8,7 +10,9 @@
         android:label="@string/manageEx" >
         <action
             android:id="@+id/action_titleFragment_to_buildingFragment"
-            app:destination="@+id/buildingFragment" />
+            app:destination="@+id/buildingFragment"
+            app:popUpTo="@+id/buildingFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment2"
@@ -17,5 +21,20 @@
     <fragment
         android:id="@+id/buildingFragment"
         android:name="org.ieselcaminas.valentin.managesextinguisher.buildings.BuildingFragment"
-        android:label="BuildingFragment" />
+        android:label="BuildingFragment" >
+        <action
+            android:id="@+id/action_buildingFragment_to_buildingCreatorFragment"
+            app:destination="@id/buildingCreatorFragment"
+            app:popUpTo="@+id/buildingCreatorFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/buildingCreatorFragment"
+        android:name="org.ieselcaminas.valentin.managesextinguisher.buildings.buildingcreator.BuildingCreatorFragment"
+        android:label="fragment_building_creator"
+        tools:layout="@layout/fragment_building_creator" >
+        <action
+            android:id="@+id/action_buildingCreatorFragment_to_buildingFragment"
+            app:destination="@id/buildingFragment" />
+    </fragment>
 </navigation>

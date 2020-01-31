@@ -5,7 +5,8 @@ import androidx.room.*
 @Entity(tableName = "Flask")
 data class Flask(
 
-    @PrimaryKey var flaskId: Long,
+    @PrimaryKey (autoGenerate = true)
+    var flaskId: Long,
     var flaskFloorId: Long,
 
     @ColumnInfo(name = "n_flask") var nFlask: String,
