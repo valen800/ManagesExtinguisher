@@ -2,6 +2,7 @@ package org.ieselcaminas.valentin.managesextinguisher.buildings
 
 import android.os.Bundle
 import android.view.*
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -33,7 +34,7 @@ class BuildingFragment : Fragment() {
         binding.buildingViewModel = buildingViewModel
         binding.setLifecycleOwner(this)
 
-        binding.buttonBuildingCreator.setOnClickListener() {
+        binding.fabCreatorBuilding.setOnClickListener() {
             buildingViewModel.startNavigatingToBuildingCreator()
         }
 
@@ -53,3 +54,8 @@ class BuildingFragment : Fragment() {
         buildingViewModel = ViewModelProviders.of(this).get(BuildingFragmentViewModel::class.java)
     }
 }
+
+
+/*
+//TODO Add Images variable
+class Building(var buildingName: TextView, var amountFloor: TextView)*/

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+    <item
+        android:id="@+id/action_Renombrar"
+        android:orderInCategory="100"
+        android:title="@string/action_Renombrar"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_Copiar"
+        android:icon="@android:drawable/ic_menu_search"
+        android:orderInCategory="100"
+        android:title="@string/action_Copiar"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_Cortar"
+        android:icon="@android:drawable/ic_menu_add"
+        android:orderInCategory="100"
+        android:title="@string/action_Cortar"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_Eliminar"
+        android:icon="@android:drawable/ic_menu_add"
+        android:orderInCategory="100"
+        android:title="@string/action_Eliminar"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_Mover"
+        android:icon="@android:drawable/ic_menu_add"
+        android:orderInCategory="100"
+        android:title="@string/action_Mover"
+        app:showAsAction="never" />
+</menu>
