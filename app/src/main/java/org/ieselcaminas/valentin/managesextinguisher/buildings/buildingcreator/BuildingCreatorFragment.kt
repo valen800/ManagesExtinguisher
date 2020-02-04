@@ -12,12 +12,8 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 
 import org.ieselcaminas.valentin.managesextinguisher.R
-import org.ieselcaminas.valentin.managesextinguisher.buildings.BuildingFragmentViewModel
-import org.ieselcaminas.valentin.managesextinguisher.buildings.BuildingFragmentViewModelFactory
-import org.ieselcaminas.valentin.managesextinguisher.database.Building.BuildingDao
+import org.ieselcaminas.valentin.managesextinguisher.database.buildingsdatabase.BuildingDao
 import org.ieselcaminas.valentin.managesextinguisher.database.ManagesExtinguisherDatabase
-import org.ieselcaminas.valentin.managesextinguisher.database.floor.FloorDao
-import org.ieselcaminas.valentin.managesextinguisher.databinding.FragmentBuildingBinding
 import org.ieselcaminas.valentin.managesextinguisher.databinding.FragmentBuildingCreatorBinding
 
 /**

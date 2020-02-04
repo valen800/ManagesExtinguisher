@@ -3,9 +3,7 @@ package org.ieselcaminas.valentin.managesextinguisher.buildings.buildingcreator
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import org.ieselcaminas.valentin.managesextinguisher.buildings.BuildingFragmentViewModel
-import org.ieselcaminas.valentin.managesextinguisher.database.Building.BuildingDao
-import org.ieselcaminas.valentin.managesextinguisher.database.floor.FloorDao
+import org.ieselcaminas.valentin.managesextinguisher.database.buildingsdatabase.BuildingDao
 
 
 class BuildingCreatorFragmentViewModelFactory(

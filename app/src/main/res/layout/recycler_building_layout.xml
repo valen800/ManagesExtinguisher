@@ -5,6 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="building"
+            type="org.ieselcaminas.valentin.managesextinguisher.database.buildingsdatabase.Building" />
+        <variable
+            name="clickListener"
+            type="org.ieselcaminas.valentin.managesextinguisher.buildings.BuildingListener" />
 
     </data>
 

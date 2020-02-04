@@ -3,7 +3,7 @@ package org.ieselcaminas.valentin.managesextinguisher.database.relations
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.Relation
-import org.ieselcaminas.valentin.managesextinguisher.database.Building.Building
+import org.ieselcaminas.valentin.managesextinguisher.database.buildingsdatabase.Building
 import org.ieselcaminas.valentin.managesextinguisher.database.floor.Floor
 
 @Entity

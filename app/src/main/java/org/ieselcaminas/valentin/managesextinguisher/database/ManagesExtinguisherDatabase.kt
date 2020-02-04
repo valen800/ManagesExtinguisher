@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import org.ieselcaminas.valentin.managesextinguisher.database.Building.Building
-import org.ieselcaminas.valentin.managesextinguisher.database.Building.BuildingDao
+import org.ieselcaminas.valentin.managesextinguisher.database.buildingsdatabase.Building
+import org.ieselcaminas.valentin.managesextinguisher.database.buildingsdatabase.BuildingDao
 import org.ieselcaminas.valentin.managesextinguisher.database.extinguisher.Extinguisher
 import org.ieselcaminas.valentin.managesextinguisher.database.extinguisher.ExtinguisherDao
 import org.ieselcaminas.valentin.managesextinguisher.database.flask.Flask

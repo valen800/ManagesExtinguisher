@@ -1,13 +1,12 @@
 package org.ieselcaminas.valentin.managesextinguisher.buildings
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.*
-import org.ieselcaminas.valentin.managesextinguisher.database.Building.Building
-import org.ieselcaminas.valentin.managesextinguisher.database.Building.BuildingDao
+import org.ieselcaminas.valentin.managesextinguisher.database.buildingsdatabase.Building
+import org.ieselcaminas.valentin.managesextinguisher.database.buildingsdatabase.BuildingDao
 import org.ieselcaminas.valentin.managesextinguisher.database.floor.Floor
 import org.ieselcaminas.valentin.managesextinguisher.database.floor.FloorDao
 
@@ -26,6 +25,10 @@ class BuildingFragmentViewModel(
     private var _navigateToBuildingCreator = MutableLiveData<Boolean>()
     val navigateToBuildingCreator: LiveData<Boolean>
         get() = _navigateToBuildingCreator
+
+    private var __navigateToFloors = MutableLiveData<Long>()
+    val navigateToFloors: LiveData<Long>
+        get() = __navigateToFloors
 
     fun startNavigatingToBuildingCreator() {
         _navigateToBuildingCreator.value = true
@@ -102,6 +105,14 @@ class BuildingFragmentViewModel(
         withContext(Dispatchers.IO) {
             databaseFloor.insertFloor(floor)
         }
+    }
+
+    fun onBuildingClicked(id: Long) {
+        __navigateToFloors.value = id
+    }
+
+    fun onBuildingDataFloorNavigated() {
+        __navigateToFloors.value = null
     }
 
     /*private suspend fun getBuildingWithFloors(): LiveData<List<BuildingWithFloors>> {

@@ -2,14 +2,14 @@ package org.ieselcaminas.valentin.managesextinguisher.buildings
 
 import android.os.Bundle
 import android.view.*
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import org.ieselcaminas.valentin.managesextinguisher.R
-import org.ieselcaminas.valentin.managesextinguisher.database.Building.BuildingDao
+import org.ieselcaminas.valentin.managesextinguisher.database.buildingsdatabase.BuildingDao
 import org.ieselcaminas.valentin.managesextinguisher.database.ManagesExtinguisherDatabase
 import org.ieselcaminas.valentin.managesextinguisher.database.floor.FloorDao
 import org.ieselcaminas.valentin.managesextinguisher.databinding.FragmentBuildingBinding
@@ -32,7 +32,20 @@ class BuildingFragment : Fragment() {
         val viewModelFactory = BuildingFragmentViewModelFactory(databaseBuilding, databaseFloor, application)
         val buildingViewModel = ViewModelProviders.of(this, viewModelFactory).get(BuildingFragmentViewModel::class.java)
         binding.buildingViewModel = buildingViewModel
-        binding.setLifecycleOwner(this)
+
+        val manager = GridLayoutManager(activity, 2)
+        manager.spanSizeLookup = object: GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int = when (position) {
+                0 -> 3
+                else -> 1
+            }
+        }
+        binding.buildingList.layoutManager = manager
+
+        val adapter = BuildingAdapter(BuildingListener { buildingId ->
+            buildingViewModel.onBuildingClicked(buildingId)
+        })
+        binding.buildingList.adapter = adapter
 
         binding.fabCreatorBuilding.setOnClickListener() {
             buildingViewModel.startNavigatingToBuildingCreator()
@@ -46,6 +59,7 @@ class BuildingFragment : Fragment() {
         })
 
         //buildingViewModel.onStartTracking()
+        binding.setLifecycleOwner(this)
         return binding.root
     }
 
@@ -54,8 +68,3 @@ class BuildingFragment : Fragment() {
         buildingViewModel = ViewModelProviders.of(this).get(BuildingFragmentViewModel::class.java)
     }
 }
-
-
-/*
-//TODO Add Images variable
-class Building(var buildingName: TextView, var amountFloor: TextView)*/

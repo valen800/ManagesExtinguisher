@@ -12,18 +12,19 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.ieselcaminas.valentin.managesextinguisher.R
-import org.ieselcaminas.valentin.managesextinguisher.database.Building.Building
-import org.ieselcaminas.valentin.managesextinguisher.database.Building.BuildingDao
+import org.ieselcaminas.valentin.managesextinguisher.database.buildingsdatabase.Building
+import org.ieselcaminas.valentin.managesextinguisher.database.buildingsdatabase.BuildingDao
 import org.ieselcaminas.valentin.managesextinguisher.database.floor.FloorDao
+import org.ieselcaminas.valentin.managesextinguisher.databinding.RecyclerBuildingLayoutBinding
 import java.lang.ClassCastException
 
 private const val ITEM_VIEW_TYPE_HEADER = 0
 private const val ITEM_VIEW_TYPE_ITEM = 1
 
 class BuildingAdapter(
-    val clickListener: BuildingListener,
+    val clickListener: BuildingListener/*,
     val databaseBuilding: BuildingDao,
-    val databaseFloor: FloorDao
+    val databaseFloor: FloorDao*/
 ): ListAdapter<DataItem, RecyclerView.ViewHolder>(BuildingDiffCallback()) {
 
     private val adapterScope = CoroutineScope(Dispatchers.Default)
@@ -67,18 +68,18 @@ class BuildingAdapter(
         return ViewHolder.from(parent)
     }
 
-    class ViewHolder private constructor(val binding: ListItemSleepNightBinding): RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder private constructor(val binding: RecyclerBuildingLayoutBinding): RecyclerView.ViewHolder(binding.root) {
 
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ListItemSleepNightBinding.inflate(layoutInflater, parent, false)
+                val binding = RecyclerBuildingLayoutBinding.inflate(layoutInflater, parent, false)
                 return ViewHolder(binding)
             }
         }
 
         fun bind(item: Building, clickListener: BuildingListener) {
-            binding.sleep = item
+            binding.building = item
             binding.clickListener = clickListener
             binding.executePendingBindings()
         }

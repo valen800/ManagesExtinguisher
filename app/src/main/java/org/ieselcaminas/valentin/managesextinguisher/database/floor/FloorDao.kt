@@ -1,9 +1,6 @@
 package org.ieselcaminas.valentin.managesextinguisher.database.floor
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.room.*
-import org.ieselcaminas.valentin.managesextinguisher.database.Building.Building
 import org.ieselcaminas.valentin.managesextinguisher.database.relations.BuildingWithFloors
 
 @Dao

@@ -5,10 +5,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.*
-import org.ieselcaminas.valentin.managesextinguisher.database.Building.Building
-import org.ieselcaminas.valentin.managesextinguisher.database.Building.BuildingDao
-import org.ieselcaminas.valentin.managesextinguisher.database.floor.Floor
-import org.ieselcaminas.valentin.managesextinguisher.database.floor.FloorDao
+import org.ieselcaminas.valentin.managesextinguisher.database.buildingsdatabase.Building
+import org.ieselcaminas.valentin.managesextinguisher.database.buildingsdatabase.BuildingDao
 
 class BuildingCreatorFragmentViewModel(
     val databaseBuilding: BuildingDao,

@@ -4,34 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
     <item
-        android:id="@+id/action_Renombrar"
+        android:id="@+id/action_Rename"
         android:orderInCategory="100"
-        android:title="@string/action_Renombrar"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/action_Copiar"
-        android:icon="@android:drawable/ic_menu_search"
-        android:orderInCategory="100"
-        android:title="@string/action_Copiar"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/action_Cortar"
-        android:icon="@android:drawable/ic_menu_add"
-        android:orderInCategory="100"
-        android:title="@string/action_Cortar"
+        android:title="@string/action_Rename"
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_Eliminar"
+        android:id="@+id/action_Delete"
         android:icon="@android:drawable/ic_menu_add"
         android:orderInCategory="100"
-        android:title="@string/action_Eliminar"
-        app:showAsAction="never" />
-
-    <item
-        android:id="@+id/action_Mover"
-        android:icon="@android:drawable/ic_menu_add"
-        android:orderInCategory="100"
-        android:title="@string/action_Mover"
+        android:title="@string/action_Delete"
         app:showAsAction="never" />
 </menu>

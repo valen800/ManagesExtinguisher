@@ -1,8 +1,6 @@
-package org.ieselcaminas.valentin.managesextinguisher.database.Building
+package org.ieselcaminas.valentin.managesextinguisher.database.buildingsdatabase
 
 import androidx.room.*
-import java.util.*
-import java.time.LocalDateTime
 
 @Entity(tableName = "Building")
 data class Building(

@@ -10,4 +10,6 @@
     <string name="building_Creator_button">Building Creator</string>
     <string name="submit">submit</string>
     <string name="Building_results">Building Results</string>
+    <string name="action_Rename">Rename</string>
+    <string name="action_Delete">Delete</string>
 </resources>
