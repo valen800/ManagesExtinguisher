@@ -33,20 +33,19 @@ class BuildingFragment : Fragment() {
         val buildingViewModel = ViewModelProviders.of(this, viewModelFactory).get(BuildingFragmentViewModel::class.java)
         binding.buildingViewModel = buildingViewModel
 
-        val manager = GridLayoutManager(activity, 2)
-        manager.spanSizeLookup = object: GridLayoutManager.SpanSizeLookup() {
-            override fun getSpanSize(position: Int): Int = when (position) {
-                0 -> 3
-                else -> 1
-            }
-        }
-        binding.buildingList.layoutManager = manager
+        //Adapter RecyclerView
 
-        val adapter = BuildingAdapter(BuildingListener { buildingId ->
-            buildingViewModel.onBuildingClicked(buildingId)
-        })
+        val adapter = BuildingAdapter()
         binding.buildingList.adapter = adapter
 
+        buildingViewModel.buildingsList.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                adapter.data = it
+            }
+        })
+
+
+        //Adapter RecyclerView
         binding.fabCreatorBuilding.setOnClickListener() {
             buildingViewModel.startNavigatingToBuildingCreator()
         }

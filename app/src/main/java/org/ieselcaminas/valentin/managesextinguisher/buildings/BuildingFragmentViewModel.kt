@@ -20,7 +20,7 @@ class BuildingFragmentViewModel(
 
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    lateinit var buildingsList: List<Building>
+    val buildingsList = databaseBuilding.getAllBuilding()
 
     private var _navigateToBuildingCreator = MutableLiveData<Boolean>()
     val navigateToBuildingCreator: LiveData<Boolean>
@@ -38,17 +38,7 @@ class BuildingFragmentViewModel(
         _navigateToBuildingCreator.value = false
     }
 
-    init {
-        initializeBuildings()
-    }
-
-    private fun initializeBuildings() {
-        uiScope.launch {
-            buildingsList = getBuildingsFromDataBase()
-        }
-    }
-
-    private suspend fun getBuildingsFromDataBase(): List<Building> {
+    private suspend fun getBuildingsFromDataBase(): LiveData<List<Building>> {
         return withContext(Dispatchers.IO) {
             var buildings = databaseBuilding.getAllBuilding()
             buildings

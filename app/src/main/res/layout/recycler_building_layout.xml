@@ -8,9 +8,9 @@
         <variable
             name="building"
             type="org.ieselcaminas.valentin.managesextinguisher.database.buildingsdatabase.Building" />
-        <variable
+        <!--<variable
             name="clickListener"
-            type="org.ieselcaminas.valentin.managesextinguisher.buildings.BuildingListener" />
+            type="org.ieselcaminas.valentin.managesextinguisher.buildings.BuildingListener" />-->
 
     </data>
 
@@ -22,20 +22,19 @@
         app:cardUseCompatPadding="true">
 
         <ImageView
-            android:id="@+id/Image2Foto"
+            android:id="@+id/ImageBuilding"
             android:layout_width="match_parent"
             android:layout_height="170dp"
             android:scaleType="centerCrop"
             tools:srcCompat="@drawable/building" />
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarItem2"
+            android:id="@+id/toolbarBuilding"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme">
-
         </androidx.appcompat.widget.Toolbar>
     </androidx.cardview.widget.CardView>
 </layout>

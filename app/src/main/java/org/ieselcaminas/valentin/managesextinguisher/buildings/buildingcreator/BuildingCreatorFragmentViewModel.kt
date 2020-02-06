@@ -1,6 +1,7 @@
 package org.ieselcaminas.valentin.managesextinguisher.buildings.buildingcreator
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -28,7 +29,7 @@ class BuildingCreatorFragmentViewModel(
         _navigateToBuilding.value = false
     }
 
-    private suspend fun getBuildingsFromDataBase(): List<Building> {
+    private suspend fun getBuildingsFromDataBase(): LiveData<List<Building>> {
         return withContext(Dispatchers.IO) {
             var buildings = databaseBuilding.getAllBuilding()
             buildings
