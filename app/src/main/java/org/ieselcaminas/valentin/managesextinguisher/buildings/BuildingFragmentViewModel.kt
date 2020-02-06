@@ -34,8 +34,16 @@ class BuildingFragmentViewModel(
         _navigateToBuildingCreator.value = true
     }
 
-    fun doneNavigating() {
+    fun doneNavigatingToBuildingCreator() {
         _navigateToBuildingCreator.value = false
+    }
+
+    fun startNavigatingToFloors(BuildingId: Long) {
+        __navigateToFloors.value = BuildingId
+    }
+
+    fun doneNavigatingToFloors() {
+        _navigateToBuildingCreator.value = null
     }
 
     private suspend fun getBuildingsFromDataBase(): LiveData<List<Building>> {
@@ -95,14 +103,6 @@ class BuildingFragmentViewModel(
         withContext(Dispatchers.IO) {
             databaseFloor.insertFloor(floor)
         }
-    }
-
-    fun onBuildingClicked(id: Long) {
-        __navigateToFloors.value = id
-    }
-
-    fun onBuildingDataFloorNavigated() {
-        __navigateToFloors.value = null
     }
 
     /*private suspend fun getBuildingWithFloors(): LiveData<List<BuildingWithFloors>> {

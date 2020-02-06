@@ -8,9 +8,9 @@
         <variable
             name="building"
             type="org.ieselcaminas.valentin.managesextinguisher.database.buildingsdatabase.Building" />
-        <!--<variable
+        <variable
             name="clickListener"
-            type="org.ieselcaminas.valentin.managesextinguisher.buildings.BuildingListener" />-->
+            type="org.ieselcaminas.valentin.managesextinguisher.buildings.BuildingListener" />
 
     </data>
 
@@ -19,7 +19,8 @@
         android:layout_height="200dp"
         app:cardCornerRadius="12dp"
         app:cardElevation="10dp"
-        app:cardUseCompatPadding="true">
+        app:cardUseCompatPadding="true"
+        android:onClick="@{() -> clickListener.onClick(building)}">
 
         <ImageView
             android:id="@+id/ImageBuilding"
@@ -34,7 +35,7 @@
             android:layout_height="40dp"
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme">
-        </androidx.appcompat.widget.Toolbar>
+            android:theme="?attr/actionBarTheme" />
+
     </androidx.cardview.widget.CardView>
 </layout>

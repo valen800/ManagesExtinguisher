@@ -22,13 +22,6 @@
             android:ems="10"
             android:hint="Building Name" />
 
-        <EditText
-            android:id="@+id/editTextAmountFloor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Amount Floors" />
-
         <Button
             android:id="@+id/buttonSubmitBuilding"
             android:layout_width="match_parent"

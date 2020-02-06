@@ -33,7 +33,7 @@ class BuildingCreatorFragment : Fragment() {
         binding.setLifecycleOwner(this)
 
         binding.buttonSubmitBuilding.setOnClickListener() {
-            buildingCreatorViewModel.onStartTracking(binding.editTextBuildingName.text.toString(), binding.editTextAmountFloor.text.toString().toInt())
+            buildingCreatorViewModel.onStartTracking(binding.editTextBuildingName.text.toString())
             buildingCreatorViewModel.startNavigatingToBuilding()
         }
 

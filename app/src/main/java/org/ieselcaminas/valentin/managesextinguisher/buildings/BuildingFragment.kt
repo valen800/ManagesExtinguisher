@@ -34,30 +34,39 @@ class BuildingFragment : Fragment() {
         binding.buildingViewModel = buildingViewModel
 
         //Adapter RecyclerView
+        val manager = GridLayoutManager(activity, 2)
+        binding.buildingList.layoutManager = manager
 
-        val adapter = BuildingAdapter()
+        val adapter = BuildingAdapter(BuildingListener {
+            buildingId -> buildingViewModel.startNavigatingToFloors(buildingId)
+        })
         binding.buildingList.adapter = adapter
 
         buildingViewModel.buildingsList.observe(viewLifecycleOwner, Observer {
             it?.let {
-                adapter.data = it
+                adapter.submitList(it)
             }
         })
-
-
         //Adapter RecyclerView
+
         binding.fabCreatorBuilding.setOnClickListener() {
             buildingViewModel.startNavigatingToBuildingCreator()
         }
 
-        buildingViewModel.navigateToBuildingCreator.observe(this, Observer {
-            if (it == true) {
-                this.findNavController().navigate(R.id.action_buildingFragment_to_buildingCreatorFragment)
-                buildingViewModel.doneNavigating()
+        buildingViewModel.navigateToFloors.observe(this, Observer {
+            it?.let {
+                this.findNavController().navigate(R.id.action_buildingFragment_to_floorsFragment2)
+                buildingViewModel.doneNavigatingToFloors()
             }
         })
 
-        //buildingViewModel.onStartTracking()
+        buildingViewModel.navigateToBuildingCreator.observe(this, Observer {
+            if (it == true) {
+                this.findNavController().navigate(R.id.action_buildingFragment_to_buildingCreatorFragment)
+                buildingViewModel.doneNavigatingToBuildingCreator()
+            }
+        })
+
         binding.setLifecycleOwner(this)
         return binding.root
     }

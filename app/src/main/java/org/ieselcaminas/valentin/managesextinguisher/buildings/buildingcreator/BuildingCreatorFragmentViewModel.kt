@@ -36,11 +36,10 @@ class BuildingCreatorFragmentViewModel(
         }
     }
 
-    fun onStartTracking(buildingName: String, amountFloors: Int) {
+    fun onStartTracking(buildingName: String) {
         uiScope.launch {
             var building = Building()
             building.nameBuildings = buildingName
-            building.amountFloor = amountFloors
 
             insertBuilding(building)
         }

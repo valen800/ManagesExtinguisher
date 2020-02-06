@@ -27,6 +27,11 @@
             app:destination="@id/buildingCreatorFragment"
             app:popUpTo="@+id/buildingCreatorFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_buildingFragment_to_floorsFragment2"
+            app:destination="@id/floorsFragment"
+            app:popUpTo="@+id/buildingFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/buildingCreatorFragment"
@@ -35,6 +40,16 @@
         tools:layout="@layout/fragment_building_creator" >
         <action
             android:id="@+id/action_buildingCreatorFragment_to_buildingFragment"
-            app:destination="@id/buildingFragment" />
+            app:destination="@id/buildingFragment"
+            app:popUpTo="@+id/buildingFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/floorsFragment"
+        android:name="org.ieselcaminas.valentin.managesextinguisher.floors.FloorsFragment"
+        android:label="FloorsFragment" >
+        <argument
+            android:name="BuildingId"
+            app:argType="long" />
     </fragment>
 </navigation>
