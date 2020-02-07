@@ -3,19 +3,36 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="FloorCreatorViewModel"
+            type="org.ieselcaminas.valentin.managesextinguisher.floors.floorcreator.FloorCreatorFragmentViewModel" />
 
     </data>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".floors.floorcreator.FloorCreatorFragment">
+        android:orientation="vertical">
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
+
+        <EditText
+            android:id="@+id/editTextFloorName"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Building Name" />
 
-    </FrameLayout>
+        <EditText
+            android:id="@+id/editTextNumberFloor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Number Floor" />
+
+        <Button
+            android:id="@+id/buttonSubmitBuilding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/submit" />
+    </LinearLayout>
 </layout>

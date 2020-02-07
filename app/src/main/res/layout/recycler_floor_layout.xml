@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="floor"
+            type="org.ieselcaminas.valentin.managesextinguisher.database.floor.Floor" />
+        <!--<variable
+            name="clickListener"
+            type="org.ieselcaminas.valentin.managesextinguisher.floors.BuildingListener" />-->
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="10dp"
+        app:cardUseCompatPadding="true">
+        <!--android:onClick="@{() -> clickListener.onClick(building)}"-->
+
+        <ImageView
+            android:id="@+id/ImageBuilding"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            tools:srcCompat="@drawable/floor256" />
+        <!--android:scaleType="centerCrop"-->
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarBuilding"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme" />
+
+    </androidx.cardview.widget.CardView>
+</layout>

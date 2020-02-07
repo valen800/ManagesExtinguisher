@@ -53,16 +53,16 @@ class BuildingFragment : Fragment() {
             buildingViewModel.startNavigatingToBuildingCreator()
         }
 
-        buildingViewModel.navigateToFloors.observe(this, Observer {
-            it?.let {
-                this.findNavController().navigate(R.id.action_buildingFragment_to_floorsFragment2)
+        buildingViewModel.navigateToFloors.observe(this, Observer { buildingId ->
+            buildingId?.let {
+                this.findNavController().navigate(BuildingFragmentDirections.actionBuildingFragmentToFloorsFragment2(buildingId))
                 buildingViewModel.doneNavigatingToFloors()
             }
         })
 
         buildingViewModel.navigateToBuildingCreator.observe(this, Observer {
             if (it == true) {
-                this.findNavController().navigate(R.id.action_buildingFragment_to_buildingCreatorFragment)
+                this.findNavController().navigate(BuildingFragmentDirections.actionBuildingFragmentToBuildingCreatorFragment())
                 buildingViewModel.doneNavigatingToBuildingCreator()
             }
         })

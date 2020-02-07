@@ -43,7 +43,7 @@ class BuildingFragmentViewModel(
     }
 
     fun doneNavigatingToFloors() {
-        _navigateToBuildingCreator.value = null
+        __navigateToFloors.value = null
     }
 
     private suspend fun getBuildingsFromDataBase(): LiveData<List<Building>> {

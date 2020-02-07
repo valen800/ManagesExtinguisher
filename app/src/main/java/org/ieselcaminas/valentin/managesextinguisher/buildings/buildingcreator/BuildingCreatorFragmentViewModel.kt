@@ -45,18 +45,6 @@ class BuildingCreatorFragmentViewModel(
         }
     }
 
-    fun onStopTracking() {
-        uiScope.launch {
-
-        }
-    }
-
-    private suspend fun clearBuilding() {
-        withContext(Dispatchers.IO) {
-            databaseBuilding.clearBuilding()
-        }
-    }
-
     private suspend fun updateBuilding(building: Building) {
         withContext(Dispatchers.IO) {
             databaseBuilding.updateBuilding(building)
@@ -66,12 +54,6 @@ class BuildingCreatorFragmentViewModel(
     private suspend fun insertBuilding(building: Building) {
         withContext(Dispatchers.IO) {
             databaseBuilding.insertBuilding(building)
-        }
-    }
-
-    fun onClear() {
-        uiScope.launch {
-            clearBuilding()
         }
     }
 

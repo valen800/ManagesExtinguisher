@@ -39,7 +39,7 @@ class BuildingCreatorFragment : Fragment() {
 
         buildingCreatorViewModel.navigateToBuilding.observe(this, Observer {
             if (it == true) {
-                this.findNavController().navigate(R.id.action_buildingCreatorFragment_to_buildingFragment)
+                this.findNavController().navigate(BuildingCreatorFragmentDirections.actionBuildingCreatorFragmentToBuildingFragment())
                 buildingCreatorViewModel.doneNavigating()
             }
         })
