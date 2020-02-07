@@ -18,6 +18,7 @@ import org.ieselcaminas.valentin.managesextinguisher.database.ManagesExtinguishe
 import org.ieselcaminas.valentin.managesextinguisher.database.buildingsdatabase.BuildingDao
 import org.ieselcaminas.valentin.managesextinguisher.database.floor.FloorDao
 import org.ieselcaminas.valentin.managesextinguisher.databinding.FragmentFloorCreatorBinding
+import org.ieselcaminas.valentin.managesextinguisher.floors.FloorsFragmentArgs
 
 /**
  * A simple [Fragment] subclass.
@@ -28,6 +29,7 @@ class FloorCreatorFragment : Fragment() {
         val binding: FragmentFloorCreatorBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_floor_creator, container, false)
 
         val application = requireNotNull(this.activity).application
+        val args = FloorsFragmentArgs.fromBundle(arguments!!)
 
         val databaseFloor: FloorDao = ManagesExtinguisherDatabase.getInstance(application).floorDao
 
@@ -39,7 +41,7 @@ class FloorCreatorFragment : Fragment() {
         binding.setLifecycleOwner(this)
 
         binding.buttonSubmitBuilding.setOnClickListener() {
-            //floorCreatorViewModel.onStartTracking(binding.editTextFloorName.text.toString(), binding.editTextFloorName.text.toString().toLong(), )
+            floorCreatorViewModel.onStartTracking(binding.editTextFloorName.text.toString(), binding.editTextFloorName.text.toString().toLong(), args.buildingId)
             floorCreatorViewModel.startNavigatingToFloor()
         }
 

@@ -34,6 +34,7 @@ class FloorsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding: FragmentFloorsBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_floors, container, false)
         val application = requireNotNull(this.activity).application
+        val args = FloorsFragmentArgs.fromBundle(arguments!!)
 
         val databaseBuilding: BuildingDao = ManagesExtinguisherDatabase.getInstance(application).buildingDao
         val databaseFloor: FloorDao = ManagesExtinguisherDatabase.getInstance(application).floorDao
@@ -53,7 +54,7 @@ class FloorsFragment : Fragment() {
 
         FloorsViewModel.navigateToFloorCreator.observe(this, Observer {
             if (it == true) {
-                this.findNavController().navigate(BuildingFragmentDirections.actionBuildingFragmentToBuildingCreatorFragment())
+                this.findNavController().navigate(FloorsFragmentDirections.actionFloorsFragmentToFloorCreatorFragment(args.buildingId))
                 FloorsViewModel.doneNavigatingToFloorCreator()
             }
         })
