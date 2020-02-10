@@ -6,7 +6,6 @@
         <variable
             name="FloorCreatorViewModel"
             type="org.ieselcaminas.valentin.managesextinguisher.floors.floorcreator.FloorCreatorFragmentViewModel" />
-
     </data>
 
     <LinearLayout
@@ -20,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Building Name" />
+            android:hint="Floor Name" />
 
         <EditText
             android:id="@+id/editTextNumberFloor"
@@ -30,7 +29,7 @@
             android:hint="Number Floor" />
 
         <Button
-            android:id="@+id/buttonSubmitBuilding"
+            android:id="@+id/buttonSubmitFloor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/submit" />

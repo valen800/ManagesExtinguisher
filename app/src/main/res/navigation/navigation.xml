@@ -61,13 +61,13 @@
         android:id="@+id/floorCreatorFragment"
         android:name="org.ieselcaminas.valentin.managesextinguisher.floors.floorcreator.FloorCreatorFragment"
         android:label="FloorCreatorFragment" >
+        <argument
+            android:name="BuildingId"
+            app:argType="long" />
         <action
             android:id="@+id/action_floorCreatorFragment_to_floorsFragment"
             app:destination="@id/floorsFragment"
             app:popUpTo="@+id/floorsFragment"
             app:popUpToInclusive="true" />
-        <argument
-            android:name="BuildingId"
-            app:argType="long" />
     </fragment>
 </navigation>

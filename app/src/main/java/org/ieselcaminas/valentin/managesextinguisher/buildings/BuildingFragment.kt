@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import org.ieselcaminas.valentin.managesextinguisher.R
 import org.ieselcaminas.valentin.managesextinguisher.database.buildingsdatabase.BuildingDao
 import org.ieselcaminas.valentin.managesextinguisher.database.ManagesExtinguisherDatabase
+import org.ieselcaminas.valentin.managesextinguisher.database.extinguisher.ExtinguisherDao
+import org.ieselcaminas.valentin.managesextinguisher.database.flask.FlaskDao
 import org.ieselcaminas.valentin.managesextinguisher.database.floor.FloorDao
 import org.ieselcaminas.valentin.managesextinguisher.databinding.FragmentBuildingBinding
 
@@ -29,6 +31,7 @@ class BuildingFragment : Fragment() {
         val application = requireNotNull(this.activity).application
         val databaseBuilding: BuildingDao = ManagesExtinguisherDatabase.getInstance(application).buildingDao
         val databaseFloor: FloorDao = ManagesExtinguisherDatabase.getInstance(application).floorDao
+
         val viewModelFactory = BuildingFragmentViewModelFactory(databaseBuilding, databaseFloor, application)
         val buildingViewModel = ViewModelProviders.of(this, viewModelFactory).get(BuildingFragmentViewModel::class.java)
         binding.buildingViewModel = buildingViewModel

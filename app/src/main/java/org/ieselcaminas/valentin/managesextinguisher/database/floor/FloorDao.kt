@@ -6,7 +6,7 @@ import org.ieselcaminas.valentin.managesextinguisher.database.relations.Building
 
 @Dao
 interface FloorDao {
-@Insert fun insertFloor(floor: Floor)
+    @Insert fun insertFloor(floor: Floor)
 
     @Update fun updateFloor(floor: Floor)
 

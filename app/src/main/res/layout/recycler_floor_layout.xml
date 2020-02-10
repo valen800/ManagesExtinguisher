@@ -7,9 +7,9 @@
         <variable
             name="floor"
             type="org.ieselcaminas.valentin.managesextinguisher.database.floor.Floor" />
-        <!--<variable
+        <variable
             name="clickListener"
-            type="org.ieselcaminas.valentin.managesextinguisher.floors.BuildingListener" />-->
+            type="org.ieselcaminas.valentin.managesextinguisher.floors.FloorListener" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -17,18 +17,18 @@
         android:layout_height="200dp"
         app:cardCornerRadius="12dp"
         app:cardElevation="10dp"
-        app:cardUseCompatPadding="true">
-        <!--android:onClick="@{() -> clickListener.onClick(building)}"-->
+        app:cardUseCompatPadding="true"
+        android:onClick="@{() -> clickListener.onClick(floor)}">
 
         <ImageView
-            android:id="@+id/ImageBuilding"
+            android:id="@+id/ImageFloor"
             android:layout_width="match_parent"
             android:layout_height="170dp"
-            tools:srcCompat="@drawable/floor256" />
-        <!--android:scaleType="centerCrop"-->
+            tools:srcCompat="@drawable/floor256"
+            android:scaleType="centerCrop" />
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarBuilding"
+            android:id="@+id/toolbarFloor"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="?attr/colorPrimary"

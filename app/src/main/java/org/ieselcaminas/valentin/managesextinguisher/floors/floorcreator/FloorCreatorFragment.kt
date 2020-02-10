@@ -2,6 +2,7 @@ package org.ieselcaminas.valentin.managesextinguisher.floors.floorcreator
 
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -29,7 +30,7 @@ class FloorCreatorFragment : Fragment() {
         val binding: FragmentFloorCreatorBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_floor_creator, container, false)
 
         val application = requireNotNull(this.activity).application
-        val args = FloorsFragmentArgs.fromBundle(arguments!!)
+        val args = FloorCreatorFragmentArgs.fromBundle(arguments!!)
 
         val databaseFloor: FloorDao = ManagesExtinguisherDatabase.getInstance(application).floorDao
 
@@ -40,14 +41,15 @@ class FloorCreatorFragment : Fragment() {
         binding.floorCreatorViewModel = floorCreatorViewModel
         binding.setLifecycleOwner(this)
 
-        binding.buttonSubmitBuilding.setOnClickListener() {
-            floorCreatorViewModel.onStartTracking(binding.editTextFloorName.text.toString(), binding.editTextFloorName.text.toString().toLong(), args.buildingId)
+        binding.buttonSubmitFloor.setOnClickListener() {
+            Log.i("BuildingId Creator", args.buildingId.toString())
+            floorCreatorViewModel.onStartTracking(binding.editTextFloorName.text.toString(), binding.editTextNumberFloor.text.toString().toLong(), args.buildingId)
             floorCreatorViewModel.startNavigatingToFloor()
         }
 
         floorCreatorViewModel.navigateToFloor.observe(this, Observer {
             if (it == true) {
-                this.findNavController().navigate(R.id.action_buildingCreatorFragment_to_buildingFragment)
+                this.findNavController().navigate(FloorCreatorFragmentDirections.actionFloorCreatorFragmentToFloorsFragment(args.buildingId))
                 floorCreatorViewModel.doneNavigatingToFloor()
             }
         })

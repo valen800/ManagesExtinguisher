@@ -6,7 +6,7 @@ import androidx.room.*
 data class Building(
 
     @PrimaryKey (autoGenerate = true)
-    var buildingId: Long = 0,
+    var buildingId: Long = 0L,
 
     @ColumnInfo(name = "name_buildings")
     var nameBuildings: String = "",

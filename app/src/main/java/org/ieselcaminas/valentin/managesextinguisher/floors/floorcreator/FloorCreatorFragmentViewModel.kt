@@ -42,7 +42,7 @@ class FloorCreatorFragmentViewModel(
             var floor = Floor()
             floor.nameFloor = FloorName
             floor.nFloor = FloorNumber
-            floor.buildingId = buildingID
+            floor.buildingFloorID = buildingID
 
             insertFloor(floor)
         }

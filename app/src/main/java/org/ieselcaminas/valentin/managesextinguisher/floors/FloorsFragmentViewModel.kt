@@ -47,7 +47,7 @@ class FloorsFragmentViewModel(
         __navigateToFragmentElements.value = null
     }
 
-    private suspend fun getFloorsFromDataBase(): LiveData<List<Floor>> {
+    private suspend fun getFloorsFromDataBase(): LiveData<List<Floor>> { //TODO QUERY GET FLOORS BY BUILDING ID
         return withContext(Dispatchers.IO) {
             var floors = databaseFloor.getAllFloors()
             floors
