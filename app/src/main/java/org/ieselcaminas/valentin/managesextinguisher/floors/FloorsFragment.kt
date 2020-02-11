@@ -58,7 +58,7 @@ class FloorsFragment : Fragment() {
         })
         binding.floorList.adapter = adapter
 
-        floorsViewModel.FloorsList.observe(viewLifecycleOwner, Observer {
+        floorsViewModel.getFloorsFromDataBase(args.buildingId).observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.submitList(it)
             }
@@ -70,15 +70,15 @@ class FloorsFragment : Fragment() {
             floorsViewModel.startNavigatingToFloorCreator()
         }
 
-        floorsViewModel.navigateToFragmentElements.observe(this, Observer {
-            it?.let {
-                // TODO Navigate to extinguisher and flask elements
+        floorsViewModel.navigateToFragmentElements.observe(this, Observer { floorId ->
+            floorId?.let {
+                this.findNavController().navigate(FloorsFragmentDirections.actionFloorsFragmentToTabFragment(floorId))
+                floorsViewModel.doneNavigatingToFragmentElements()
             }
         })
 
         floorsViewModel.navigateToFloorCreator.observe(this, Observer {
             if (it == true) {
-                Log.i("BuildingId Fragment", args.buildingId.toString())
                 this.findNavController().navigate(FloorsFragmentDirections.actionFloorsFragmentToFloorCreatorFragment(args.buildingId))
                 floorsViewModel.doneNavigatingToFloorCreator()
             }

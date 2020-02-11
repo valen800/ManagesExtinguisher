@@ -6,9 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import org.ieselcaminas.valentin.managesextinguisher.R
-import org.ieselcaminas.valentin.managesextinguisher.database.buildingsdatabase.Building
 import org.ieselcaminas.valentin.managesextinguisher.database.floor.Floor
-import org.ieselcaminas.valentin.managesextinguisher.databinding.RecyclerBuildingLayoutBinding
 import org.ieselcaminas.valentin.managesextinguisher.databinding.RecyclerFloorLayoutBinding
 
 class FloorAdapter(val clickListener: FloorListener): ListAdapter<Floor, FloorAdapter.ViewHolder>(FloorDiffCallback()) {

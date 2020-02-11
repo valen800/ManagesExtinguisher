@@ -21,8 +21,6 @@ class FloorsFragmentViewModel(
 
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    val FloorsList = databaseFloor.getAllFloors()
-
     private var _navigateToFloorCreator = MutableLiveData<Boolean>()
     val navigateToFloorCreator: LiveData<Boolean>
         get() = _navigateToFloorCreator
@@ -47,11 +45,9 @@ class FloorsFragmentViewModel(
         __navigateToFragmentElements.value = null
     }
 
-    private suspend fun getFloorsFromDataBase(): LiveData<List<Floor>> { //TODO QUERY GET FLOORS BY BUILDING ID
-        return withContext(Dispatchers.IO) {
-            var floors = databaseFloor.getAllFloors()
-            floors
-        }
+    fun getFloorsFromDataBase(buildingId: Long): LiveData<List<Floor>> {
+            val FloorsList = databaseFloor.getFloorByBuildingId(buildingId)
+            return FloorsList
     }
 
     private suspend fun updateBuilding(building: Building) {

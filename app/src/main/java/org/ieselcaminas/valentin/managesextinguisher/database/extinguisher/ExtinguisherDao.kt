@@ -14,15 +14,15 @@ interface ExtinguisherDao {
     @Delete fun delete(ext: Extinguisher)
 
     @Query ("SELECT * FROM Extinguisher ORDER BY extinguisherId DESC")
-    fun getAllExtinguisher(): List<Extinguisher>
+    fun getAllExtinguisher(): LiveData<List<Extinguisher>>
 
     @Query("DELETE FROM Extinguisher")
     fun clearExtinguisher()
 
-    @Query("SELECT * FROM Extinguisher WHERE extinguisherId = :nExtinguisher")
-    fun getExintinguisher(nExtinguisher: String): Extinguisher
+    @Query("SELECT * FROM Extinguisher WHERE extinguisherId = :floorId")
+    fun getExintinguisherByID(floorId: Long): LiveData<List<Extinguisher>>
 
     @Transaction
     @Query("SELECT * FROM Floor WHERE floorId IN (SELECT DISTINCT(extinguisherId) FROM Extinguisher)")
-    fun getExtinguishersFromFloor(): List<FloorWithExtinguisher>
+    fun getExtinguishersFromFloor(): LiveData<List<FloorWithExtinguisher>>
 }

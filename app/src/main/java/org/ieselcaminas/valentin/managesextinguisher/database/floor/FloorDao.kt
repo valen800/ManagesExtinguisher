@@ -19,8 +19,8 @@ interface FloorDao {
     @Query("DELETE FROM Floor")
     fun clearFloor()
 
-    @Query("SELECT * FROM Floor WHERE floorId = :nFloor")
-    fun getFloorById(nFloor: Long): LiveData<Floor>
+    @Query("SELECT * FROM Floor WHERE buildingFloorID = :nBuilding")
+    fun getFloorByBuildingId(nBuilding: Long): LiveData<List<Floor>>
 
     @Transaction
     @Query("SELECT * FROM Building WHERE buildingId IN (SELECT DISTINCT(floorId) FROM Floor)")

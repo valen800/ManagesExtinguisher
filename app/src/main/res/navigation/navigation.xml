@@ -56,6 +56,11 @@
             app:destination="@id/floorCreatorFragment"
             app:popUpTo="@+id/buildingCreatorFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_floorsFragment_to_tabFragment"
+            app:destination="@id/tabFragment"
+            app:popUpTo="@+id/tabFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/floorCreatorFragment"
@@ -69,5 +74,13 @@
             app:destination="@id/floorsFragment"
             app:popUpTo="@+id/floorsFragment"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/tabFragment"
+        android:name="org.ieselcaminas.valentin.managesextinguisher.ComponentsTabPager.tabFragment"
+        android:label="tabFragment" >
+        <argument
+            android:name="floorId"
+            app:argType="long" />
     </fragment>
 </navigation>
