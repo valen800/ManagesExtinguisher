@@ -33,10 +33,28 @@ class ExtinguisherCreatorFragmentViewModel(private val databaseExtinguisher: Ext
         }
     }
 
-    fun onStartTracking(FloorName: String, FloorNumber: Long, buildingID: Long) {
+    fun onStartTracking(
+        extinguisherFloorId: Long, nExtinguisher: String,
+        situation: String, powder: String,
+        tradeMark: String, model: String,
+        descriptionLocation: String, weight: Int,
+        factory_date: Long, dateLastRevision: Long, dateNextRevision: Long) {
+
         uiScope.launch {
-            /*var floor = Extinguisher()
-            insertExtinguisher(floor)*/
+            var extinguisher = Extinguisher()
+            extinguisher.extinguisherFloorId = extinguisherFloorId
+            extinguisher.nExtinguisher = nExtinguisher
+            extinguisher.situation = situation
+            extinguisher.powder = powder
+            extinguisher.trademark = tradeMark
+            extinguisher.model = model
+            extinguisher.descriptionLocation = descriptionLocation
+            extinguisher.weight = weight
+            extinguisher.factoryDate = factory_date
+            extinguisher.dateLastRevision = dateLastRevision
+            extinguisher.dateNextRevision = dateNextRevision
+
+            insertExtinguisher(extinguisher)
         }
     }
 

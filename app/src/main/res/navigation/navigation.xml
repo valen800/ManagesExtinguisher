@@ -30,7 +30,7 @@
         <action
             android:id="@+id/action_buildingFragment_to_floorsFragment2"
             app:destination="@id/floorsFragment"
-            app:popUpTo="@+id/buildingFragment"
+            app:popUpTo="@+id/floorsFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment

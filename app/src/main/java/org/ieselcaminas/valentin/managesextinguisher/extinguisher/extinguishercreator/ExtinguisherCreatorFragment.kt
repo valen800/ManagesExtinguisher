@@ -12,16 +12,10 @@ import androidx.lifecycle.ViewModelProviders
 import org.ieselcaminas.valentin.managesextinguisher.R
 import org.ieselcaminas.valentin.managesextinguisher.database.ManagesExtinguisherDatabase
 import org.ieselcaminas.valentin.managesextinguisher.database.extinguisher.ExtinguisherDao
-import org.ieselcaminas.valentin.managesextinguisher.database.floor.FloorDao
 import org.ieselcaminas.valentin.managesextinguisher.databinding.FragmentExtinguisherCreatorBinding
-import org.ieselcaminas.valentin.managesextinguisher.databinding.FragmentFloorsBinding
 import org.ieselcaminas.valentin.managesextinguisher.floors.floorcreator.FloorCreatorFragmentArgs
-import org.ieselcaminas.valentin.managesextinguisher.floors.floorcreator.FloorCreatorFragmentViewModel
-import org.ieselcaminas.valentin.managesextinguisher.floors.floorcreator.FloorCreatorFragmentViewModelFactory
 
-/**
- * A simple [Fragment] subclass.
- */
+
 class ExtinguisherCreatorFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -41,6 +35,4 @@ class ExtinguisherCreatorFragment : Fragment() {
 
         return binding.root
     }
-
-
 }
