@@ -41,7 +41,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Extinguisher Powder" />
+            android:hint="Extinguisher TradeMark" />
+
+        <EditText
+            android:id="@+id/editTextModel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Extinguisher Model" />
+
+        <EditText
+            android:id="@+id/editTextDescriptionLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Extinguisher Description Location" />
+
+        <EditText
+            android:id="@+id/editTextWeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Extinguisher Weight" />
+
+        <!-- TODO DATES INSERT -->
+
 
         <Button
             android:id="@+id/buttonSubmitExtinguisher"

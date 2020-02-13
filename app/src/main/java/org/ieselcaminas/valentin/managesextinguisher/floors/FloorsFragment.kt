@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import org.ieselcaminas.valentin.managesextinguisher.ComponentsTabPager.SingletonFloorId
 
 import org.ieselcaminas.valentin.managesextinguisher.R
 import org.ieselcaminas.valentin.managesextinguisher.buildings.*
@@ -47,6 +48,7 @@ class FloorsFragment : Fragment() {
         val viewModelFactory = FloorsFragmentViewModelFactory(databaseBuilding, databaseFloor, databaseExtinguisher, databaseFlask, application)
         val floorsViewModel = ViewModelProviders.of(this, viewModelFactory).get(FloorsFragmentViewModel::class.java)
         binding.floorsViewModel = floorsViewModel
+        binding.setLifecycleOwner(this)
 
         //Adapter RecyclerView
 

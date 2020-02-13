@@ -19,7 +19,7 @@ interface ExtinguisherDao {
     @Query("DELETE FROM Extinguisher")
     fun clearExtinguisher()
 
-    @Query("SELECT * FROM Extinguisher WHERE extinguisherId = :floorId")
+    @Query("SELECT * FROM Extinguisher WHERE extinguisherFloorId = :floorId")
     fun getExintinguisherByID(floorId: Long): LiveData<List<Extinguisher>>
 
     @Transaction

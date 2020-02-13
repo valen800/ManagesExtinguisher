@@ -4,6 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="ExtinguisherViewModel"
+            type="org.ieselcaminas.valentin.managesextinguisher.extinguisher.ExtinguisherFragmentViewModel" />
 
     </data>
 
@@ -26,7 +29,7 @@
         </LinearLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabCreatorFloor"
+            android:id="@+id/fabCreatorExtinguisher"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"

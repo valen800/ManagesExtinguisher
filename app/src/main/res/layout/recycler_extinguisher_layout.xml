@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="extinguisher"
+            type="org.ieselcaminas.valentin.managesextinguisher.database.extinguisher.Extinguisher" />
+        <variable
+            name="clickListener"
+            type="org.ieselcaminas.valentin.managesextinguisher.extinguisher.ExtinguisherListener" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:onClick="@{() -> clickListener.onClick(extinguisher)}"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="10dp"
+        app:cardUseCompatPadding="true">
+
+        <ImageView
+            android:id="@+id/ImageExtinguisher"
+            android:layout_width="138dp"
+            android:layout_height="186dp"
+            android:scaleType="centerCrop"
+            tools:srcCompat="@drawable/extintor" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarExtinguisher"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme" />
+
+    </androidx.cardview.widget.CardView>
+</layout>

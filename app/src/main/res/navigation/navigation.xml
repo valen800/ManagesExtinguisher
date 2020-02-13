@@ -82,5 +82,41 @@
         <argument
             android:name="floorId"
             app:argType="long" />
+        <action
+            android:id="@+id/action_tabFragment_to_extinguisherCreatorFragment2"
+            app:destination="@id/extinguisherCreatorFragment2"
+            app:popUpTo="@+id/extinguisherCreatorFragment2"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_tabFragment_to_flaskCreatorFragment2"
+            app:destination="@id/flaskCreatorFragment2"
+            app:popUpTo="@+id/flaskCreatorFragment2"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/extinguisherCreatorFragment2"
+        android:name="org.ieselcaminas.valentin.managesextinguisher.extinguisher.extinguishercreator.ExtinguisherCreatorFragment"
+        android:label="ExtinguisherCreatorFragment" >
+        <argument
+            android:name="floorId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_extinguisherCreatorFragment2_to_tabFragment"
+            app:destination="@id/tabFragment"
+            app:popUpTo="@+id/tabFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/flaskCreatorFragment2"
+        android:name="org.ieselcaminas.valentin.managesextinguisher.flask.flaskcreator.FlaskCreatorFragment"
+        android:label="FlaskCreatorFragment" >
+        <argument
+            android:name="floorId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_flaskCreatorFragment2_to_tabFragment"
+            app:destination="@id/tabFragment"
+            app:popUpTo="@+id/tabFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
