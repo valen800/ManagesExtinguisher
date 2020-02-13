@@ -2,6 +2,7 @@ package org.ieselcaminas.valentin.managesextinguisher.extinguisher
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -27,6 +28,9 @@ class ExtinguisherAdapter(val clickListener: ExtinguisherListener): ListAdapter<
             binding.ImageExtinguisher.setImageResource(R.drawable.extintor)
             binding.toolbarExtinguisher.title = item.nExtinguisher
             binding.toolbarExtinguisher.inflateMenu(R.menu.menu_item)
+            binding.cardViewExtinguisher.setOnClickListener() {
+
+            }
         }
 
         companion object {

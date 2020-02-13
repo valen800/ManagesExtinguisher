@@ -20,7 +20,10 @@ interface ExtinguisherDao {
     fun clearExtinguisher()
 
     @Query("SELECT * FROM Extinguisher WHERE extinguisherFloorId = :floorId")
-    fun getExintinguisherByID(floorId: Long): LiveData<List<Extinguisher>>
+    fun getExintinguisherByFloorID(floorId: Long): LiveData<List<Extinguisher>>
+
+    @Query("SELECT * FROM Extinguisher WHERE extinguisherId = :extinguisherId")
+    fun getExintinguisherByID(extinguisherId: Long): LiveData<List<Extinguisher>>
 
     @Transaction
     @Query("SELECT * FROM Floor WHERE floorId IN (SELECT DISTINCT(extinguisherId) FROM Extinguisher)")

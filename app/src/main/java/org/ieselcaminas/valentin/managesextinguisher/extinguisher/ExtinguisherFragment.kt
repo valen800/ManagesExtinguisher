@@ -48,7 +48,7 @@ class ExtinguisherFragment : Fragment() {
         binding.extinguisherList.layoutManager = manager
 
         val adapter = ExtinguisherAdapter(ExtinguisherListener {
-                extinguisherId -> extinguisherViewModel.dialogExtinguisher(extinguisherId)
+                extinguisherId -> extinguisherViewModel.dialogExtinguisher(extinguisherId) //TODO ExtinguisherID
         })
         binding.extinguisherList.adapter = adapter
 
