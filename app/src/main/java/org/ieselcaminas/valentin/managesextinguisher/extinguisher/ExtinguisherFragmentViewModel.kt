@@ -4,6 +4,8 @@ import android.app.AlertDialog
 import android.app.Application
 import android.app.Dialog
 import android.content.DialogInterface
+import android.util.Log
+import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -31,28 +33,15 @@ class ExtinguisherFragmentViewModel(private val databaseExtinguisher: Extinguish
         _navigateToExtinguisherCreator.value = false
     }
 
-    fun dialogExtinguisher(extinguisherId: Long) {
-        //val extinguisher = getExtinguisher(extinguisherId)
-        val dialog = activity.let {
-            val builder = AlertDialog.Builder(it)
-            builder.setMessage("Extintor")
-                .setNegativeButton("Cancel",
-                    DialogInterface.OnClickListener { dialog, id ->
-
-                    })
-            builder.create()
-        } ?: throw IllegalStateException("Activity cannot be null")
-    }
-
     fun getExtinguishersFromDataBase(floorId: Long): LiveData<List<Extinguisher>> {
         val ExtinguishersList = databaseExtinguisher.getExintinguisherByFloorID(floorId)
         return ExtinguishersList
     }
 
-    private suspend fun getExtinguisher(extinguisherId: Long) {
-        withContext(Dispatchers.IO) {
-            databaseExtinguisher.getExintinguisherByID(extinguisherId)
-        }
+    fun getExtinguisher(extinguisherId: Long): LiveData<Extinguisher> {
+        val extinguisher = databaseExtinguisher.getExintinguisherByID(extinguisherId)
+        return extinguisher
+
     }
 
     private suspend fun updateExtinguisher(extinguisher: Extinguisher) {

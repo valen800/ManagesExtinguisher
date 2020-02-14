@@ -19,6 +19,7 @@
         android:onClick="@{() -> clickListener.onClick(extinguisher)}"
         app:cardCornerRadius="12dp"
         app:cardElevation="10dp"
+        android:clickable="true"
         app:cardUseCompatPadding="true">
 
         <ImageView

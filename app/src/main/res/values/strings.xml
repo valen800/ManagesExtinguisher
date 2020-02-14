@@ -12,4 +12,5 @@
     <string name="Building_results">Building Results</string>
     <string name="action_Rename">Rename</string>
     <string name="action_Delete">Delete</string>
+    <string name="action_info">Info</string>
 </resources>
