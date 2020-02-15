@@ -11,7 +11,8 @@ interface ExtinguisherDao {
 
     @Update fun updateExt(ext: Extinguisher)
 
-    @Delete fun delete(ext: Extinguisher)
+    @Query ("DELETE FROM Extinguisher WHERE extinguisherId = :extinguisherId")
+    fun deleteById(extinguisherId: Long)
 
     @Query ("SELECT * FROM Extinguisher ORDER BY extinguisherId DESC")
     fun getAllExtinguisher(): LiveData<List<Extinguisher>>

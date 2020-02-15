@@ -13,4 +13,13 @@
     <string name="action_Rename">Rename</string>
     <string name="action_Delete">Delete</string>
     <string name="action_info">Info</string>
+    <string name="action_modify">Modify</string>
+    <string name="ext_n">Extinguisher number</string>
+    <string name="cancel">Cancel</string>
+    <string name="ext_sit">Extinguisher Situation</string>
+    <string name="ext_pow">Extinguisher Powder</string>
+    <string name="ext_trade">Extinguisher TradeMark</string>
+    <string name="ext_model">Extinguisher Model</string>
+    <string name="ext_desp_loc">Extinguisher Description Location</string>
+    <string name="ext_weight">Extinguisher Weight</string>
 </resources>

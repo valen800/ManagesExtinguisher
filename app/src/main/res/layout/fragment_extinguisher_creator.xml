@@ -64,8 +64,6 @@
             android:ems="10"
             android:hint="Extinguisher Weight" />
 
-        <!-- TODO DATES INSERT -->
-
 
         <Button
             android:id="@+id/buttonSubmitExtinguisher"

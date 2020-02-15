@@ -92,6 +92,11 @@
             app:destination="@id/flaskCreatorFragment2"
             app:popUpTo="@+id/flaskCreatorFragment2"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_tabFragment_self"
+            app:destination="@id/tabFragment"
+            app:popUpTo="@+id/tabFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/extinguisherCreatorFragment2"

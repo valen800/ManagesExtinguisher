@@ -28,6 +28,7 @@ import org.ieselcaminas.valentin.managesextinguisher.database.extinguisher.Extin
 import org.ieselcaminas.valentin.managesextinguisher.databinding.FragmentExtinguisherBinding
 import org.ieselcaminas.valentin.managesextinguisher.floors.FloorAdapter
 import org.ieselcaminas.valentin.managesextinguisher.floors.FloorListener
+import org.ieselcaminas.valentin.managesextinguisher.floors.FloorsFragmentDirections
 import kotlin.math.log
 
 /**
@@ -49,7 +50,6 @@ class ExtinguisherFragment : Fragment() {
             ExtinguisherFragmentViewModel::class.java)
 
         binding.extinguisherViewModel = extinguisherViewModel
-        binding.setLifecycleOwner(this)
 
         //Adapter RecyclerView
 
@@ -58,9 +58,7 @@ class ExtinguisherFragment : Fragment() {
 
         val adapter = ExtinguisherAdapter(ExtinguisherListener { extinguisherId ->
             extinguisherViewModel.getExtinguisher(extinguisherId)
-            //extinguisher =
-            //dialogExtinguisher(extinguisher)
-        }, activity)
+        }, activity, databaseExtinguisher, viewLifecycleOwner, extinguisherViewModel)
         binding.extinguisherList.adapter = adapter
 
         extinguisherViewModel.getExtinguishersFromDataBase(SingletonFloorId.floorIdSingleton).observe(viewLifecycleOwner, Observer {
@@ -69,6 +67,12 @@ class ExtinguisherFragment : Fragment() {
             }
         })
 
+        extinguisherViewModel.refresh.observe(this, Observer {
+            if (it == true) {
+                this.findNavController().navigate(tabFragmentDirections.actionTabFragmentSelf(SingletonFloorId.floorIdSingleton))
+                extinguisherViewModel.doneRefresh()
+            }
+        })
         //Adapter RecyclerView
 
         binding.fabCreatorExtinguisher.setOnClickListener() {
@@ -82,23 +86,7 @@ class ExtinguisherFragment : Fragment() {
             }
         })
 
-
-
+        binding.setLifecycleOwner(this)
         return binding.root
-    }
-
-    private fun dialogExtinguisher(extinguisher: LiveData<Extinguisher>) {
-
-        val builder = AlertDialog.Builder(activity)
-        builder.setTitle("Extinguisher info")
-        builder.setMessage(
-            "Numero: " + extinguisher.value?.nExtinguisher + "\n" + "Powder: " + extinguisher.value?.powder + "\n"
-                    + "Weight: " + extinguisher.value?.weight + "\n"
-        )
-        builder.setNeutralButton("Cancel") { dialog, which ->
-            Toast.makeText(activity, "You cancelled the dialog.", Toast.LENGTH_SHORT).show()
-        }
-        val dialog: AlertDialog = builder.create()
-        dialog.show()
     }
 }

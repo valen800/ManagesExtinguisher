@@ -25,6 +25,18 @@ class ExtinguisherFragmentViewModel(private val databaseExtinguisher: Extinguish
     val navigateToExtinguisherCreator: LiveData<Boolean>
         get() = _navigateToExtinguisherCreator
 
+    private var _refresh = MutableLiveData<Boolean>()
+    val refresh: LiveData<Boolean>
+        get() = _refresh
+
+    fun startRefresh() {
+        _refresh.value = true
+    }
+
+    fun doneRefresh() {
+        _refresh.value = false
+    }
+
     fun startNavigatingToExtinguisherCreator() {
         _navigateToExtinguisherCreator.value = true
     }
@@ -44,15 +56,27 @@ class ExtinguisherFragmentViewModel(private val databaseExtinguisher: Extinguish
 
     }
 
-    private suspend fun updateExtinguisher(extinguisher: Extinguisher) {
-        withContext(Dispatchers.IO) {
-            databaseExtinguisher.updateExt(extinguisher)
+    fun deleteExt(extinguisherId: Long) {
+        uiScope.launch {
+            deleteExtinguisherCou(extinguisherId)
         }
     }
 
-    private suspend fun deleteExtinguisher(extinguisher: Extinguisher) {
+    fun modifyExt(ext: Extinguisher) {
+        uiScope.launch {
+            updateExtinguisher(ext)
+        }
+    }
+
+    private suspend fun deleteExtinguisherCou(extinguisherId: Long) {
         withContext(Dispatchers.IO) {
-            databaseExtinguisher.delete(extinguisher)
+            databaseExtinguisher.deleteById(extinguisherId)
+        }
+    }
+
+    private suspend fun updateExtinguisher(extinguisher: Extinguisher) {
+        withContext(Dispatchers.IO) {
+            databaseExtinguisher.updateExt(extinguisher)
         }
     }
 
