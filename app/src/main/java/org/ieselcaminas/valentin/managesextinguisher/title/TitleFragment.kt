@@ -21,7 +21,7 @@ class TitleFragment : Fragment() {
             inflater, R.layout.fragment_title, container, false)
 
         binding.buttonEdificios.setOnClickListener() {
-            Navigation.findNavController(it).navigate(R.id.action_titleFragment_to_buildingFragment)
+            Navigation.findNavController(it).navigate(TitleFragmentDirections.actionTitleFragmentToBuildingFragment())
         }
 
         setHasOptionsMenu(true)

@@ -66,7 +66,7 @@ class ExtinguisherFragment : Fragment() {
                 adapter.submitList(it)
             }
         })
-
+        //Observer to navigate TabFragmentSelf and refresh this fragment
         extinguisherViewModel.refresh.observe(this, Observer {
             if (it == true) {
                 this.findNavController().navigate(tabFragmentDirections.actionTabFragmentSelf(SingletonFloorId.floorIdSingleton))
