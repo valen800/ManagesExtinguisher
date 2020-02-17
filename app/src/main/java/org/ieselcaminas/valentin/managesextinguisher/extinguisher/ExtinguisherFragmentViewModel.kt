@@ -1,11 +1,6 @@
 package org.ieselcaminas.valentin.managesextinguisher.extinguisher
 
-import android.app.AlertDialog
 import android.app.Application
-import android.app.Dialog
-import android.content.DialogInterface
-import android.util.Log
-import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -13,7 +8,6 @@ import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.*
 import org.ieselcaminas.valentin.managesextinguisher.database.extinguisher.Extinguisher
 import org.ieselcaminas.valentin.managesextinguisher.database.extinguisher.ExtinguisherDao
-import java.lang.IllegalStateException
 
 class ExtinguisherFragmentViewModel(private val databaseExtinguisher: ExtinguisherDao, val activity: FragmentActivity?, application: Application): AndroidViewModel(application) {
 

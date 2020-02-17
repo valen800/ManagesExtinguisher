@@ -1,4 +1,4 @@
-package org.ieselcaminas.valentin.managesextinguisher.extinguisher
+package org.ieselcaminas.valentin.managesextinguisher.flask
 
 import android.app.AlertDialog
 import android.view.LayoutInflater
@@ -15,48 +15,49 @@ import kotlinx.android.synthetic.main.dialog_ext_update.view.*
 import org.ieselcaminas.valentin.managesextinguisher.R
 import org.ieselcaminas.valentin.managesextinguisher.database.extinguisher.Extinguisher
 import org.ieselcaminas.valentin.managesextinguisher.database.extinguisher.ExtinguisherDao
+import org.ieselcaminas.valentin.managesextinguisher.database.flask.Flask
+import org.ieselcaminas.valentin.managesextinguisher.database.flask.FlaskDao
 import org.ieselcaminas.valentin.managesextinguisher.databinding.RecyclerExtinguisherLayoutBinding
+import org.ieselcaminas.valentin.managesextinguisher.databinding.RecyclerFlaskLayoutBinding
+import org.ieselcaminas.valentin.managesextinguisher.extinguisher.ExtinguisherAdapter
+import org.ieselcaminas.valentin.managesextinguisher.extinguisher.ExtinguisherFragmentViewModel
+import org.ieselcaminas.valentin.managesextinguisher.extinguisher.ExtinguisherListener
 
-
-class ExtinguisherAdapter(
-    private val clickListener: ExtinguisherListener,
+class FlaskAdapter(
+    private val clickListener: FlaskListener,
     private val activity: FragmentActivity?,
-    private val databaseExtinguisher: ExtinguisherDao,
+    private val databaseFlask: FlaskDao,
     private val viewLifecycleOwner: LifecycleOwner,
-    private val extinguisherViewModel: ExtinguisherFragmentViewModel
-
-) : ListAdapter<Extinguisher, ExtinguisherAdapter.ViewHolder>(ExtinguisherDiffCallBack()) {
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): ExtinguisherAdapter.ViewHolder {
-        return ViewHolder.from(parent)
+    private val flaskViewModel: FlaskFragmentViewModel
+) : ListAdapter<Flask, FlaskAdapter.ViewHolder>(FlaskDiffCallBack()) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FlaskAdapter.ViewHolder {
+        return FlaskAdapter.ViewHolder.from(parent)
     }
 
-    override fun onBindViewHolder(holder: ExtinguisherAdapter.ViewHolder, position: Int) {
-        holder.bind(getItem(position)!!, clickListener, activity, databaseExtinguisher, viewLifecycleOwner, extinguisherViewModel, position)
+    override fun onBindViewHolder(holder: FlaskAdapter.ViewHolder, position: Int) {
+        holder.bind(getItem(position)!!, clickListener, activity, databaseFlask, viewLifecycleOwner, flaskViewModel, position)
     }
 
-    class ViewHolder private constructor(val binding: RecyclerExtinguisherLayoutBinding) :
+    class ViewHolder private constructor(val binding: RecyclerFlaskLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(
-            itemExt: Extinguisher,
-            clickListener: ExtinguisherListener,
+            itemFlask: Flask,
+            clickListener: FlaskListener,
             activity: FragmentActivity?,
-            databaseExtinguisher: ExtinguisherDao,
+            databaseFlask: FlaskDao,
             viewLifecycleOwner: LifecycleOwner,
-            extinguisherViewModel: ExtinguisherFragmentViewModel,
+            flaskViewModel: FlaskFragmentViewModel,
             position: Int
         ) {
-            binding.extinguisher = itemExt
+            binding.flask = itemFlask
             binding.clickListener = clickListener
 
-            binding.ImageExtinguisher.setImageResource(R.drawable.extintor)
-            binding.toolbarExtinguisher.title = itemExt.nExtinguisher
-            binding.toolbarExtinguisher.inflateMenu(R.menu.menu_item_elements)
+            binding.ImageFlask.setImageResource(R.drawable.extintor)
+            binding.toolbarFlask.title = itemFlask.nFlask
+            binding.toolbarFlask.inflateMenu(R.menu.menu_item_elements)
 
-            binding.toolbarExtinguisher.setOnMenuItemClickListener(Toolbar.OnMenuItemClickListener { item: MenuItem? ->
+            /*binding.toolbarExtinguisher.setOnMenuItemClickListener(Toolbar.OnMenuItemClickListener { item: MenuItem? ->
                 when (item?.itemId) {
                     (R.id.action_Info) -> {
                         dialogInfoExtinguisher(itemExt, activity)
@@ -69,20 +70,26 @@ class ExtinguisherAdapter(
                     }
                 }
                 true
-            })
+            })*/
         }
 
         companion object {
-            fun from(parent: ViewGroup): ViewHolder {
+            fun from(parent: ViewGroup): FlaskAdapter.ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding =
-                    RecyclerExtinguisherLayoutBinding.inflate(layoutInflater, parent, false)
+                    RecyclerFlaskLayoutBinding.inflate(layoutInflater, parent, false)
                 return ViewHolder(binding)
             }
         }
 
-        private fun dialogInsertModifyExt(itemExt: Extinguisher, activity: FragmentActivity?, extinguisherViewModel: ExtinguisherFragmentViewModel, position: Int) {
-            val mDialogView = LayoutInflater.from(activity).inflate(R.layout.dialog_ext_update, null)
+        /*private fun dialogInsertModifyExt(
+            itemExt: Extinguisher,
+            activity: FragmentActivity?,
+            extinguisherViewModel: ExtinguisherFragmentViewModel,
+            position: Int
+        ) {
+            val mDialogView =
+                LayoutInflater.from(activity).inflate(R.layout.dialog_ext_update, null)
             mDialogView.editTextnExtinguisherDia.setText(itemExt.nExtinguisher)
             mDialogView.editTextSituationDia.setText(itemExt.situation)
             mDialogView.editTextPowderDia.setText(itemExt.powder)
@@ -132,22 +139,22 @@ class ExtinguisherAdapter(
             }
             val dialog: AlertDialog = builder.create()
             dialog.show()
-        }
-    }
+        }*/
 
+    }
 }
 
-class ExtinguisherDiffCallBack : DiffUtil.ItemCallback<Extinguisher>() {
-    override fun areItemsTheSame(oldItem: Extinguisher, newItem: Extinguisher): Boolean {
-        return oldItem.extinguisherId == newItem.extinguisherId
+class FlaskDiffCallBack : DiffUtil.ItemCallback<Flask>() {
+    override fun areItemsTheSame(oldItem: Flask, newItem: Flask): Boolean {
+        return oldItem.flaskId == newItem.flaskId
     }
 
-    override fun areContentsTheSame(oldItem: Extinguisher, newItem: Extinguisher): Boolean {
+    override fun areContentsTheSame(oldItem: Flask, newItem: Flask): Boolean {
         return oldItem == newItem
     }
 
 }
 
-class ExtinguisherListener(val clickListener: (extinguisherId: Long) -> Unit) {
-    fun onClick(extinguisher: Extinguisher) = clickListener(extinguisher.extinguisherId)
+class FlaskListener(val clickListener: (flaskId: Long) -> Unit) {
+    fun onClick(flask: Flask) = clickListener(flask.flaskId)
 }

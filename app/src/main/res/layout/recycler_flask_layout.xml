@@ -5,32 +5,32 @@
 
     <data>
         <variable
-            name="extinguisher"
-            type="org.ieselcaminas.valentin.managesextinguisher.database.extinguisher.Extinguisher" />
+            name="flask"
+            type="org.ieselcaminas.valentin.managesextinguisher.database.flask.Flask" />
         <variable
             name="clickListener"
-            type="org.ieselcaminas.valentin.managesextinguisher.extinguisher.ExtinguisherListener" />
+            type="org.ieselcaminas.valentin.managesextinguisher.flask.FlaskListener" />
     </data>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewExtinguisher"
+        android:id="@+id/cardViewFlask"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:onClick="@{() -> clickListener.onClick(extinguisher)}"
+        android:onClick="@{() -> clickListener.onClick(flask)}"
         app:cardCornerRadius="12dp"
         app:cardElevation="10dp"
         android:clickable="true"
         app:cardUseCompatPadding="true">
 
         <ImageView
-            android:id="@+id/ImageExtinguisher"
+            android:id="@+id/ImageFlask"
             android:layout_width="128dp"
             android:layout_height="187dp"
             android:scaleType="centerCrop"
             tools:srcCompat="@drawable/extintor" />
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarExtinguisher"
+            android:id="@+id/toolbarFlask"
             android:layout_width="match_parent"
             android:layout_height="34dp"
             android:background="?attr/colorPrimary"

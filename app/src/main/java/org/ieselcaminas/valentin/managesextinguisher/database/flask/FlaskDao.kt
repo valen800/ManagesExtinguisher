@@ -17,13 +17,22 @@ interface FlaskDao {
     @Query ("SELECT * FROM Flask ORDER BY flaskId DESC")
     fun getAllFlask(): List<Flask>
 
-    @Query("DELETE FROM Flask")
-    fun clearFlask()
-
     @Query("SELECT * FROM Flask WHERE flaskId = :nFlask")
     fun getFlask(nFlask: String): Flask
 
     @Transaction
     @Query("SELECT * FROM Floor WHERE floorId IN (SELECT DISTINCT(flaskId) FROM Flask)")
     fun getFlaskFromFloor(): List<FloorWithFlask>
+
+    @Query("DELETE FROM Flask")
+    fun clearFlask()
+
+    @Query("SELECT * FROM Flask WHERE flaskFloorId = :floorId")
+    fun getFlaskByFloorID(floorId: Long): LiveData<List<Flask>>
+
+    @Query("SELECT * FROM Flask WHERE flaskId = :flaskId")
+    fun getFlaskByID(flaskId: Long): LiveData<Flask>
+
+    @Query ("DELETE FROM Flask WHERE flaskId = :flaskId")
+    fun deleteById(flaskId: Long)
 }

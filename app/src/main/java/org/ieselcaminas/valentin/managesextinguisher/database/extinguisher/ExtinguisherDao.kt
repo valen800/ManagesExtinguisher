@@ -11,9 +11,6 @@ interface ExtinguisherDao {
 
     @Update fun updateExt(ext: Extinguisher)
 
-    @Query ("DELETE FROM Extinguisher WHERE extinguisherId = :extinguisherId")
-    fun deleteById(extinguisherId: Long)
-
     @Query ("SELECT * FROM Extinguisher ORDER BY extinguisherId DESC")
     fun getAllExtinguisher(): LiveData<List<Extinguisher>>
 
@@ -25,6 +22,9 @@ interface ExtinguisherDao {
 
     @Query("SELECT * FROM Extinguisher WHERE extinguisherId = :extinguisherId")
     fun getExintinguisherByID(extinguisherId: Long): LiveData<Extinguisher>
+
+    @Query ("DELETE FROM Extinguisher WHERE extinguisherId = :extinguisherId")
+    fun deleteById(extinguisherId: Long)
 
     @Transaction
     @Query("SELECT * FROM Floor WHERE floorId IN (SELECT DISTINCT(extinguisherId) FROM Extinguisher)")

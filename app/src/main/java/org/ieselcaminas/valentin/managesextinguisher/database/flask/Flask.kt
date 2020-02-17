@@ -9,12 +9,13 @@ data class Flask(
     var flaskId: Long,
     var flaskFloorId: Long,
 
-    @ColumnInfo(name = "n_flask") var nFlask: String,
-    @ColumnInfo(name = "manufacturer") var manufacturer: String,
-    @ColumnInfo(name = "fabrication_date") var fabricationDate: Long,
-    @ColumnInfo(name = "empty_weight") var emptyWeight: Int,
-    @ColumnInfo(name = "total_weight") var totalWeight: Int,
-    @ColumnInfo(name = "situation") var situation: Int,
-    @ColumnInfo(name = "date_last_revision") var dateLastRevision: Long,
-    @ColumnInfo(name = "date_next_revision") var dateNextRevision: Long
+    @ColumnInfo(name = "n_flask") var nFlask: String = "",
+    @ColumnInfo(name = "trademark") var trademark: String = "",
+    @ColumnInfo(name = "empty_weight") var emptyWeight: Int = 0,
+    @ColumnInfo(name = "total_weight") var totalWeight: Int = 0,
+    @ColumnInfo(name = "situation") var situation: String = "",
+    @ColumnInfo(name = "description_location") var descriptionLocation: String = "",
+    @ColumnInfo(name = "factory_date") var factoryDate: Long = System.currentTimeMillis(),
+    @ColumnInfo(name = "date_last_revision") var dateLastRevision: Long = System.currentTimeMillis(),
+    @ColumnInfo(name = "date_next_revision") var dateNextRevision: Long = System.currentTimeMillis()
 )

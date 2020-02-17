@@ -21,7 +21,7 @@
     <fragment
         android:id="@+id/buildingFragment"
         android:name="org.ieselcaminas.valentin.managesextinguisher.buildings.BuildingFragment"
-        android:label="BuildingFragment" >
+        android:label="Buildings">
         <action
             android:id="@+id/action_buildingFragment_to_buildingCreatorFragment"
             app:destination="@id/buildingCreatorFragment"
@@ -36,8 +36,8 @@
     <fragment
         android:id="@+id/buildingCreatorFragment"
         android:name="org.ieselcaminas.valentin.managesextinguisher.buildings.buildingcreator.BuildingCreatorFragment"
-        android:label="fragment_building_creator"
-        tools:layout="@layout/fragment_building_creator" >
+        android:label="Building Creator"
+        tools:layout="@layout/fragment_building_creator">
         <action
             android:id="@+id/action_buildingCreatorFragment_to_buildingFragment"
             app:destination="@id/buildingFragment"
@@ -47,7 +47,7 @@
     <fragment
         android:id="@+id/floorsFragment"
         android:name="org.ieselcaminas.valentin.managesextinguisher.floors.FloorsFragment"
-        android:label="FloorsFragment" >
+        android:label="Floors">
         <argument
             android:name="BuildingId"
             app:argType="long" />
@@ -65,7 +65,7 @@
     <fragment
         android:id="@+id/floorCreatorFragment"
         android:name="org.ieselcaminas.valentin.managesextinguisher.floors.floorcreator.FloorCreatorFragment"
-        android:label="FloorCreatorFragment" >
+        android:label="Floor Creator">
         <argument
             android:name="BuildingId"
             app:argType="long" />
@@ -78,7 +78,7 @@
     <fragment
         android:id="@+id/tabFragment"
         android:name="org.ieselcaminas.valentin.managesextinguisher.ComponentsTabPager.tabFragment"
-        android:label="tabFragment" >
+        android:label="Elements">
         <argument
             android:name="floorId"
             app:argType="long" />
@@ -101,7 +101,7 @@
     <fragment
         android:id="@+id/extinguisherCreatorFragment2"
         android:name="org.ieselcaminas.valentin.managesextinguisher.extinguisher.extinguishercreator.ExtinguisherCreatorFragment"
-        android:label="ExtinguisherCreatorFragment" >
+        android:label="Extinguisher Creator">
         <argument
             android:name="floorId"
             app:argType="long" />
@@ -114,7 +114,7 @@
     <fragment
         android:id="@+id/flaskCreatorFragment2"
         android:name="org.ieselcaminas.valentin.managesextinguisher.flask.flaskcreator.FlaskCreatorFragment"
-        android:label="FlaskCreatorFragment" >
+        android:label="Flask Creator">
         <argument
             android:name="floorId"
             app:argType="long" />
