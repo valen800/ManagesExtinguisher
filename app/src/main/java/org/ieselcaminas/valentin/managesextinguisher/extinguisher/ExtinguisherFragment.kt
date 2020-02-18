@@ -51,7 +51,7 @@ class ExtinguisherFragment : Fragment() {
         }, activity, databaseExtinguisher, viewLifecycleOwner, extinguisherViewModel)
         binding.extinguisherList.adapter = adapter
 
-        extinguisherViewModel.getExtinguishersFromDataBase(SingletonFloorId.floorIdSingleton).observe(viewLifecycleOwner, Observer {
+        extinguisherViewModel.extinguisherList.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.submitList(it)
             }

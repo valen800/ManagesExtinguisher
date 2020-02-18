@@ -6,6 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.*
+import org.ieselcaminas.valentin.managesextinguisher.ComponentsTabPager.SingletonFloorId
 import org.ieselcaminas.valentin.managesextinguisher.database.extinguisher.Extinguisher
 import org.ieselcaminas.valentin.managesextinguisher.database.extinguisher.ExtinguisherDao
 
@@ -14,6 +15,8 @@ class ExtinguisherFragmentViewModel(private val databaseExtinguisher: Extinguish
     private var viewModelJob = Job()
 
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+
+    var extinguisherList = getExtinguishersFromDataBase(SingletonFloorId.floorIdSingleton)
 
     private var _navigateToExtinguisherCreator = MutableLiveData<Boolean>()
     val navigateToExtinguisherCreator: LiveData<Boolean>
