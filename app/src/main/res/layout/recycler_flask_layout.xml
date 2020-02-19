@@ -27,7 +27,7 @@
             android:layout_width="128dp"
             android:layout_height="187dp"
             android:scaleType="centerCrop"
-            tools:srcCompat="@drawable/extintor" />
+            tools:srcCompat="@mipmap/extintor" />
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarFlask"

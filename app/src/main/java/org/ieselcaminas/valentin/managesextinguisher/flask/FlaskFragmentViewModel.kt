@@ -15,10 +15,6 @@ class FlaskFragmentViewModel(private val databaseFlask: FlaskDao, val activity: 
 
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    private var _navigateToFlaskCreator = MutableLiveData<Boolean>()
-    val navigateToFlaskCreator: LiveData<Boolean>
-        get() = _navigateToFlaskCreator
-
     private var _refresh = MutableLiveData<Boolean>()
     val refresh: LiveData<Boolean>
         get() = _refresh
@@ -29,14 +25,6 @@ class FlaskFragmentViewModel(private val databaseFlask: FlaskDao, val activity: 
 
     fun doneRefresh() {
         _refresh.value = false
-    }
-
-    fun startNavigatingToFlaskCreator() {
-        _navigateToFlaskCreator.value = true
-    }
-
-    fun doneNavigatingToFlaskCreator() {
-        _navigateToFlaskCreator.value = false
     }
 
     fun getFlasksFromDataBase(floorId: Long): LiveData<List<Flask>> {
@@ -59,6 +47,12 @@ class FlaskFragmentViewModel(private val databaseFlask: FlaskDao, val activity: 
     fun modifyFlask(flask: Flask) {
         uiScope.launch {
             updateFlask(flask)
+        }
+    }
+
+    fun introduceFlask(flask: Flask) {
+        uiScope.launch {
+            insertFlask(flask)
         }
     }
 

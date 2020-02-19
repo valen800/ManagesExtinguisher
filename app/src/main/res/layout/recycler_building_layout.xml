@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="170dp"
             android:scaleType="centerCrop"
-            tools:srcCompat="@drawable/building" />
+            tools:srcCompat="@mipmap/building" />
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarBuilding"

@@ -12,16 +12,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.dialog_ext_update.view.*
+import kotlinx.android.synthetic.main.dialog_flask_insert.view.*
+import kotlinx.android.synthetic.main.dialog_flask_modify.view.*
+import org.ieselcaminas.valentin.managesextinguisher.ComponentsTabPager.SingletonFloorId
 import org.ieselcaminas.valentin.managesextinguisher.R
-import org.ieselcaminas.valentin.managesextinguisher.database.extinguisher.Extinguisher
-import org.ieselcaminas.valentin.managesextinguisher.database.extinguisher.ExtinguisherDao
 import org.ieselcaminas.valentin.managesextinguisher.database.flask.Flask
 import org.ieselcaminas.valentin.managesextinguisher.database.flask.FlaskDao
-import org.ieselcaminas.valentin.managesextinguisher.databinding.RecyclerExtinguisherLayoutBinding
 import org.ieselcaminas.valentin.managesextinguisher.databinding.RecyclerFlaskLayoutBinding
-import org.ieselcaminas.valentin.managesextinguisher.extinguisher.ExtinguisherAdapter
-import org.ieselcaminas.valentin.managesextinguisher.extinguisher.ExtinguisherFragmentViewModel
-import org.ieselcaminas.valentin.managesextinguisher.extinguisher.ExtinguisherListener
 
 class FlaskAdapter(
     private val clickListener: FlaskListener,
@@ -53,24 +50,24 @@ class FlaskAdapter(
             binding.flask = itemFlask
             binding.clickListener = clickListener
 
-            binding.ImageFlask.setImageResource(R.drawable.extintor)
+            binding.ImageFlask.setImageResource(R.mipmap.extintor)
             binding.toolbarFlask.title = itemFlask.nFlask
             binding.toolbarFlask.inflateMenu(R.menu.menu_item_elements)
 
-            /*binding.toolbarExtinguisher.setOnMenuItemClickListener(Toolbar.OnMenuItemClickListener { item: MenuItem? ->
+            binding.toolbarFlask.setOnMenuItemClickListener(Toolbar.OnMenuItemClickListener { item: MenuItem? ->
                 when (item?.itemId) {
                     (R.id.action_Info) -> {
-                        dialogInfoExtinguisher(itemExt, activity)
+                        dialogInfoFlask(itemFlask, activity)
                     }
                     (R.id.action_Delete) -> {
-                        extinguisherViewModel.deleteExt(itemExt.extinguisherId)
+                        flaskViewModel.deleteFlask(itemFlask.flaskId)
                     }
                     (R.id.action_modify) -> {
-                        dialogInsertModifyExt(itemExt, activity, extinguisherViewModel, position)
+                        dialogModifyFlask(itemFlask, activity, flaskViewModel, position)
                     }
                 }
                 true
-            })*/
+            })
         }
 
         companion object {
@@ -82,53 +79,53 @@ class FlaskAdapter(
             }
         }
 
-        /*private fun dialogInsertModifyExt(
-            itemExt: Extinguisher,
-            activity: FragmentActivity?,
-            extinguisherViewModel: ExtinguisherFragmentViewModel,
-            position: Int
-        ) {
-            val mDialogView =
-                LayoutInflater.from(activity).inflate(R.layout.dialog_ext_update, null)
-            mDialogView.editTextnExtinguisherDia.setText(itemExt.nExtinguisher)
-            mDialogView.editTextSituationDia.setText(itemExt.situation)
-            mDialogView.editTextPowderDia.setText(itemExt.powder)
-            mDialogView.editTextTradeMarkDia.setText(itemExt.trademark)
-            mDialogView.editTextModelDia.setText(itemExt.model)
-            mDialogView.editTextDescriptionLocationDia.setText(itemExt.descriptionLocation)
-            mDialogView.editTextWeightDia.setText(itemExt.weight.toString())
+        private fun dialogModifyFlask(itemFlask: Flask, activity: FragmentActivity?, flaskViewModel: FlaskFragmentViewModel, position: Int) {
+            val mDialogView = LayoutInflater.from(activity).inflate(R.layout.dialog_flask_modify, null)
+
+            mDialogView.editTextModifynFlaskDia.setText(itemFlask.nFlask)
+            mDialogView.editTextInsertFlaskSituationDia.setText(itemFlask.situation)
+            mDialogView.editTextInsertFlaskPowderDia.setText(itemFlask.powder)
+            mDialogView.editTextInsertFlaskTradeMarkDia.setText(itemFlask.trademark)
+            mDialogView.editTextInsertFlaskModelDia.setText(itemFlask.model)
+            mDialogView.editTextInsertFlaskDescriptionLocationDia.setText(itemFlask.descriptionLocation)
+            mDialogView.editTextInsertFlaskEmptyWeightDia.setText(itemFlask.emptyWeight.toString())
+            mDialogView.editTextInsertFlaskTotalWeightDia.setText(itemFlask.totalWeight.toString())
 
             val mbuilder = AlertDialog.Builder(activity)
                 .setView(mDialogView)
-            mbuilder.setTitle("Modify Extinguisher")
+            mbuilder.setTitle("Modify Flask")
             val mAlertDialog = mbuilder.show()
-            mDialogView.buttonSubmitExtinguisherDialog.setOnClickListener {
+            mDialogView.buttonSubmitDialogModifyExtinguisher.setOnClickListener {
                 mAlertDialog.dismiss()
-                var ext = itemExt
-                ext.nExtinguisher = mDialogView.editTextnExtinguisherDia.text.toString()
-                ext.situation = mDialogView.editTextSituationDia.text.toString()
-                ext.powder = mDialogView.editTextPowderDia.text.toString()
-                ext.trademark = mDialogView.editTextTradeMarkDia.text.toString()
-                ext.model = mDialogView.editTextModelDia.text.toString()
-                ext.descriptionLocation = mDialogView.editTextDescriptionLocationDia.text.toString()
-                ext.weight = mDialogView.editTextWeightDia.text.toString().toInt()
+                var flask = itemFlask
 
-                extinguisherViewModel.modifyExt(ext)
-                extinguisherViewModel.startRefresh()
+                flask.nFlask = mDialogView.editTextModifynFlaskDia.text.toString()
+                flask.situation = mDialogView.editTextInsertFlaskSituationDia.text.toString()
+                flask.powder = mDialogView.editTextInsertFlaskPowderDia.text.toString()
+                flask.trademark = mDialogView.editTextInsertFlaskTradeMarkDia.text.toString()
+                flask.model = mDialogView.editTextInsertFlaskModelDia.text.toString()
+                flask.descriptionLocation = mDialogView.editTextInsertFlaskDescriptionLocationDia.text.toString()
+                flask.emptyWeight = mDialogView.editTextInsertFlaskEmptyWeightDia.text.toString().toInt()
+                flask.totalWeight = mDialogView.editTextInsertFlaskTotalWeightDia.text.toString().toInt()
+
+                flaskViewModel.modifyFlask(flask)
+                flaskViewModel.startRefresh()
             }
-            mDialogView.buttonCancelDialog.setOnClickListener {
+            mDialogView.buttonCancelDialogModifyExtinguisher.setOnClickListener {
                 mAlertDialog.dismiss()
             }
         }
 
-        private fun dialogInfoExtinguisher(itemExt: Extinguisher, activity: FragmentActivity?) {
+        private fun dialogInfoFlask(itemFlask: Flask, activity: FragmentActivity?) {
             val builder = AlertDialog.Builder(activity)
             builder.setTitle("Extinguisher info")
             builder.setMessage(
-                "Numero: " + itemExt.nExtinguisher + "\n\n" + "Powder: " + itemExt.powder + "\n" + "TradeMark: " + itemExt.trademark + "\n" + "Weight: " + itemExt.weight + " Kg" + "\n"
-                        + "Model: " + itemExt.model + "\n\n" + "Description Location: " + itemExt.descriptionLocation + "\n" + "Situation: " + itemExt.situation + "\n\n"
-                        + "Factory Date: " + itemExt.factoryDate + "\n" + "Date Last Revision: " + itemExt.dateLastRevision + "\n"
-                        + "Date Next Revision: " + itemExt.dateNextRevision + "\n"
+                "Numero: " + itemFlask.nFlask + "\n\n" + "Powder: " + itemFlask.powder + "\n" + "TradeMark: " + itemFlask.trademark + "\n"
+                        + "Empty Weight: " + itemFlask.emptyWeight + " Kg" + "\n"
+                        + "Total Weight: " + itemFlask.totalWeight + " Kg" + "\n"
+                        + "Model: " + itemFlask.model + "\n\n" + "Description Location: " + itemFlask.descriptionLocation + "\n" + "Situation: " + itemFlask.situation + "\n\n"
+                        + "Factory Date: " + itemFlask.factoryDate + "\n" + "Date Last Revision: " + itemFlask.dateLastRevision + "\n"
+                        + "Date Next Revision: " + itemFlask.dateNextRevision + "\n"
             )
             builder.setNeutralButton("Cancel") { dialog, which ->
                 Toast.makeText(
@@ -139,8 +136,7 @@ class FlaskAdapter(
             }
             val dialog: AlertDialog = builder.create()
             dialog.show()
-        }*/
-
+        }
     }
 }
 

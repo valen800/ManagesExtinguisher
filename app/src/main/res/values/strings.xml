@@ -22,4 +22,12 @@
     <string name="ext_model">Extinguisher Model</string>
     <string name="ext_desp_loc">Extinguisher Description Location</string>
     <string name="ext_weight">Extinguisher Weight</string>
+    <string name="flask_n">Flask Number</string>
+    <string name="flask_sit">Flask Situation</string>
+    <string name="flask_pow">Flask Powder</string>
+    <string name="flask_trade">Flask TradeMark</string>
+    <string name="flask_model">Flask Model</string>
+    <string name="flask_desLoc">Flask Description Location</string>
+    <string name="flask_emptyW">Flask Empty Weight</string>
+    <string name="flask_totalW">Flask Total Weight</string>
 </resources>

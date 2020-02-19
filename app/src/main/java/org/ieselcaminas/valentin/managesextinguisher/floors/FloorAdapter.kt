@@ -25,7 +25,7 @@ class FloorAdapter(val clickListener: FloorListener): ListAdapter<Floor, FloorAd
             binding.floor = item
             binding.clickListener = clickListener
 
-            binding.ImageFloor.setImageResource(R.drawable.floor256)
+            binding.ImageFloor.setImageResource(R.mipmap.floor256)
             binding.toolbarFloor.title = item.nameFloor
             binding.toolbarFloor.inflateMenu(R.menu.menu_item)
         }

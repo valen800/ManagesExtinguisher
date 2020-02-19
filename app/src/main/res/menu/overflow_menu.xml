@@ -9,7 +9,7 @@
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/menuItem_settings"
-        android:icon="@drawable/icons8settings48"
+        android:icon="@mipmap/icons8settings48"
         android:title="@string/settings"
         app:showAsAction="never" />
 </menu>

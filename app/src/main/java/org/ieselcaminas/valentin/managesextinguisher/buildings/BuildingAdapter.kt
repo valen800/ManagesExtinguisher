@@ -26,7 +26,7 @@ class BuildingAdapter(val clickListener: BuildingListener): ListAdapter<Building
             binding.building = item
             binding.clickListener = clickListener
 
-            binding.ImageBuilding.setImageResource(R.drawable.building)
+            binding.ImageBuilding.setImageResource(R.mipmap.building)
             binding.toolbarBuilding.title = item.nameBuildings
             binding.toolbarBuilding.inflateMenu(R.menu.menu_item)
 

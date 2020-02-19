@@ -24,7 +24,7 @@
             android:id="@+id/ImageFloor"
             android:layout_width="match_parent"
             android:layout_height="170dp"
-            tools:srcCompat="@drawable/floor256"
+            tools:srcCompat="@mipmap/floor256"
             android:scaleType="centerCrop" />
 
         <androidx.appcompat.widget.Toolbar
