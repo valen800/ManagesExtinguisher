@@ -11,7 +11,6 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.dialog_ext_update.view.*
 import org.ieselcaminas.valentin.managesextinguisher.ComponentsTabPager.SingletonFloorId
 import org.ieselcaminas.valentin.managesextinguisher.R
 import org.ieselcaminas.valentin.managesextinguisher.database.extinguisher.Extinguisher
@@ -66,7 +65,7 @@ class ExtinguisherAdapter(
                         extinguisherViewModel.deleteExt(itemExt.extinguisherId)
                     }
                     (R.id.action_modify) -> {
-                        dialogModifyExt(itemExt, activity, extinguisherViewModel, position)
+                        //dialogModifyExt(itemExt, activity, extinguisherViewModel, position)
                     }
                 }
                 true
@@ -79,39 +78,6 @@ class ExtinguisherAdapter(
                 val binding =
                     RecyclerExtinguisherLayoutBinding.inflate(layoutInflater, parent, false)
                 return ViewHolder(binding)
-            }
-        }
-
-        private fun dialogModifyExt(itemExt: Extinguisher, activity: FragmentActivity?, extinguisherViewModel: ExtinguisherFragmentViewModel, position: Int) {
-            val mDialogView = LayoutInflater.from(activity).inflate(R.layout.dialog_ext_update, null)
-            mDialogView.editTextModifynExtinguisherDia.setText(itemExt.nExtinguisher)
-            mDialogView.editTextModifyExtinguisherSituationDia.setText(itemExt.situation)
-            mDialogView.editTextModifyExtinguisherPowderDia.setText(itemExt.powder)
-            mDialogView.editTextModifyExtinguisherTradeMarkDia.setText(itemExt.trademark)
-            mDialogView.editTextModifyExtinguisherModelDia.setText(itemExt.model)
-            mDialogView.editTextModifyExtinguisherDescriptionLocationDia.setText(itemExt.descriptionLocation)
-            mDialogView.editTextModifyExtinguisherWeightDia.setText(itemExt.weight.toString())
-
-            val mbuilder = AlertDialog.Builder(activity)
-                .setView(mDialogView)
-            mbuilder.setTitle("Modify Extinguisher")
-            val mAlertDialog = mbuilder.show()
-            mDialogView.buttonSubmitDialogModifyExtinguisher.setOnClickListener {
-                mAlertDialog.dismiss()
-                var ext = itemExt
-                ext.nExtinguisher = mDialogView.editTextModifynExtinguisherDia.text.toString()
-                ext.situation = mDialogView.editTextModifyExtinguisherSituationDia.text.toString()
-                ext.powder = mDialogView.editTextModifyExtinguisherPowderDia.text.toString()
-                ext.trademark = mDialogView.editTextModifyExtinguisherTradeMarkDia.text.toString()
-                ext.model = mDialogView.editTextModifyExtinguisherModelDia.text.toString()
-                ext.descriptionLocation = mDialogView.editTextModifyExtinguisherDescriptionLocationDia.text.toString()
-                ext.weight = mDialogView.editTextModifyExtinguisherWeightDia.text.toString().toInt()
-
-                extinguisherViewModel.modifyExt(ext)
-                extinguisherViewModel.startRefresh()
-            }
-            mDialogView.buttonCancelDialogModifyExtinguisher.setOnClickListener {
-                mAlertDialog.dismiss()
             }
         }
 

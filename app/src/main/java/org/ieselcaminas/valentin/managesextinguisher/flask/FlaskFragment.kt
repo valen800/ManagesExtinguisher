@@ -13,8 +13,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.dialog_ext_update.view.*
-import kotlinx.android.synthetic.main.dialog_flask_insert.view.*
 import org.ieselcaminas.valentin.managesextinguisher.ComponentsTabPager.SingletonFloorId
 import org.ieselcaminas.valentin.managesextinguisher.ComponentsTabPager.tabFragmentDirections
 
@@ -71,45 +69,19 @@ class FlaskFragment : Fragment() {
         //Adapter RecyclerView
 
         binding.fabCreatorFlask.setOnClickListener() {
-            dialogInsertFlask(flaskViewModel)
+            flaskViewModel.startNavigateToFlaskCreator()
         }
+
+        flaskViewModel.navigateToFlaskCreator.observe(this, Observer {
+            if (it == true) {
+                this.findNavController().navigate(
+                    tabFragmentDirections.actionTabFragmentToFlaskCreatorFragment2(SingletonFloorId.floorIdSingleton))
+                flaskViewModel.doneNavigateToFlaskCreator()
+            }
+        })
 
         binding.setLifecycleOwner(this)
 
         return binding.root
     }
-
-    private fun dialogInsertFlask(flaskViewModel: FlaskFragmentViewModel) {
-        val mDialogView = LayoutInflater.from(activity).inflate(R.layout.dialog_flask_insert, null)
-
-        val mbuilder = AlertDialog.Builder(activity)
-            .setView(mDialogView)
-        mbuilder.setTitle("Insert Flask")
-        val mAlertDialog = mbuilder.show()
-        mDialogView.buttonSubmitExtinguisherDialogInsertFlask.setOnClickListener {
-            mAlertDialog.dismiss()
-
-            var flask = Flask()
-            flask.flaskFloorId = SingletonFloorId.floorIdSingleton
-            flask.nFlask = mDialogView.editTextInsertnFlaskDia.text.toString()
-            flask.situation = mDialogView.editTextInsertFlaskSituationDia.text.toString()
-            flask.powder = mDialogView.editTextInsertFlaskPowderDia.text.toString()
-            flask.trademark = mDialogView.editTextInsertFlaskTradeMarkDia.text.toString()
-            flask.model = mDialogView.editTextInsertFlaskModelDia.text.toString()
-            flask.descriptionLocation = mDialogView.editTextInsertFlaskDescriptionLocationDia.text.toString()
-            flask.emptyWeight = mDialogView.editTextInsertFlaskEmptyWeightDia.text.toString().toInt()
-            flask.totalWeight = mDialogView.editTextInsertFlaskTotalWeightDia.text.toString().toInt()
-            flask.factoryDate = System.currentTimeMillis()
-            flask.dateLastRevision = System.currentTimeMillis()
-            flask.dateNextRevision = System.currentTimeMillis()
-
-            flaskViewModel.introduceFlask(flask)
-            flaskViewModel.startRefresh()
-        }
-        mDialogView.buttonCancelDialogInsertFlask.setOnClickListener {
-            mAlertDialog.dismiss()
-        }
-    }
-
-
 }
