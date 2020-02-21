@@ -83,7 +83,14 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/TiLayout3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:hint="@string/ext_description"
+            app:boxStrokeColor="@color/colorPrimary"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textAreaDescriptionLocation"
@@ -101,8 +108,7 @@
                 android:scrollbars="vertical"
                 android:lines="6"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:scrollHorizontally="false"
-                android:hint="@string/ext_description"/>
+                android:scrollHorizontally="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
