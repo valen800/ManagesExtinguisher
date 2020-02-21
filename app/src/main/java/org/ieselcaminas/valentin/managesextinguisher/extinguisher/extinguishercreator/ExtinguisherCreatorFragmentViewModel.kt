@@ -33,10 +33,9 @@ class ExtinguisherCreatorFragmentViewModel(private val databaseExtinguisher: Ext
         }
     }
 
-    fun onStartTracking(
+    fun insertExtinguisher(
         extinguisherFloorId: Long, nExtinguisher: String,
-        situation: String, powder: String,
-        tradeMark: String, model: String,
+        situation: String, tradeMark: String, model: String,
         descriptionLocation: String, weight: Int,
         factory_date: Long, dateLastRevision: Long, dateNextRevision: Long) {
 
@@ -45,7 +44,6 @@ class ExtinguisherCreatorFragmentViewModel(private val databaseExtinguisher: Ext
             extinguisher.extinguisherFloorId = extinguisherFloorId
             extinguisher.nExtinguisher = nExtinguisher
             extinguisher.situation = situation
-            extinguisher.powder = powder
             extinguisher.trademark = tradeMark
             extinguisher.model = model
             extinguisher.descriptionLocation = descriptionLocation

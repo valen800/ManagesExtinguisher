@@ -30,4 +30,7 @@
     <string name="flask_desLoc">Flask Description Location</string>
     <string name="flask_emptyW">Flask Empty Weight</string>
     <string name="flask_totalW">Flask Total Weight</string>
+    <string name="Name_Building">Name Building</string>
+    <string name="Name_Floor">Name Floor</string>
+    <string name="Number_Floor">Number floor</string>
 </resources>

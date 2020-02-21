@@ -14,15 +14,26 @@
             android:padding="10dp">
 
             <EditText
-                android:id="@+id/editTextInsertBuildingNameDia"
+                android:id="@+id/editTextInsertFloorNameDia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginRight="4dp"
                 android:layout_marginBottom="10dp"
-                android:hint="@string/Name_Building"
+                android:hint="@string/Name_Floor"
                 android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/editTextInsertNumberFloorNameDia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="10dp"
+                android:hint="@string/Number_Floor"
+                android:inputType="number" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -30,7 +41,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/buttonCancelInsertBuilding"
+                    android:id="@+id/buttonCancelInsertFloor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/Base.Widget.AppCompat.Button.Colored"
@@ -38,7 +49,7 @@
                     android:text="@string/cancel" />
 
                 <Button
-                    android:id="@+id/buttonSubmitInsertBuilding"
+                    android:id="@+id/buttonSubmitInsertFloor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/Base.Widget.AppCompat.Button.Colored"

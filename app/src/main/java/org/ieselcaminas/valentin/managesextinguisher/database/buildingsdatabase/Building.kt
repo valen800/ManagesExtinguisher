@@ -9,9 +9,6 @@ data class Building(
     var buildingId: Long = 0L,
 
     @ColumnInfo(name = "name_buildings")
-    var nameBuildings: String = "",
-
-    @ColumnInfo(name = "amount_floor")
-    var amountFloor: Int = 0
+    var nameBuildings: String = ""
 )
 

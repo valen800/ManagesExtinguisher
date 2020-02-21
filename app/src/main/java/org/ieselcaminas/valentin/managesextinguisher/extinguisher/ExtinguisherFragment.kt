@@ -26,8 +26,6 @@ import org.ieselcaminas.valentin.managesextinguisher.databinding.FragmentExtingu
  */
 class ExtinguisherFragment : Fragment() {
 
-    private lateinit var extinguisher : LiveData<Extinguisher>
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding: FragmentExtinguisherBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_extinguisher, container, false)
         val activity: FragmentActivity? = activity

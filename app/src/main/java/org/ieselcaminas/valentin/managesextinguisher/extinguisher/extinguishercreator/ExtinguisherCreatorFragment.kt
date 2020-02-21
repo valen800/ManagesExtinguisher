@@ -2,7 +2,6 @@ package org.ieselcaminas.valentin.managesextinguisher.extinguisher.extinguisherc
 
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -25,8 +24,6 @@ class ExtinguisherCreatorFragment : Fragment() {
         val binding: FragmentExtinguisherCreatorBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_extinguisher_creator, container, false)
 
         val application = requireNotNull(this.activity).application
-        //val args = .fromBundle(arguments!!)
-
         val databaseExtinguisher: ExtinguisherDao = ManagesExtinguisherDatabase.getInstance(application).extinguisherDao
 
         val viewModelFactory = ExtinguisherCreatorFragmentViewModelFactory(databaseExtinguisher, application)
@@ -37,8 +34,9 @@ class ExtinguisherCreatorFragment : Fragment() {
         binding.setLifecycleOwner(this)
 
         binding.buttonSubmitExtinguisher.setOnClickListener() {
-            extinguisherCreatorViewModel.onStartTracking(SingletonFloorId.floorIdSingleton, binding.editTextnExtinguisher.text.toString(), binding.editTextSituation.text.toString(),
-                binding.editTextPowder.text.toString(), binding.editTextTradeMark.text.toString(), binding.editTextModel.text.toString(), binding.editTextDescriptionLocation.text.toString(),
+            extinguisherCreatorViewModel.insertExtinguisher(
+                SingletonFloorId.floorIdSingleton, binding.editTextnExtinguisher.text.toString(), binding.editTextSituation.text.toString(),
+                binding.editTextTradeMark.text.toString(), binding.editTextModel.text.toString(), binding.editTextDescriptionLocation.text.toString(),
                 binding.editTextWeight.text.toString().toInt(), System.currentTimeMillis(), System.currentTimeMillis(), System.currentTimeMillis())
             extinguisherCreatorViewModel.startNavigatingToElements()
         }

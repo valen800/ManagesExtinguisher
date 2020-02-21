@@ -7,13 +7,10 @@ import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.*
 import org.ieselcaminas.valentin.managesextinguisher.database.buildingsdatabase.Building
 import org.ieselcaminas.valentin.managesextinguisher.database.buildingsdatabase.BuildingDao
-import org.ieselcaminas.valentin.managesextinguisher.database.floor.Floor
-import org.ieselcaminas.valentin.managesextinguisher.database.floor.FloorDao
 
 
 class BuildingFragmentViewModel(
     val databaseBuilding: BuildingDao,
-    val databaseFloor: FloorDao,
     application: Application): AndroidViewModel(application) {
 
     private var viewModelJob = Job()
@@ -22,20 +19,32 @@ class BuildingFragmentViewModel(
 
     val buildingsList = databaseBuilding.getAllBuilding()
 
-    private var _navigateToBuildingCreator = MutableLiveData<Boolean>()
-    val navigateToBuildingCreator: LiveData<Boolean>
-        get() = _navigateToBuildingCreator
+    private var _navigatingToInserDialog = MutableLiveData<Boolean>()
+    val navigatingToInserDialog: LiveData<Boolean>
+        get() = _navigatingToInserDialog
 
     private var __navigateToFloors = MutableLiveData<Long>()
     val navigateToFloors: LiveData<Long>
         get() = __navigateToFloors
 
-    fun startNavigatingToBuildingCreator() {
-        _navigateToBuildingCreator.value = true
+    private var _refresh = MutableLiveData<Boolean>()
+    val refresh: LiveData<Boolean>
+        get() = _refresh
+
+    fun startRefresh() {
+        _refresh.value = true
     }
 
-    fun doneNavigatingToBuildingCreator() {
-        _navigateToBuildingCreator.value = false
+    fun doneRefresh() {
+        _refresh.value = false
+    }
+
+    fun startNavigatingToInserDialog() {
+        _navigatingToInserDialog.value = true
+    }
+
+    fun doneNavigatingToInserDialog() {
+        _navigatingToInserDialog.value = false
     }
 
     fun startNavigatingToFloors(BuildingId: Long) {
@@ -46,6 +55,18 @@ class BuildingFragmentViewModel(
         __navigateToFloors.value = null
     }
 
+    fun deleteBuilding(buildingId: Long) {
+        uiScope.launch {
+            deleteBuildingCou(buildingId)
+        }
+    }
+
+    private suspend fun deleteBuildingCou(BuildingId: Long) {
+        withContext(Dispatchers.IO) {
+            databaseBuilding.deleteById(BuildingId)
+        }
+    }
+
     private suspend fun getBuildingsFromDataBase(): LiveData<List<Building>> {
         return withContext(Dispatchers.IO) {
             var buildings = databaseBuilding.getAllBuilding()
@@ -53,69 +74,27 @@ class BuildingFragmentViewModel(
         }
     }
 
-    fun onStartTracking(buildingName: String, amountFloors: Int) {
+    fun updateBuilding(building: Building) {
         uiScope.launch {
-            var building = Building()
-            building.nameBuildings = buildingName
-            building.amountFloor = amountFloors
-
-            insertBuilding(building)
+            updateBuildingCou(building)
         }
     }
 
-    fun onStopTracking() {
-        uiScope.launch {
-
-        }
-    }
-
-    private suspend fun clearBuilding() {
-        withContext(Dispatchers.IO) {
-            databaseBuilding.clearBuilding()
-        }
-    }
-
-    private suspend fun clearFloor() {
-        withContext(Dispatchers.IO) {
-            databaseFloor.clearFloor()
-        }
-    }
-
-    private suspend fun updateBuilding(building: Building) {
+    private suspend fun updateBuildingCou(building: Building) {
         withContext(Dispatchers.IO) {
             databaseBuilding.updateBuilding(building)
         }
     }
 
-    private suspend fun updateFloor(floor: Floor) {
-        withContext(Dispatchers.IO) {
-            databaseFloor.updateFloor(floor)
+    fun insertBuilding(building: Building) {
+        uiScope.launch {
+            insertBuildingCou(building)
         }
     }
 
-    private suspend fun insertBuilding(building: Building) {
+    private suspend fun insertBuildingCou(building: Building) {
         withContext(Dispatchers.IO) {
             databaseBuilding.insertBuilding(building)
-        }
-    }
-
-    private suspend fun insertFloor(floor: Floor) {
-        withContext(Dispatchers.IO) {
-            databaseFloor.insertFloor(floor)
-        }
-    }
-
-    /*private suspend fun getBuildingWithFloors(): LiveData<List<BuildingWithFloors>> {
-        return withContext(Dispatchers.IO) {
-            var buildingWithFloors = databaseFloor.getFloorsFromBuilding()
-            buildingWithFloors
-        }
-    }*/
-
-    fun onClear() {
-        uiScope.launch {
-            clearBuilding()
-            clearFloor()
         }
     }
 

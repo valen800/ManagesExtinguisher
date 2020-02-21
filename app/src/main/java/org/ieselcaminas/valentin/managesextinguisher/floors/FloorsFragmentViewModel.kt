@@ -11,30 +11,39 @@ import org.ieselcaminas.valentin.managesextinguisher.database.flask.FlaskDao
 import org.ieselcaminas.valentin.managesextinguisher.database.floor.Floor
 
 class FloorsFragmentViewModel(
-    private val databaseBuilding: BuildingDao,
     private val databaseFloor: FloorDao,
-    private val databaseExtinguisher: ExtinguisherDao,
-    private val databaseFlask: FlaskDao,
     application: Application): AndroidViewModel(application) {
 
     private var viewModelJob = Job()
 
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    private var _navigateToFloorCreator = MutableLiveData<Boolean>()
-    val navigateToFloorCreator: LiveData<Boolean>
-        get() = _navigateToFloorCreator
+    private var _navigateToFloorDialog = MutableLiveData<Boolean>()
+    val navigateToFloorDialog: LiveData<Boolean>
+        get() = _navigateToFloorDialog
 
     private var __navigateToFragmentElements = MutableLiveData<Long>()
     val navigateToFragmentElements: LiveData<Long>
         get() = __navigateToFragmentElements
 
-    fun startNavigatingToFloorCreator() {
-        _navigateToFloorCreator.value = true
+    private var _refresh = MutableLiveData<Boolean>()
+    val refresh: LiveData<Boolean>
+        get() = _refresh
+
+    fun startRefresh() {
+        _refresh.value = true
     }
 
-    fun doneNavigatingToFloorCreator() {
-        _navigateToFloorCreator.value = false
+    fun doneRefresh() {
+        _refresh.value = false
+    }
+
+    fun startNavigatingToFloorDialog() {
+        _navigateToFloorDialog.value = true
+    }
+
+    fun doneNavigatingToFloorDialog() {
+        _navigateToFloorDialog.value = false
     }
 
     fun startNavigatingToFragmentElements(FloorId: Long) {
@@ -50,27 +59,39 @@ class FloorsFragmentViewModel(
             return FloorsList
     }
 
-    private suspend fun updateBuilding(building: Building) {
-        withContext(Dispatchers.IO) {
-            databaseBuilding.updateBuilding(building)
+    fun insertFloor(floor: Floor) {
+        uiScope.launch {
+            insertFloorCou(floor)
         }
     }
 
-    private suspend fun updateFloor(floor: Floor) {
-        withContext(Dispatchers.IO) {
-            databaseFloor.updateFloor(floor)
-        }
-    }
-
-    private suspend fun insertBuilding(building: Building) {
-        withContext(Dispatchers.IO) {
-            databaseBuilding.insertBuilding(building)
-        }
-    }
-
-    private suspend fun insertFloor(floor: Floor) {
+    private suspend fun insertFloorCou(floor: Floor) {
         withContext(Dispatchers.IO) {
             databaseFloor.insertFloor(floor)
+        }
+    }
+
+    fun deleteFloor(floorId: Long) {
+        uiScope.launch {
+            deleteFloorCou(floorId)
+        }
+    }
+
+    private suspend fun deleteFloorCou(floorId: Long) {
+        withContext(Dispatchers.IO) {
+            databaseFloor.deleteById(floorId)
+        }
+    }
+
+    fun updateFloor(floor: Floor) {
+        uiScope.launch {
+            updateFloorCou(floor)
+        }
+    }
+
+    private suspend fun updateFloorCou(floor: Floor) {
+        withContext(Dispatchers.IO) {
+            databaseFloor.updateFloor(floor)
         }
     }
 

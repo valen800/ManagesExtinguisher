@@ -10,6 +10,6 @@ data class Floor(
     var buildingFloorID: Long = 0L,
 
     @ColumnInfo(name = "name_floor") var nameFloor: String = "",
-    @ColumnInfo(name = "n_floor") var nFloor: Long = 0L
+    @ColumnInfo(name = "n_floor") var nFloor: Int = 0
 )
 

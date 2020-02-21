@@ -9,8 +9,6 @@ interface BuildingDao {
 
     @Update fun updateBuilding(Build: Building)
 
-    @Delete fun deleteBuilding(Build: Building)
-
     @Query ("SELECT * FROM Building ORDER BY buildingId DESC")
     fun getAllBuilding(): LiveData<List<Building>>
 
@@ -19,4 +17,7 @@ interface BuildingDao {
 
     @Query("SELECT * FROM Building WHERE buildingId = :nBuilding")
     fun getBuildingById(nBuilding: Long): LiveData<Building>
+
+    @Query ("DELETE FROM Building WHERE buildingId = :buildingId")
+    fun deleteById(buildingId: Long)
 }

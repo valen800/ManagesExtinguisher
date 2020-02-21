@@ -10,9 +10,6 @@ interface FloorDao {
 
     @Update fun updateFloor(floor: Floor)
 
-    @Delete fun deleteFloor(floor: Floor)
-
-
     @Query ("SELECT * FROM Floor ORDER BY floorId DESC")
     fun getAllFloors(): LiveData<List<Floor>>
 
@@ -26,4 +23,6 @@ interface FloorDao {
     @Query("SELECT * FROM Building WHERE buildingId IN (SELECT DISTINCT(floorId) FROM Floor)")
     fun getFloorsFromBuilding(): LiveData<List<BuildingWithFloors>>
 
+    @Query ("DELETE FROM Floor WHERE floorId = :floorId")
+    fun deleteById(floorId: Long)
 }

@@ -11,7 +11,6 @@ data class Extinguisher(
 
     @ColumnInfo(name = "n_extinguisher") var nExtinguisher: String = "",
     @ColumnInfo(name = "situation") var situation: String = "",
-    @ColumnInfo(name = "powder") var powder: String = "",
     @ColumnInfo(name = "trademark") var trademark: String = "",
     @ColumnInfo(name = "model") var model: String = "",
     @ColumnInfo(name = "description_location") var descriptionLocation: String = "",

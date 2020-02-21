@@ -85,7 +85,7 @@ class ExtinguisherAdapter(
             val builder = AlertDialog.Builder(activity)
             builder.setTitle("Extinguisher info")
             builder.setMessage(
-                "Numero: " + itemExt.nExtinguisher + "\n\n" + "Powder: " + itemExt.powder + "\n" + "TradeMark: " + itemExt.trademark + "\n" + "Weight: " + itemExt.weight + " Kg" + "\n"
+                "Numero: " + itemExt.nExtinguisher + "\n\n" + "Powder: " + "TradeMark: " + itemExt.trademark + "\n" + "Weight: " + itemExt.weight + " Kg" + "\n"
                         + "Model: " + itemExt.model + "\n\n" + "Description Location: " + itemExt.descriptionLocation + "\n" + "Situation: " + itemExt.situation + "\n\n"
                         + "Factory Date: " + itemExt.factoryDate + "\n" + "Date Last Revision: " + itemExt.dateLastRevision + "\n"
                         + "Date Next Revision: " + itemExt.dateNextRevision + "\n"

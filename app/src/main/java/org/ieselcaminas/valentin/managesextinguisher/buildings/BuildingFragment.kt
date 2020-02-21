@@ -1,5 +1,8 @@
 package org.ieselcaminas.valentin.managesextinguisher.buildings
 
+import android.app.AlertDialog
+import android.app.Dialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -8,12 +11,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import kotlinx.android.synthetic.main.dialog_building_insert.view.*
+import org.ieselcaminas.valentin.managesextinguisher.ComponentsTabPager.SingletonFloorId
+import org.ieselcaminas.valentin.managesextinguisher.ComponentsTabPager.tabFragmentDirections
 import org.ieselcaminas.valentin.managesextinguisher.R
 import org.ieselcaminas.valentin.managesextinguisher.database.buildingsdatabase.BuildingDao
 import org.ieselcaminas.valentin.managesextinguisher.database.ManagesExtinguisherDatabase
-import org.ieselcaminas.valentin.managesextinguisher.database.extinguisher.ExtinguisherDao
-import org.ieselcaminas.valentin.managesextinguisher.database.flask.FlaskDao
-import org.ieselcaminas.valentin.managesextinguisher.database.floor.FloorDao
+import org.ieselcaminas.valentin.managesextinguisher.database.buildingsdatabase.Building
 import org.ieselcaminas.valentin.managesextinguisher.databinding.FragmentBuildingBinding
 
 class BuildingFragment : Fragment() {
@@ -30,9 +34,8 @@ class BuildingFragment : Fragment() {
 
         val application = requireNotNull(this.activity).application
         val databaseBuilding: BuildingDao = ManagesExtinguisherDatabase.getInstance(application).buildingDao
-        val databaseFloor: FloorDao = ManagesExtinguisherDatabase.getInstance(application).floorDao
 
-        val viewModelFactory = BuildingFragmentViewModelFactory(databaseBuilding, databaseFloor, application)
+        val viewModelFactory = BuildingFragmentViewModelFactory(databaseBuilding, application)
         val buildingViewModel = ViewModelProviders.of(this, viewModelFactory).get(BuildingFragmentViewModel::class.java)
         binding.buildingViewModel = buildingViewModel
 
@@ -42,7 +45,7 @@ class BuildingFragment : Fragment() {
 
         val adapter = BuildingAdapter(BuildingListener {
             buildingId -> buildingViewModel.startNavigatingToFloors(buildingId)
-        })
+        }, activity, viewLifecycleOwner, buildingViewModel)
         binding.buildingList.adapter = adapter
 
         buildingViewModel.buildingsList.observe(viewLifecycleOwner, Observer {
@@ -53,7 +56,7 @@ class BuildingFragment : Fragment() {
         //Adapter RecyclerView
 
         binding.fabCreatorBuilding.setOnClickListener() {
-            buildingViewModel.startNavigatingToBuildingCreator()
+            buildingViewModel.startNavigatingToInserDialog()
         }
 
         buildingViewModel.navigateToFloors.observe(this, Observer { buildingId ->
@@ -63,16 +66,42 @@ class BuildingFragment : Fragment() {
             }
         })
 
-        buildingViewModel.navigateToBuildingCreator.observe(this, Observer {
+        buildingViewModel.navigatingToInserDialog.observe(this, Observer {
             if (it == true) {
-                this.findNavController().navigate(BuildingFragmentDirections.actionBuildingFragmentToBuildingCreatorFragment())
-                buildingViewModel.doneNavigatingToBuildingCreator()
+                inserBuildingDialong()
+                buildingViewModel.doneNavigatingToInserDialog()
+            }
+        })
+
+        buildingViewModel.refresh.observe(this, Observer {
+            if (it == true) {
+                this.findNavController().navigate(BuildingFragmentDirections.actionBuildingFragmentSelf())
+                buildingViewModel.doneRefresh()
             }
         })
 
         binding.setLifecycleOwner(this)
         return binding.root
     }
+
+    private fun inserBuildingDialong() {
+        val mDialogView =
+            LayoutInflater.from(activity).inflate(R.layout.dialog_building_insert, null)
+
+        val mbuilder = AlertDialog.Builder(activity).setView(mDialogView)
+        mbuilder.setTitle("Building form")
+        val mAlertDialog = mbuilder.show()
+        mDialogView.buttonSubmitInsertBuilding.setOnClickListener {
+            var building = Building()
+            building.nameBuildings = mDialogView.editTextInsertBuildingNameDia.text.toString()
+            buildingViewModel.insertBuilding(building)
+            mAlertDialog.dismiss()
+        }
+        mDialogView.buttonCancelInsertBuilding.setOnClickListener {
+            mAlertDialog.dismiss()
+        }
+    }
+
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
