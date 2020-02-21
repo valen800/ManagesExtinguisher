@@ -33,4 +33,6 @@
     <string name="Name_Building">Name Building</string>
     <string name="Name_Floor">Name Floor</string>
     <string name="Number_Floor">Number floor</string>
+    <string name="nextinguisher">Number Extinguisher</string>
+    <string name="ext_description">Description</string>
 </resources>

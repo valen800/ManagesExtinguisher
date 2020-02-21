@@ -36,7 +36,7 @@ class ExtinguisherCreatorFragment : Fragment() {
         binding.buttonSubmitExtinguisher.setOnClickListener() {
             extinguisherCreatorViewModel.insertExtinguisher(
                 SingletonFloorId.floorIdSingleton, binding.editTextnExtinguisher.text.toString(), binding.editTextSituation.text.toString(),
-                binding.editTextTradeMark.text.toString(), binding.editTextModel.text.toString(), binding.editTextDescriptionLocation.text.toString(),
+                binding.editTextTradeMark.text.toString(), binding.editTextModel.text.toString(), binding.textAreaDescriptionLocation.text.toString(),
                 binding.editTextWeight.text.toString().toInt(), System.currentTimeMillis(), System.currentTimeMillis(), System.currentTimeMillis())
             extinguisherCreatorViewModel.startNavigatingToElements()
         }

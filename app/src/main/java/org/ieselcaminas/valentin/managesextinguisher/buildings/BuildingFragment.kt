@@ -22,10 +22,6 @@ import org.ieselcaminas.valentin.managesextinguisher.databinding.FragmentBuildin
 
 class BuildingFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = BuildingFragment()
-    }
-
     private lateinit var appDatabase: ManagesExtinguisherDatabase
     private lateinit var buildingViewModel: BuildingFragmentViewModel
 
