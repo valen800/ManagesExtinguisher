@@ -35,4 +35,33 @@
     <string name="Number_Floor">Number floor</string>
     <string name="nextinguisher">Number Extinguisher</string>
     <string name="ext_description">Description</string>
+    <string name="Weight">Weight: </string>
+    <string name="Model">Model: </string>
+    <string name="FactoryDate">Factory Date</string>
+    <string name="exeDate">20/01/2000</string>
+    <string name="LastRevision">Last Revision</string>
+    <string name="NextRevision">Next Revision</string>
+    <string name="emptyWeight">Empty Weight</string>
+    <string name="contentWeight">Content Weight</string>
+
+    <string-array name="content_weight">
+        <item>5</item>
+        <item>6</item>
+        <item>9</item>
+        <item>10</item>
+        <item>12</item>
+        <item>25</item>
+        <item>50</item>
+    </string-array>
+
+    <string-array name="model_extinguisher">
+        <item>Agua pulverizada</item>
+        <item>Agua desmineralizada</item>
+        <item>Agua y espuma (AFFF)</item>
+        <item>Dióxido de carbono (CO2)</item>
+        <item>Polvo químico universal – ABC</item>
+        <item>Polvo químico seco – BC</item>
+        <item>Polvo químico – D</item>
+    </string-array>
 </resources>
+

@@ -11,7 +11,6 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import org.ieselcaminas.valentin.managesextinguisher.ComponentsTabPager.SingletonFloorId
 import org.ieselcaminas.valentin.managesextinguisher.R
 import org.ieselcaminas.valentin.managesextinguisher.database.flask.Flask
 import org.ieselcaminas.valentin.managesextinguisher.database.flask.FlaskDao
@@ -82,7 +81,7 @@ class FlaskAdapter(
             builder.setMessage(
                 "Numero: " + itemFlask.nFlask + "\n\n" + "Powder: " + "TradeMark: " + itemFlask.trademark + "\n"
                         + "Empty Weight: " + itemFlask.emptyWeight + " Kg" + "\n"
-                        + "Total Weight: " + itemFlask.totalWeight + " Kg" + "\n"
+                        + "Total Weight: " + itemFlask.contentWeight + " Kg" + "\n"
                         + "Model: " + itemFlask.model + "\n\n" + "Description Location: " + itemFlask.descriptionLocation + "\n" + "Situation: " + itemFlask.situation + "\n\n"
                         + "Factory Date: " + itemFlask.factoryDate + "\n" + "Date Last Revision: " + itemFlask.dateLastRevision + "\n"
                         + "Date Next Revision: " + itemFlask.dateNextRevision + "\n"

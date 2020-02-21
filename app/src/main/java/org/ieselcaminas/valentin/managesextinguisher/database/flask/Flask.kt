@@ -15,7 +15,7 @@ data class Flask(
     @ColumnInfo(name = "model") var model: String = "",
     @ColumnInfo(name = "description_location") var descriptionLocation: String = "",
     @ColumnInfo(name = "empty_weight") var emptyWeight: Int = 0,
-    @ColumnInfo(name = "total_weight") var totalWeight: Int = 0,
+    @ColumnInfo(name = "content_weight") var contentWeight: Int = 0,
     @ColumnInfo(name = "factory_date") var factoryDate: Long = System.currentTimeMillis(),
     @ColumnInfo(name = "date_last_revision") var dateLastRevision: Long = System.currentTimeMillis(),
     @ColumnInfo(name = "date_next_revision") var dateNextRevision: Long = System.currentTimeMillis()

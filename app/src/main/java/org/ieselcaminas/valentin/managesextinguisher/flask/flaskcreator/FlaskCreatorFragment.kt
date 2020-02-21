@@ -39,10 +39,10 @@ class FlaskCreatorFragment : Fragment() {
 
         binding.buttonSubmitExtinguisherInsertFlask.setOnClickListener() {
             flaskCreatorViewModel.insertFlask(
-                SingletonFloorId.floorIdSingleton, binding.editTextInsertnFlask.text.toString(), binding.editTextInsertFlaskSituation.text.toString(),
-                binding.editTextInsertFlaskTradeMark.text.toString(), binding.editTextInsertFlaskModel.text.toString(),
-                binding.editTextInsertFlaskDescriptionLocation.text.toString(), binding.editTextInsertFlaskEmptyWeight.text.toString().toInt(),
-                binding.editTextInsertFlaskTotalWeight.text.toString().toInt(),
+                SingletonFloorId.floorIdSingleton, binding.editTextInsertnFlask.text.toString(), binding.editTextSituationFlask.text.toString(),
+                binding.editTextInsertFlaskTradeMark.text.toString(), "Spinner Model",
+                binding.textAreaDescriptionLocationFlask.text.toString(), 3,
+                3,
                 System.currentTimeMillis(), System.currentTimeMillis(), System.currentTimeMillis())
 
             flaskCreatorViewModel.startNavigatingToElements()

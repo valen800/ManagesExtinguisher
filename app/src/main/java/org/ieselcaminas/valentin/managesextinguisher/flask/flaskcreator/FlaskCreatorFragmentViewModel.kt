@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.*
 import org.ieselcaminas.valentin.managesextinguisher.ComponentsTabPager.SingletonFloorId
-import org.ieselcaminas.valentin.managesextinguisher.database.extinguisher.Extinguisher
 import org.ieselcaminas.valentin.managesextinguisher.database.flask.Flask
 import org.ieselcaminas.valentin.managesextinguisher.database.flask.FlaskDao
 
@@ -52,7 +51,7 @@ class FlaskCreatorFragmentViewModel(private val databaseFlask: FlaskDao, applica
             flask.model = model
             flask.descriptionLocation = descriptionLocation
             flask.emptyWeight = emptyWeight
-            flask.totalWeight = totalWeight
+            flask.contentWeight = totalWeight
             flask.factoryDate = factory_date
             flask.dateLastRevision = dateLastRevision
             flask.dateNextRevision = dateNextRevision

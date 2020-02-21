@@ -13,7 +13,7 @@ import org.ieselcaminas.valentin.managesextinguisher.database.flask.FlaskDao
 import org.ieselcaminas.valentin.managesextinguisher.database.floor.Floor
 import org.ieselcaminas.valentin.managesextinguisher.database.floor.FloorDao
 
-@Database(entities = [Extinguisher::class, Flask::class, Building::class, Floor::class], version = 1, exportSchema = false)
+@Database(entities = [Extinguisher::class, Flask::class, Building::class, Floor::class], version = 2, exportSchema = false)
 abstract class ManagesExtinguisherDatabase : RoomDatabase() {
 
     abstract val extinguisherDao: ExtinguisherDao
