@@ -92,7 +92,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18dp"
-                    android:text="Kg">
+                    android:text="@string/kg">
 
                 </TextView>
             </LinearLayout>
@@ -217,30 +217,6 @@
 
                 <TextView
                     android:id="@+id/LabelDateLastRevision"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18dp"
-                    android:hint="@string/exeDate" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp">
-
-                <Button
-                    android:id="@+id/buttonDateNextRevisionExtinguisher"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="20dp"
-                    android:hint="@string/NextRevision"/>
-
-                <TextView
-                    android:id="@+id/LabelDateNextRevision"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18dp"

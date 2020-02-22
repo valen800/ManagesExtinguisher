@@ -11,10 +11,14 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import org.ieselcaminas.valentin.managesextinguisher.DateUtils
 import org.ieselcaminas.valentin.managesextinguisher.R
+import org.ieselcaminas.valentin.managesextinguisher.SingletonExt
+import org.ieselcaminas.valentin.managesextinguisher.SingletonFlask
 import org.ieselcaminas.valentin.managesextinguisher.database.flask.Flask
 import org.ieselcaminas.valentin.managesextinguisher.database.flask.FlaskDao
 import org.ieselcaminas.valentin.managesextinguisher.databinding.RecyclerFlaskLayoutBinding
+import java.util.*
 
 class FlaskAdapter(
     private val clickListener: FlaskListener,
@@ -50,16 +54,22 @@ class FlaskAdapter(
             binding.toolbarFlask.title = itemFlask.nFlask
             binding.toolbarFlask.inflateMenu(R.menu.menu_item_elements)
 
+            binding.textViewFactoryDateFlaskResult.setText(DateUtils.convertLongToTime(itemFlask.dateNextRevision))
+            binding.textViewNextDateFlaskResult.setText(DateUtils.convertLongToTime(itemFlask.factoryDate))
+            binding.textViewModelFlaskResult.setText(itemFlask.model)
+            binding.textViewWeightFlaskResult.setText(itemFlask.contentWeight.toString())
+
             binding.toolbarFlask.setOnMenuItemClickListener(Toolbar.OnMenuItemClickListener { item: MenuItem? ->
                 when (item?.itemId) {
                     (R.id.action_Info) -> {
                         dialogInfoFlask(itemFlask, activity)
                     }
                     (R.id.action_Delete) -> {
-                        flaskViewModel.deleteFlask(itemFlask.flaskId)
+                        dialogDeleteFlask(itemFlask, activity, flaskViewModel)
                     }
                     (R.id.action_modify) -> {
-
+                        SingletonFlask.itemFlask = itemFlask
+                        flaskViewModel.startNavigatingToFlaskCreatorFromAdapter(itemFlask.flaskId)
                     }
                 }
                 true
@@ -75,16 +85,30 @@ class FlaskAdapter(
             }
         }
 
+        private fun dialogDeleteFlask(itemFlask: Flask, activity: FragmentActivity?, flaskViewModel: FlaskFragmentViewModel) {
+            val builder = AlertDialog.Builder(activity)
+            builder.setTitle("Erase Flask?")
+            builder.setMessage("You'll lose this flask")
+            builder.setPositiveButton("Erase") { dialog, which ->
+                flaskViewModel.deleteFlask(itemFlask.flaskId)
+            }
+            builder.setNegativeButton("Cancel") {dialog, which ->
+
+            }
+            val dialog: AlertDialog = builder.create()
+            dialog.show()
+        }
+
         private fun dialogInfoFlask(itemFlask: Flask, activity: FragmentActivity?) {
             val builder = AlertDialog.Builder(activity)
             builder.setTitle("Flask info")
             builder.setMessage(
                 "Numero: " + itemFlask.nFlask + "\n\n" + "Powder: " + "TradeMark: " + itemFlask.trademark + "\n"
                         + "Empty Weight: " + itemFlask.emptyWeight + " Kg" + "\n"
-                        + "Total Weight: " + itemFlask.contentWeight + " Kg" + "\n"
+                        + "Content Weight: " + itemFlask.contentWeight + " Kg" + "\n"
                         + "Model: " + itemFlask.model + "\n\n" + "Description Location: " + itemFlask.descriptionLocation + "\n" + "Situation: " + itemFlask.situation + "\n\n"
-                        + "Factory Date: " + itemFlask.factoryDate + "\n" + "Date Last Revision: " + itemFlask.dateLastRevision + "\n"
-                        + "Date Next Revision: " + itemFlask.dateNextRevision + "\n"
+                        + "Factory Date: " + DateUtils.convertLongToTime(itemFlask.factoryDate) + "\n" + "Date Last Revision: " + DateUtils.convertLongToTime(itemFlask.dateLastRevision) + "\n"
+                        + "Date Next Revision: " + DateUtils.convertLongToTime(itemFlask.dateNextRevision) + "\n"
             )
             builder.setNeutralButton("Cancel") { dialog, which ->
                 Toast.makeText(

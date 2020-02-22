@@ -1,6 +1,7 @@
 package org.ieselcaminas.valentin.managesextinguisher.extinguisher.extinguishercreator
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -39,6 +40,7 @@ class ExtinguisherCreatorFragmentViewModel(private val databaseExtinguisher: Ext
         descriptionLocation: String, weight: Int,
         factory_date: Long, dateLastRevision: Long, dateNextRevision: Long) {
 
+
         uiScope.launch {
             var extinguisher = Extinguisher()
             extinguisher.extinguisherFloorId = extinguisherFloorId
@@ -56,7 +58,32 @@ class ExtinguisherCreatorFragmentViewModel(private val databaseExtinguisher: Ext
         }
     }
 
-    private suspend fun updateExtinguisher(extinguisher: Extinguisher) {
+    fun updateExt(
+        extinguisherFloorId: Long, nExtinguisher: String,
+        situation: String, tradeMark: String, model: String,
+        descriptionLocation: String, weight: Int,
+        factory_date: Long, dateLastRevision: Long, dateNextRevision: Long) {
+
+        Log.i("nExtinguisher", nExtinguisher)
+
+        uiScope.launch {
+            var extinguisher = Extinguisher()
+            extinguisher.extinguisherFloorId = extinguisherFloorId
+            extinguisher.nExtinguisher = nExtinguisher
+            extinguisher.situation = situation
+            extinguisher.trademark = tradeMark
+            extinguisher.model = model
+            extinguisher.descriptionLocation = descriptionLocation
+            extinguisher.weight = weight
+            extinguisher.factoryDate = factory_date
+            extinguisher.dateLastRevision = dateLastRevision
+            extinguisher.dateNextRevision = dateNextRevision
+
+            updateExtinguisherCou(extinguisher)
+        }
+    }
+
+    private suspend fun updateExtinguisherCou(extinguisher: Extinguisher) {
         withContext(Dispatchers.IO) {
             databaseExtinguisher.updateExt(extinguisher)
         }

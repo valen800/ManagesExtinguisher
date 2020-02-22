@@ -23,6 +23,18 @@ class FlaskFragmentViewModel(private val databaseFlask: FlaskDao, val activity: 
     val navigateToFlaskCreator: LiveData<Boolean>
         get() = _navigateToFlaskCreator
 
+    private var _navigateToFlaskCreatorFromAdapter = MutableLiveData<Long>()
+    val navigateToFlaskCreatorFromAdapter: LiveData<Long>
+        get() = _navigateToFlaskCreatorFromAdapter
+
+    fun startNavigatingToFlaskCreatorFromAdapter(flaskId: Long) {
+        _navigateToFlaskCreatorFromAdapter.value = flaskId
+    }
+
+    fun doneNavigatingToFlaskCreatorFromAdapter() {
+        _navigateToFlaskCreatorFromAdapter.value = null
+    }
+
     fun startRefresh() {
         _refresh.value = true
     }

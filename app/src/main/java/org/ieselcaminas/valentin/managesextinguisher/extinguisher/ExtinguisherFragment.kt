@@ -69,8 +69,15 @@ class ExtinguisherFragment : Fragment() {
 
         extinguisherViewModel.navigateToExtinguisherCreator.observe(this, Observer {
             if (it == true) {
-                this.findNavController().navigate(tabFragmentDirections.actionTabFragmentToExtinguisherCreatorFragment2(SingletonFloorId.floorIdSingleton))
+                this.findNavController().navigate(tabFragmentDirections.actionTabFragmentToExtinguisherCreatorFragment2(SingletonFloorId.floorIdSingleton, "0"))
                 extinguisherViewModel.doneNavigatingToExtinguisherCreator()
+            }
+        })
+
+        extinguisherViewModel.navigateToExtinguisherCreatorFromAdapter.observe(this, Observer {
+            it?.let {
+                this.findNavController().navigate(tabFragmentDirections.actionTabFragmentToExtinguisherCreatorFragment2(SingletonFloorId.floorIdSingleton, "1"))
+                extinguisherViewModel.doneNavigatingToExtinguisherCreatorFromAdapter()
             }
         })
 

@@ -26,6 +26,18 @@ class ExtinguisherFragmentViewModel(private val databaseExtinguisher: Extinguish
     val refresh: LiveData<Boolean>
         get() = _refresh
 
+    private var _navigateToExtinguisherCreatorFromAdapter = MutableLiveData<Long>()
+    val navigateToExtinguisherCreatorFromAdapter: LiveData<Long>
+        get() = _navigateToExtinguisherCreatorFromAdapter
+
+    fun startNavigatingToExtinguisherCreatorFromAdapter(extinguisherId: Long) {
+        _navigateToExtinguisherCreatorFromAdapter.value = extinguisherId
+    }
+
+    fun doneNavigatingToExtinguisherCreatorFromAdapter() {
+        _navigateToExtinguisherCreatorFromAdapter.value = null
+    }
+
     fun startRefresh() {
         _refresh.value = true
     }

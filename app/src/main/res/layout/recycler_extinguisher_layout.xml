@@ -37,5 +37,65 @@
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme" />
 
+        <TextView
+            android:id="@+id/textViewModelExt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="140dp"
+            android:text="@string/Model" />
+
+        <TextView
+            android:id="@+id/textViewModelExtResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="200dp"/>
+
+        <TextView
+            android:id="@+id/textViewWeightExt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:layout_marginLeft="140dp"
+            android:text="@string/contentWeightKg" />
+
+        <TextView
+            android:id="@+id/textViewWeightExtResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:layout_marginLeft="290dp"/>
+
+        <TextView
+            android:id="@+id/textViewFactoryDateExt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="110dp"
+            android:layout_marginLeft="140dp"
+            android:text="@string/factorydate" />
+
+        <TextView
+            android:id="@+id/textViewFactoryDateExtResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="110dp"
+            android:layout_marginLeft="240dp"/>
+
+        <TextView
+            android:id="@+id/textViewNextRevisionExt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="140dp"
+            android:layout_marginLeft="140dp"
+            android:text="@string/nextrevision" />
+
+        <TextView
+            android:id="@+id/textViewNextDateExtResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="140dp"
+            android:layout_marginLeft="240dp"/>
+
     </androidx.cardview.widget.CardView>
 </layout>

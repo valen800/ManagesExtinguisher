@@ -86,6 +86,9 @@
             app:destination="@id/tabFragment"
             app:popUpTo="@+id/tabFragment"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="condition"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/flaskCreatorFragment2"
@@ -99,5 +102,8 @@
             app:destination="@id/tabFragment"
             app:popUpTo="@+id/tabFragment"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="condition"
+            app:argType="string" />
     </fragment>
 </navigation>

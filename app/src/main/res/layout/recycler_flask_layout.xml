@@ -37,5 +37,65 @@
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme" />
 
+        <TextView
+            android:id="@+id/textViewModelFlask"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="140dp"
+            android:text="@string/Model" />
+
+        <TextView
+            android:id="@+id/textViewModelFlaskResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="190dp"/>
+
+        <TextView
+            android:id="@+id/textViewWeightFlask"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:layout_marginLeft="140dp"
+            android:text="@string/contentWeightGr" />
+
+        <TextView
+            android:id="@+id/textViewWeightFlaskResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:layout_marginLeft="280dp"/>
+
+        <TextView
+            android:id="@+id/textViewFactoryDateFlask"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="110dp"
+            android:layout_marginLeft="140dp"
+            android:text="@string/factorydate" />
+
+        <TextView
+            android:id="@+id/textViewFactoryDateFlaskResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="110dp"
+            android:layout_marginLeft="240dp"/>
+
+        <TextView
+            android:id="@+id/textViewNextRevisionFlask"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="140dp"
+            android:layout_marginLeft="140dp"
+            android:text="@string/nextrevision" />
+
+        <TextView
+            android:id="@+id/textViewNextDateFlaskResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="140dp"
+            android:layout_marginLeft="240dp"/>
+
     </androidx.cardview.widget.CardView>
 </layout>

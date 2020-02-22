@@ -11,7 +11,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import org.ieselcaminas.valentin.managesextinguisher.ComponentsTabPager.SingletonFloorId
-import org.ieselcaminas.valentin.managesextinguisher.R
 import org.ieselcaminas.valentin.managesextinguisher.database.ManagesExtinguisherDatabase
 import org.ieselcaminas.valentin.managesextinguisher.database.extinguisher.ExtinguisherDao
 import org.ieselcaminas.valentin.managesextinguisher.databinding.FragmentExtinguisherCreatorBinding
@@ -19,7 +18,9 @@ import java.util.*
 import android.app.DatePickerDialog
 import android.util.Log
 import android.widget.*
-import java.sql.Struct
+import org.ieselcaminas.valentin.managesextinguisher.DateUtils
+import org.ieselcaminas.valentin.managesextinguisher.R
+import org.ieselcaminas.valentin.managesextinguisher.SingletonExt
 
 class ExtinguisherCreatorFragment : Fragment() {
 
@@ -33,14 +34,23 @@ class ExtinguisherCreatorFragment : Fragment() {
         val extinguisherCreatorViewModel = ViewModelProviders.of(this, viewModelFactory).get(
             ExtinguisherCreatorFragmentViewModel::class.java)
 
+        val args = ExtinguisherCreatorFragmentArgs.fromBundle(arguments!!)
+
         binding.extinguisherCreatorViewModel = extinguisherCreatorViewModel
         binding.setLifecycleOwner(this)
 
-        // SPINNERS
+        if (args.condition == "1") {
+            binding.editTextnExtinguisher.setText(SingletonExt.itemExt.nExtinguisher)
+            binding.editTextTradeMark.setText(SingletonExt.itemExt.trademark)
+            binding.editTextSituation.setText(SingletonExt.itemExt.situation)
+            binding.textAreaDescriptionLocationExtinguisher.setText(SingletonExt.itemExt.descriptionLocation)
+            binding.LabelFactoryDate.setText(DateUtils.convertLongToTime(SingletonExt.itemExt.factoryDate))
+            binding.LabelDateLastRevision.setText(DateUtils.convertLongToTime(SingletonExt.itemExt.dateLastRevision))
+        }
 
+        // SPINNERS
         var spinnerWeightResult = 0
         var spinnerModelResult = ""
-
 
         context?.let {
             val contentWeight = arrayListOf(5, 6, 9, 10, 12, 25, 50)
@@ -82,10 +92,19 @@ class ExtinguisherCreatorFragment : Fragment() {
         // SPINNERS
 
         // DATEPICKER
+        var factoryDate = System.currentTimeMillis()
+        var dateLastRevision = System.currentTimeMillis()
+        var dateNextRevision = System.currentTimeMillis()
 
-        val factoryDate = dialogDatePicker(binding.buttonFactoryDateExtinguisher, binding.LabelFactoryDate)
-        val dateLastRevision = dialogDatePicker(binding.buttonDateLastRevisionExtinguisher, binding.LabelDateLastRevision)
-        val dateNextRevision = dialogDatePicker(binding.buttonDateNextRevisionExtinguisher, binding.LabelDateNextRevision)
+        binding.buttonFactoryDateExtinguisher.setOnClickListener() {
+            factoryDate = dialogDatePicker(binding.LabelFactoryDate)
+        }
+
+        binding.buttonDateLastRevisionExtinguisher.setOnClickListener() {
+            dateLastRevision = dialogDatePicker(binding.LabelDateLastRevision)
+            dateNextRevision = dateLastRevision
+        }
+
         // DATEPICKER
 
         // NAVIGATES
@@ -95,11 +114,35 @@ class ExtinguisherCreatorFragment : Fragment() {
             Log.i("DateNext", dateNextRevision.toString())
             Log.i("Model", spinnerModelResult)
             Log.i("Weight", spinnerWeightResult.toString())
-            extinguisherCreatorViewModel.insertExtinguisher(
-                SingletonFloorId.floorIdSingleton, binding.editTextnExtinguisher.text.toString(), binding.editTextSituation.text.toString(),
-                binding.editTextTradeMark.text.toString(), spinnerModelResult, binding.textAreaDescriptionLocationExtinguisher.text.toString(),
-                spinnerWeightResult, factoryDate, dateLastRevision, dateNextRevision)
-            extinguisherCreatorViewModel.startNavigatingToElements()
+            if (args.condition == "1") {
+                extinguisherCreatorViewModel.updateExt(
+                    SingletonFloorId.floorIdSingleton,
+                    binding.editTextnExtinguisher.text.toString(),
+                    binding.editTextSituation.text.toString(),
+                    binding.editTextTradeMark.text.toString(),
+                    spinnerModelResult,
+                    binding.textAreaDescriptionLocationExtinguisher.text.toString(),
+                    spinnerWeightResult,
+                    factoryDate,
+                    dateLastRevision,
+                    dateNextRevision)
+
+                extinguisherCreatorViewModel.startNavigatingToElements()
+            } else if (args.condition == "0"){
+                extinguisherCreatorViewModel.insertExtinguisher(
+                    SingletonFloorId.floorIdSingleton,
+                    binding.editTextnExtinguisher.text.toString(),
+                    binding.editTextSituation.text.toString(),
+                    binding.editTextTradeMark.text.toString(),
+                    spinnerModelResult,
+                    binding.textAreaDescriptionLocationExtinguisher.text.toString(),
+                    spinnerWeightResult,
+                    factoryDate,
+                    dateLastRevision,
+                    dateNextRevision)
+
+                extinguisherCreatorViewModel.startNavigatingToElements()
+            }
         }
 
         binding.buttonCancelExtinguisher.setOnClickListener() {
@@ -117,28 +160,22 @@ class ExtinguisherCreatorFragment : Fragment() {
         return binding.root
     }
 
-    private fun dialogDatePicker(button: Button, textView: TextView): Long {
+    private fun dialogDatePicker(textView: TextView): Long {
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
         val month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
 
-        button.setOnClickListener() {
-            context?.let {
-                val dpd = DatePickerDialog(it, DatePickerDialog.OnDateSetListener { datePicker, mYear, mMonth, mDay ->
-                    //set to TextView
-                    if ((mMonth+1) > 9 ) {
-                        textView.setText("" + mDay + "/" + (mMonth + 1) + "/" + mYear)
-                    } else {
-                        textView.setText("" + mDay + "/0" + (mMonth + 1) + "/" + mYear)
-                    }
-                }, year, month, day)
-                dpd.show()
-            }
-
-        }
-        if (c.timeInMillis == null) {
-            return System.currentTimeMillis()
+        context?.let {
+            val dpd = DatePickerDialog(it, DatePickerDialog.OnDateSetListener { datePicker, mYear, mMonth, mDay ->
+                //set to TextView
+                if ((mMonth+1) > 9 ) {
+                    textView.setText("" + mDay + "/" + (mMonth + 1) + "/" + mYear)
+                } else {
+                    textView.setText("" + mDay + "/0" + (mMonth + 1) + "/" + mYear)
+                }
+            }, year, month, day)
+            dpd.show()
         }
         return c.timeInMillis
     }

@@ -41,8 +41,16 @@
     <string name="exeDate">20/01/2000</string>
     <string name="LastRevision">Last Revision</string>
     <string name="NextRevision">Next Revision</string>
-    <string name="emptyWeight">Empty Weight</string>
-    <string name="contentWeight">Content Weight</string>
+    <string name="emptyWeight">Empty Weight (grams)</string>
+    <string name="contentWeight">Content Weight: </string>
+    <string name="kg">Kg</string>
+    <string name="grams">grams</string>
+    <string name="Building">Building</string>
+    <string name="Buildings">Buildings</string>
+    <string name="factorydate">Factory Date:</string>
+    <string name="nextrevision">Next Revision:</string>
+    <string name="contentWeightKg">Content Weight (Kg):</string>
+    <string name="contentWeightGr">Content Weight (gr):</string>
 
     <string-array name="content_weight">
         <item>5</item>

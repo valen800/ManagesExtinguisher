@@ -7,9 +7,5 @@
         android:icon="@drawable/ic_about"
         android:title="@string/about"
         app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/menuItem_settings"
-        android:icon="@mipmap/icons8settings48"
-        android:title="@string/settings"
-        app:showAsAction="never" />
+
 </menu>

@@ -11,8 +11,9 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import org.ieselcaminas.valentin.managesextinguisher.ComponentsTabPager.SingletonFloorId
+import org.ieselcaminas.valentin.managesextinguisher.DateUtils
 import org.ieselcaminas.valentin.managesextinguisher.R
+import org.ieselcaminas.valentin.managesextinguisher.SingletonExt
 import org.ieselcaminas.valentin.managesextinguisher.database.extinguisher.Extinguisher
 import org.ieselcaminas.valentin.managesextinguisher.database.extinguisher.ExtinguisherDao
 import org.ieselcaminas.valentin.managesextinguisher.databinding.RecyclerExtinguisherLayoutBinding
@@ -56,16 +57,22 @@ class ExtinguisherAdapter(
             binding.toolbarExtinguisher.title = itemExt.nExtinguisher
             binding.toolbarExtinguisher.inflateMenu(R.menu.menu_item_elements)
 
+            binding.textViewFactoryDateExtResult.setText(DateUtils.convertLongToTime(itemExt.dateNextRevision))
+            binding.textViewNextDateExtResult.setText(DateUtils.convertLongToTime(itemExt.factoryDate))
+            binding.textViewModelExtResult.setText(itemExt.model)
+            binding.textViewWeightExtResult.setText(itemExt.weight.toString())
+
             binding.toolbarExtinguisher.setOnMenuItemClickListener(Toolbar.OnMenuItemClickListener { item: MenuItem? ->
                 when (item?.itemId) {
                     (R.id.action_Info) -> {
                         dialogInfoExtinguisher(itemExt, activity)
                     }
                     (R.id.action_Delete) -> {
-                        extinguisherViewModel.deleteExt(itemExt.extinguisherId)
+                        dialogDeleteFloor(itemExt, activity, extinguisherViewModel)
                     }
                     (R.id.action_modify) -> {
-                        //dialogModifyExt(itemExt, activity, extinguisherViewModel, position)
+                        SingletonExt.itemExt = itemExt
+                        extinguisherViewModel.startNavigatingToExtinguisherCreatorFromAdapter(itemExt.extinguisherId)
                     }
                 }
                 true
@@ -81,14 +88,27 @@ class ExtinguisherAdapter(
             }
         }
 
+        private fun dialogDeleteFloor(itemExt: Extinguisher, activity: FragmentActivity?, flaskViewModel: ExtinguisherFragmentViewModel) {
+            val builder = AlertDialog.Builder(activity)
+            builder.setTitle("Erase Extinguisher?")
+            builder.setMessage("You'll lose this extinguisher")
+            builder.setPositiveButton("Erase") { dialog, which ->
+                flaskViewModel.deleteExt(itemExt.extinguisherId)
+            }
+            builder.setNegativeButton("Cancel") {dialog, which ->
+
+            }
+            val dialog: AlertDialog = builder.create()
+            dialog.show()
+        }
+
         private fun dialogInfoExtinguisher(itemExt: Extinguisher, activity: FragmentActivity?) {
             val builder = AlertDialog.Builder(activity)
             builder.setTitle("Extinguisher info")
             builder.setMessage(
-                "Numero: " + itemExt.nExtinguisher + "\n\n" + "Powder: " + "TradeMark: " + itemExt.trademark + "\n" + "Weight: " + itemExt.weight + " Kg" + "\n"
+                "Numero: " + itemExt.nExtinguisher + "\n\n" + "TradeMark: " + itemExt.trademark + "\n" + "Weight: " + itemExt.weight + " Kg" + "\n"
                         + "Model: " + itemExt.model + "\n\n" + "Description Location: " + itemExt.descriptionLocation + "\n" + "Situation: " + itemExt.situation + "\n\n"
-                        + "Factory Date: " + itemExt.factoryDate + "\n" + "Date Last Revision: " + itemExt.dateLastRevision + "\n"
-                        + "Date Next Revision: " + itemExt.dateNextRevision + "\n"
+                        + "Factory Date: " + DateUtils.convertLongToTime(itemExt.factoryDate) + "\n" + "Date Last Revision: " + DateUtils.convertLongToTime(itemExt.dateLastRevision)
             )
             builder.setNeutralButton("Cancel") { dialog, which ->
                 Toast.makeText(

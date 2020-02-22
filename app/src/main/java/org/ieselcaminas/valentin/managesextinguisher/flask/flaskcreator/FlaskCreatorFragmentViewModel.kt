@@ -38,7 +38,7 @@ class FlaskCreatorFragmentViewModel(private val databaseFlask: FlaskDao, applica
         extinguisherFloorId: Long, nExtinguisher: String,
         situation: String, tradeMark: String, model: String,
         descriptionLocation: String,
-        emptyWeight: Int, totalWeight: Int,
+        emptyWeight: Int, contentWeight: Int,
         factory_date: Long, dateLastRevision: Long, dateNextRevision: Long
     ) {
 
@@ -51,7 +51,7 @@ class FlaskCreatorFragmentViewModel(private val databaseFlask: FlaskDao, applica
             flask.model = model
             flask.descriptionLocation = descriptionLocation
             flask.emptyWeight = emptyWeight
-            flask.contentWeight = totalWeight
+            flask.contentWeight = contentWeight
             flask.factoryDate = factory_date
             flask.dateLastRevision = dateLastRevision
             flask.dateNextRevision = dateNextRevision
@@ -60,7 +60,33 @@ class FlaskCreatorFragmentViewModel(private val databaseFlask: FlaskDao, applica
         }
     }
 
-    private suspend fun updateFlask(flask: Flask) {
+    fun updateFlask(
+        extinguisherFloorId: Long, nExtinguisher: String,
+        situation: String, tradeMark: String, model: String,
+        descriptionLocation: String,
+        emptyWeight: Int, contentWeight: Int,
+        factory_date: Long, dateLastRevision: Long, dateNextRevision: Long
+    ) {
+
+        uiScope.launch {
+            var flask = Flask()
+            flask.flaskFloorId = extinguisherFloorId
+            flask.nFlask = nExtinguisher
+            flask.situation = situation
+            flask.trademark = tradeMark
+            flask.model = model
+            flask.descriptionLocation = descriptionLocation
+            flask.emptyWeight = emptyWeight
+            flask.contentWeight = contentWeight
+            flask.factoryDate = factory_date
+            flask.dateLastRevision = dateLastRevision
+            flask.dateNextRevision = dateNextRevision
+
+            updateFlaskCou(flask)
+        }
+    }
+
+    private suspend fun updateFlaskCou(flask: Flask) {
         withContext(Dispatchers.IO) {
             databaseFlask.updateFlask(flask)
         }
