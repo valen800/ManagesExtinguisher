@@ -41,6 +41,7 @@
                         android:layout_marginLeft="4dp"
                         android:layout_marginRight="4dp"
                         android:layout_marginBottom="4dp"
+                        android:textStyle="bold"
                         android:hint="@string/flask_n" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -62,6 +63,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginLeft="4dp"
                         android:layout_marginRight="4dp"
+                        android:textStyle="bold"
                         android:layout_marginBottom="4dp"
                         android:hint="@string/flask_trade" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -83,6 +85,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:layout_marginLeft="4dp"
+                        android:textStyle="bold"
                         android:layout_marginRight="4dp"
                         android:layout_marginBottom="4dp"
                         android:hint="@string/emptyWeight" />
@@ -156,6 +159,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="16dp"
+                        android:textStyle="bold"
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="10dp"
                         android:inputType="text"
@@ -185,6 +189,7 @@
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="10dp"
                         android:gravity="top|left"
+                        android:textStyle="bold"
                         android:inputType="textMultiLine"
                         android:overScrollMode="always"
                         android:scrollbarStyle="insideInset"
@@ -207,12 +212,14 @@
                         android:id="@+id/buttonFactoryDateFlask"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textStyle="bold"
                         android:layout_marginRight="20dp"
                         android:hint="@string/FactoryDate"/>
 
                     <TextView
                         android:id="@+id/LabelFactoryDate"
                         android:layout_width="wrap_content"
+                        android:textStyle="bold"
                         android:layout_height="wrap_content"
                         android:textSize="18dp"
                         android:hint="@string/exeDate" />

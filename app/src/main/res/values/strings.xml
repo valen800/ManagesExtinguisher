@@ -51,6 +51,7 @@
     <string name="nextrevision">Next Revision:</string>
     <string name="contentWeightKg">Content Weight (Kg):</string>
     <string name="contentWeightGr">Content Weight (gr):</string>
+    <string name="extinguisher_trademark">Extinguisher TradeMark</string>
 
     <string-array name="content_weight">
         <item>5</item>

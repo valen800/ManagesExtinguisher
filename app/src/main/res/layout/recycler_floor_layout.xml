@@ -31,7 +31,7 @@
             android:id="@+id/toolbarFloor"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="?attr/colorPrimary"
+            android:background="@color/Black"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme" />
 

@@ -33,7 +33,7 @@
             android:id="@+id/toolbarFlask"
             android:layout_width="match_parent"
             android:layout_height="34dp"
-            android:background="?attr/colorPrimary"
+            android:background="@color/Black"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme" />
 
@@ -41,9 +41,10 @@
             android:id="@+id/textViewModelFlask"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
             android:layout_marginLeft="140dp"
-            android:text="@string/Model" />
+            android:layout_marginTop="50dp"
+            android:text="@string/Model"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewModelFlaskResult"
@@ -56,9 +57,10 @@
             android:id="@+id/textViewWeightFlask"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
             android:layout_marginLeft="140dp"
-            android:text="@string/contentWeightGr" />
+            android:layout_marginTop="80dp"
+            android:text="@string/contentWeightGr"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewWeightFlaskResult"
@@ -71,9 +73,10 @@
             android:id="@+id/textViewFactoryDateFlask"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="110dp"
             android:layout_marginLeft="140dp"
-            android:text="@string/factorydate" />
+            android:layout_marginTop="110dp"
+            android:text="@string/factorydate"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewFactoryDateFlaskResult"
@@ -86,9 +89,10 @@
             android:id="@+id/textViewNextRevisionFlask"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="140dp"
             android:layout_marginLeft="140dp"
-            android:text="@string/nextrevision" />
+            android:layout_marginTop="140dp"
+            android:text="@string/nextrevision"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewNextDateFlaskResult"

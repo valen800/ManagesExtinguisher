@@ -33,7 +33,7 @@
             android:id="@+id/toolbarExtinguisher"
             android:layout_width="match_parent"
             android:layout_height="34dp"
-            android:background="?attr/colorPrimary"
+            android:background="@color/Black"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme" />
 
@@ -41,9 +41,10 @@
             android:id="@+id/textViewModelExt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
             android:layout_marginLeft="140dp"
-            android:text="@string/Model" />
+            android:layout_marginTop="50dp"
+            android:text="@string/Model"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewModelExtResult"
@@ -56,9 +57,10 @@
             android:id="@+id/textViewWeightExt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
             android:layout_marginLeft="140dp"
-            android:text="@string/contentWeightKg" />
+            android:layout_marginTop="80dp"
+            android:text="@string/contentWeightKg"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewWeightExtResult"
@@ -71,9 +73,10 @@
             android:id="@+id/textViewFactoryDateExt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="110dp"
             android:layout_marginLeft="140dp"
-            android:text="@string/factorydate" />
+            android:layout_marginTop="110dp"
+            android:text="@string/factorydate"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewFactoryDateExtResult"
@@ -86,9 +89,10 @@
             android:id="@+id/textViewNextRevisionExt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="140dp"
             android:layout_marginLeft="140dp"
-            android:text="@string/nextrevision" />
+            android:layout_marginTop="140dp"
+            android:text="@string/nextrevision"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewNextDateExtResult"
