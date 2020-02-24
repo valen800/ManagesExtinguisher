@@ -104,9 +104,9 @@ class FlaskAdapter(
             val builder = AlertDialog.Builder(activity)
             builder.setTitle("Flask info")
             builder.setMessage(
-                "Numero: " + itemFlask.nFlask + "\n\n" + "Powder: " + "TradeMark: " + itemFlask.trademark + "\n"
-                        + "Empty Weight: " + itemFlask.emptyWeight + " Kg" + "\n"
-                        + "Content Weight: " + itemFlask.contentWeight + " Kg" + "\n"
+                "Number: " + itemFlask.nFlask + "\n\n" + "Powder: " + "TradeMark: " + itemFlask.trademark + "\n"
+                        + "Empty Weight: " + itemFlask.emptyWeight + " grams" + "\n"
+                        + "Content Weight: " + itemFlask.contentWeight + " grams" + "\n"
                         + "Model: " + itemFlask.model + "\n\n" + "Description Location: " + itemFlask.descriptionLocation + "\n" + "Situation: " + itemFlask.situation + "\n\n"
                         + "Factory Date: " + DateUtils.convertLongToTime(itemFlask.factoryDate) + "\n" + "Date Last Revision: " + DateUtils.convertLongToTime(itemFlask.dateLastRevision) + "\n"
                         + "Date Next Revision: " + DateUtils.convertLongToTime(itemFlask.dateNextRevision) + "\n"

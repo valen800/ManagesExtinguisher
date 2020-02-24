@@ -106,10 +106,10 @@ class ExtinguisherAdapter(
         private fun dialogInfoExtinguisher(itemExt: Extinguisher, activity: FragmentActivity?) {
             val builder = AlertDialog.Builder(activity)
             builder.setTitle("Extinguisher info")
-            builder.setMessage(
-                "Numero: " + itemExt.nExtinguisher + "\n\n" + "TradeMark: " + itemExt.trademark + "\n" + "Weight: " + itemExt.weight + " Kg" + "\n"
+            builder.setMessage("Number: " + itemExt.nExtinguisher + "\n\n" + "TradeMark: " + itemExt.trademark + "\n" + "Weight: " + itemExt.weight + " Kg" + "\n"
                         + "Model: " + itemExt.model + "\n\n" + "Description Location: " + itemExt.descriptionLocation + "\n" + "Situation: " + itemExt.situation + "\n\n"
-                        + "Factory Date: " + DateUtils.convertLongToTime(itemExt.factoryDate) + "\n" + "Date Last Revision: " + DateUtils.convertLongToTime(itemExt.dateLastRevision))
+                        + "Factory Date: " + DateUtils.convertLongToTime(itemExt.factoryDate) + "\n" + "Date Last Revision: " + DateUtils.convertLongToTime(itemExt.dateLastRevision) + "\n"
+                    + "Date Next Revision: " + DateUtils.convertLongToTime(itemExt.dateNextRevision) + "\n")
 
             builder.setNeutralButton("Cancel") { dialog, which ->
                 Toast.makeText(

@@ -36,6 +36,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="10dp"
+                    android:textStyle="bold"
                     android:layout_marginBottom="10dp"
                     android:inputType="text"
                     android:ems="10"
@@ -59,6 +60,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="10dp"
+                    android:textStyle="bold"
                     android:layout_marginBottom="10dp"
                     android:inputType="textPersonName"
                     android:ems="10"
@@ -80,6 +82,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
+                    android:textStyle="bold"
                     android:textSize="18dp"
                     android:text="@string/Weight" />
 
@@ -91,6 +94,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textStyle="bold"
                     android:textSize="18dp"
                     android:text="@string/kg">
 
@@ -110,6 +114,7 @@
                     android:id="@+id/LabelModels"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textStyle="bold"
                     android:layout_marginRight="10dp"
                     android:textSize="18dp"
                     android:text="@string/Model" />
@@ -138,6 +143,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="10dp"
+                    android:textStyle="bold"
                     android:layout_marginBottom="10dp"
                     android:inputType="text"
                     android:ems="10"
@@ -165,6 +171,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="10dp"
+                    android:textStyle="bold"
                     android:layout_marginBottom="10dp"
                     android:gravity="top|left"
                     android:inputType="textMultiLine"
@@ -188,6 +195,7 @@
                 <Button
                     android:id="@+id/buttonFactoryDateExtinguisher"
                     android:layout_width="wrap_content"
+                    android:textStyle="bold"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
                     android:hint="@string/FactoryDate"/>
@@ -196,6 +204,7 @@
                     android:id="@+id/LabelFactoryDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textStyle="bold"
                     android:textSize="18dp"
                     android:hint="@string/exeDate" />
             </LinearLayout>
@@ -206,6 +215,7 @@
                 android:orientation="horizontal"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="16dp"
+                android:textStyle="bold"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp">
 
@@ -213,12 +223,14 @@
                     android:id="@+id/buttonDateLastRevisionExtinguisher"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textStyle="bold"
                     android:layout_marginRight="20dp"
                     android:hint="@string/LastRevision"/>
 
                 <TextView
                     android:id="@+id/LabelDateLastRevision"
                     android:layout_width="wrap_content"
+                    android:textStyle="bold"
                     android:layout_height="wrap_content"
                     android:textSize="18dp"
                     android:hint="@string/exeDate" />
