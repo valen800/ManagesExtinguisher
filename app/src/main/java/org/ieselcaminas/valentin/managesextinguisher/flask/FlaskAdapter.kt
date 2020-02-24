@@ -47,6 +47,7 @@ class FlaskAdapter(
             flaskViewModel: FlaskFragmentViewModel,
             position: Int
         ) {
+            binding.toolbarFlask.menu.clear()
             binding.flask = itemFlask
             binding.clickListener = clickListener
 
@@ -54,8 +55,8 @@ class FlaskAdapter(
             binding.toolbarFlask.title = itemFlask.nFlask
             binding.toolbarFlask.inflateMenu(R.menu.menu_item_elements)
 
-            binding.textViewFactoryDateFlaskResult.setText(DateUtils.convertLongToTime(itemFlask.dateNextRevision))
-            binding.textViewNextDateFlaskResult.setText(DateUtils.convertLongToTime(itemFlask.factoryDate))
+            binding.textViewFactoryDateFlaskResult.setText(DateUtils.convertLongToTime(itemFlask.factoryDate))
+            binding.textViewNextDateFlaskResult.setText(DateUtils.convertLongToTime(itemFlask.dateNextRevision))
             binding.textViewModelFlaskResult.setText(itemFlask.model)
             binding.textViewWeightFlaskResult.setText(itemFlask.contentWeight.toString())
 

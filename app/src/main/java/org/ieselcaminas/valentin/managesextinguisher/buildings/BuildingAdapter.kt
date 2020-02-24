@@ -34,6 +34,7 @@ class BuildingAdapter(val clickListener: BuildingListener,
     class ViewHolder private constructor(val binding: RecyclerBuildingLayoutBinding): RecyclerView.ViewHolder(binding.root) {
 
         fun bind(itemBuilding: Building, clickListener: BuildingListener, activity: FragmentActivity?, viewLifecycleOwner: LifecycleOwner, buildingViewModel: BuildingFragmentViewModel) {
+            binding.toolbarBuilding.menu.clear()
             binding.building = itemBuilding
             binding.clickListener = clickListener
 

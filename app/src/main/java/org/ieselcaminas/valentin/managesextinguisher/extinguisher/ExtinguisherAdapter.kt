@@ -50,6 +50,7 @@ class ExtinguisherAdapter(
             extinguisherViewModel: ExtinguisherFragmentViewModel,
             position: Int
         ) {
+            binding.toolbarExtinguisher.menu.clear()
             binding.extinguisher = itemExt
             binding.clickListener = clickListener
 
@@ -57,8 +58,8 @@ class ExtinguisherAdapter(
             binding.toolbarExtinguisher.title = itemExt.nExtinguisher
             binding.toolbarExtinguisher.inflateMenu(R.menu.menu_item_elements)
 
-            binding.textViewFactoryDateExtResult.setText(DateUtils.convertLongToTime(itemExt.dateNextRevision))
-            binding.textViewNextDateExtResult.setText(DateUtils.convertLongToTime(itemExt.factoryDate))
+            binding.textViewFactoryDateExtResult.setText(DateUtils.convertLongToTime(itemExt.factoryDate))
+            binding.textViewNextDateExtResult.setText(DateUtils.convertLongToTime(itemExt.dateNextRevision))
             binding.textViewModelExtResult.setText(itemExt.model)
             binding.textViewWeightExtResult.setText(itemExt.weight.toString())
 
@@ -108,8 +109,8 @@ class ExtinguisherAdapter(
             builder.setMessage(
                 "Numero: " + itemExt.nExtinguisher + "\n\n" + "TradeMark: " + itemExt.trademark + "\n" + "Weight: " + itemExt.weight + " Kg" + "\n"
                         + "Model: " + itemExt.model + "\n\n" + "Description Location: " + itemExt.descriptionLocation + "\n" + "Situation: " + itemExt.situation + "\n\n"
-                        + "Factory Date: " + DateUtils.convertLongToTime(itemExt.factoryDate) + "\n" + "Date Last Revision: " + DateUtils.convertLongToTime(itemExt.dateLastRevision)
-            )
+                        + "Factory Date: " + DateUtils.convertLongToTime(itemExt.factoryDate) + "\n" + "Date Last Revision: " + DateUtils.convertLongToTime(itemExt.dateLastRevision))
+
             builder.setNeutralButton("Cancel") { dialog, which ->
                 Toast.makeText(
                     activity,

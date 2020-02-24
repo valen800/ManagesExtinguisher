@@ -41,3 +41,10 @@ class SingletonFlask {
         var itemFlask: Flask = Flask()
     }
 }
+
+class SingletonDate {
+    companion object {
+        var factoryDate: Long = 0L
+        var lastRevisionDate: Long = 0L
+    }
+}

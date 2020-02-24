@@ -36,6 +36,7 @@ class FloorAdapter(
     class ViewHolder private constructor(val binding: RecyclerFloorLayoutBinding): RecyclerView.ViewHolder(binding.root) {
 
         fun bind(itemFloor: Floor, clickListener: FloorListener, activity: FragmentActivity?, viewLifecycleOwner: LifecycleOwner, floorViewModel: FloorsFragmentViewModel) {
+            binding.toolbarFloor.menu.clear()
             binding.floor = itemFloor
             binding.clickListener = clickListener
 

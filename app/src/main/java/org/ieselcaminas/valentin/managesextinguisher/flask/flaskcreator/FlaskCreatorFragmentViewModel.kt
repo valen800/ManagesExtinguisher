@@ -35,7 +35,7 @@ class FlaskCreatorFragmentViewModel(private val databaseFlask: FlaskDao, applica
     }
 
     fun insertFlask(
-        extinguisherFloorId: Long, nExtinguisher: String,
+        extinguisherFloorId: Long, nFlask: String,
         situation: String, tradeMark: String, model: String,
         descriptionLocation: String,
         emptyWeight: Int, contentWeight: Int,
@@ -45,7 +45,7 @@ class FlaskCreatorFragmentViewModel(private val databaseFlask: FlaskDao, applica
         uiScope.launch {
             var flask = Flask()
             flask.flaskFloorId = extinguisherFloorId
-            flask.nFlask = nExtinguisher
+            flask.nFlask = nFlask
             flask.situation = situation
             flask.trademark = tradeMark
             flask.model = model

@@ -75,14 +75,14 @@ class FlaskFragment : Fragment() {
         flaskViewModel.navigateToFlaskCreator.observe(this, Observer {
             if (it == true) {
                 this.findNavController().navigate(
-                    tabFragmentDirections.actionTabFragmentToFlaskCreatorFragment2(SingletonFloorId.floorIdSingleton, "0"))
+                    tabFragmentDirections.actionTabFragmentToFlaskCreatorFragment2(SingletonFloorId.floorIdSingleton))
                 flaskViewModel.doneNavigateToFlaskCreator()
             }
         })
 
         flaskViewModel.navigateToFlaskCreatorFromAdapter.observe(this, Observer {
             it?.let {
-                this.findNavController().navigate(tabFragmentDirections.actionTabFragmentToFlaskCreatorFragment2(SingletonFloorId.floorIdSingleton, "1"))
+                this.findNavController().navigate(tabFragmentDirections.actionTabFragmentToFlaskCreatorFragment2(SingletonFloorId.floorIdSingleton))
                 flaskViewModel.doneNavigatingToFlaskCreatorFromAdapter()
             }
         })
