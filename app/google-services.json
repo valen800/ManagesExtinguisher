@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "669246124627",
+    "firebase_url": "https://managesextinguisher.firebaseio.com",
+    "project_id": "managesextinguisher",
+    "storage_bucket": "managesextinguisher.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:669246124627:android:6a4ef38849769cd3d68ca6",
+        "android_client_info": {
+          "package_name": "org.ieselcaminas.valentin.managesextinguisher"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "669246124627-1e67mkttivbrg0gs8m5pt5sqiujr5t89.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.ieselcaminas.valentin.managesextinguisher",
+            "certificate_hash": "8901e1565642a7f0a7dc9d74094ec7eba2bc44dd"
+          }
+        },
+        {
+          "client_id": "669246124627-et9dsmgq9jg9379eo6nc5t91ospu8o4u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0XZnds4doBLwvWUevFiEmdwcLtozXnNo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "669246124627-et9dsmgq9jg9379eo6nc5t91ospu8o4u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
